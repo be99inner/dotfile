@@ -16,4 +16,4 @@ fi
 
 
 # Put your fun stuff here.
-alias dotconf='git --git-dir=/home/be99inner/.dotfile/ --work-tree=/home/be99inner'
+alias dotcf='git --git-dir=/home/be99inner/.dotfile/ --work-tree=/home/be99inner'
