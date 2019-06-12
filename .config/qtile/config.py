@@ -19,10 +19,10 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.shuffle_up()),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next()),
+    Key([mod], "s", lazy.layout.next()),
 
     # Swap panes of split stack
-    Key([mod, "shift"], "space", lazy.layout.rotate()),
+    Key([mod, "shift"], "s", lazy.layout.rotate()),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -41,7 +41,7 @@ keys = [
 
     # Application key bindings
     Key([mod], "Return", lazy.spawn("urxvt")),
-    Key([mod], "d", lazy.spawn("rofi -show drun")),
+    Key([mod], "space", lazy.spawn("rofi -show drun")),
 
     # Run command
     Key([mod], "r", lazy.spawncmd()),
