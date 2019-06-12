@@ -1,2 +1,12 @@
+! Term
+URxvt.termName: rxvt-unicode-256color
+
 ! Font
-URxvt.font:xft:Monospace:pixelsize=15
+URxvt.font: xft:Monospace:pixelsize=15
+
+! Extensions
+URxvt.perl-ext-common: default,clipboard
+
+! Clipboard
+URxvt.keysym.Control-Shift-V: perl:clipboard:paste
+URxvt.keysym.Control-Shift-C: perl:clipboard:on_sel_grab
