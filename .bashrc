@@ -14,6 +14,24 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+# merge resource
 
-# Put your fun stuff here.
-alias dotcf='git --git-dir=/home/be99inner/.dotfile/ --work-tree=/home/be99inner'
+#************************ Put your fun stuff here. ***************************#
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+## dotcf
+alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+
+# User specific aliases and functions
+source /opt/kubectx/completion/kubectx.bash
+source /opt/kubectx/completion/kubens.bash
+
+## Snap
+export PATH=$PATH:/var/lib/snapd/snap/bin
+
+## Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
