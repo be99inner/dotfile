@@ -1,5 +1,11 @@
 ! Global configuration of Xresource
 ! for easy to change and manage your resourcefile
+!
+! NOTE: Just include default of configuration.
+! You can store many configuration file on your system and
+! you just use one of it. You can switch between profile via
+! links file to default.
+
 ! include default config
 #include ".Xresources.d/themes/default"
 #include ".Xresources.d/urxvt/default"
