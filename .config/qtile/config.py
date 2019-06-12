@@ -32,7 +32,7 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "q", lazy.window.kill()),
 
     # Volume Control
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -2%")),
@@ -64,7 +64,8 @@ for i in groups:
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=2)
+    layout.Stack(num_stacks=2),
+    layout.MonadTall(),
 ]
 
 widget_defaults = dict(
@@ -72,11 +73,12 @@ widget_defaults = dict(
     fontsize=12,
     padding=1,
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.GroupBox(),
                 widget.Prompt(),
@@ -88,9 +90,11 @@ screens = [
                 widget.Sep(),
                 widget.KeyboardLayout(),
                 widget.Sep(),
+                widget.Battery(),
+                widget.Sep(),
                 widget.Volume(),
             ],
-            32,
+            22,
         ),
     ),
 ]
@@ -138,7 +142,6 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
 
 # autostart
 @hook.subscribe.startup_once
