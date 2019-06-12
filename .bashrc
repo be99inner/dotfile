@@ -14,7 +14,7 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-# merge resource
+# Merge resource
 
 #************************ Put your fun stuff here. ***************************#
 # Source global definitions
@@ -22,16 +22,23 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-## dotcf
+# dotcf
 alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
-# User specific aliases and functions
+# Kubectx completion
 source /opt/kubectx/completion/kubectx.bash
 source /opt/kubectx/completion/kubens.bash
 
-## Snap
+# Snap
 export PATH=$PATH:/var/lib/snapd/snap/bin
 
-## Android SDK
+# Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
+# Vim
+alias vim='gvim -v'
+export EDITOR=vim
+
+# User bin
+export PATH="$PATH:$HOME/bin"
