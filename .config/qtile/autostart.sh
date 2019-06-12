@@ -5,7 +5,7 @@ exec nm-applet &
 exec /opt/Telegram/Telegram &
 
 # Pulseaudio
-exec pulseaudio -d
+exec pulseaudio --start &
 
 # Set keyboard Switching
-exec setxkbmap us,th -option 'grp:lalt_lshift_toggle'
+exec setxkbmap us,th -option 'grp:lalt_lshift_toggle' &
