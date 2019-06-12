@@ -34,6 +34,11 @@ keys = [
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
 
+    # Volume Control
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -2%")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +2%")),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
+
     # Application key bindings
     Key([mod], "Return", lazy.spawn("urxvt")),
 
@@ -64,7 +69,7 @@ layouts = [
 widget_defaults = dict(
     font='sans',
     fontsize=12,
-    padding=3,
+    padding=1,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -80,10 +85,9 @@ screens = [
                 widget.Sep(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
                 widget.Sep(),
-#                 widget.KeyboardLayout(
-#                 ),
+                widget.KeyboardLayout(),
                 widget.Sep(),
-#                 widget.volume(),
+                widget.Volume(),
             ],
             32,
         ),
