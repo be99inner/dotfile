@@ -41,6 +41,7 @@ keys = [
 
     # Application key bindings
     Key([mod], "Return", lazy.spawn("urxvt")),
+    Key([mod], "d", lazy.spawn("rofi -show drun")),
 
     # Run command
     Key([mod], "r", lazy.spawncmd()),
