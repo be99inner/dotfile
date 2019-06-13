@@ -1,8 +1,11 @@
 #!/bin/bash
-exec nm-applet &
+nm-applet &
 
 # Pulseaudio
-exec pulseaudio --start &
+pulseaudio --start &
 
 # Set keyboard Switching
-exec setxkbmap us,th -option 'grp:lalt_lshift_toggle' &
+setxkbmap us,th -option 'grp:lalt_lshift_toggle' &
+
+# Set background
+feh --bc-scale ~/Pictures/cat-meme-bg.jpg
