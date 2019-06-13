@@ -40,7 +40,8 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
 
     # Application key bindings
-    Key([mod], "Return", lazy.spawn("urxvt")),
+    # Key([mod], "Return", lazy.spawn("urxvt")),
+    Key([mod], "Return", lazy.spawn("gnome-terminal")),
     Key([mod], "space", lazy.spawn("rofi -show drun")),
 
     # Run command
