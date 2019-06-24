@@ -26,8 +26,10 @@ fi
 alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
 # Kubectx completion
-source /opt/kubectx/completion/kubectx.bash
-source /opt/kubectx/completion/kubens.bash
+if [ -f /opt/kubectx/ ]; then
+    source /opt/kubectx/completion/kubectx.bash
+    source /opt/kubectx/completion/kubens.bash
+fi
 
 # Snap
 export PATH=$PATH:/var/lib/snapd/snap/bin
