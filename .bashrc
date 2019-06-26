@@ -22,6 +22,11 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+# Source Xresources file
+if [ -f ~/.Xresources ]; then
+    xrdb -merge ~/.Xresources
+fi
+
 # dotcf
 alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
