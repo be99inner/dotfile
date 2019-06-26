@@ -31,15 +31,24 @@ if [ -f /opt/kubectx/ ]; then
     source /opt/kubectx/completion/kubens.bash
 fi
 
-# Snap
-export PATH=$PATH:/var/lib/snapd/snap/bin
+# Cargo
+if [ -f "$HOME/.cargo/" ]; then
+    export PATH="$PATH:/home/be99inner/.cargo/bin/:/home/be99inner/.local/"
+fi
 
+# Snap
+if [ -f /var/lib/snapd/ ]; then
+    export PATH=$PATH:/var/lib/snapd/snap/bin
+fi
+    
 # Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
 # Vim
-alias vim='gvim -v'
+# if ! [ -x "$(command -v gvim)" ]; then
+#     alias vim='gvim -v'
+# fi
 export EDITOR=vim
 
 # User bin
