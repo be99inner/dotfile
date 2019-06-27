@@ -4,7 +4,6 @@ from libqtile import layout, bar, widget, hook
 
 from typing import List
 
-
 import os, subprocess
 
 mod = "mod4"
@@ -43,6 +42,10 @@ keys = [
     # Key([mod], "Return", lazy.spawn("urxvt")),
     Key([mod], "Return", lazy.spawn("gnome-terminal")),
     Key([mod], "space", lazy.spawn("rofi -show drun")),
+    Key([mod], "e", lazy.spawn("emacs")),
+    
+    # lock screen
+    # Key([mod, "control", "mod1"], "l", lazy.spawn("xscreensaver-command --lock")),
 
     # Run command
     Key([mod], "r", lazy.spawncmd()),
@@ -94,6 +97,16 @@ screens = [
                 widget.Battery(),
                 widget.Sep(),
                 widget.Volume(),
+            ],
+            22,
+        ),
+    ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(),
+                widget.Prompt(),
+                widget.WindowName(),
             ],
             22,
         ),
