@@ -21,6 +21,12 @@ git clone --bare <git_remote_url> $HOME/.dotfile
 source ~/.bashrc
 ```
 
+or you can run manual alias command 
+
+``` bash
+alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+```
+
 * Run ignore command on your local
  
 ```bash
