@@ -52,7 +52,7 @@
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (smex ido-vertical-mode markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package))))
+    (evil smex ido-vertical-mode markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

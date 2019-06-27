@@ -45,3 +45,9 @@
   :ensure t
   :init (smex-initialize)
   :bind ("M-x" . smex))
+
+
+;; Evil mode
+(use-package evil
+  :ensure t
+  :config (evil-mode))
