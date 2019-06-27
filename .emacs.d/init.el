@@ -30,6 +30,12 @@
 ;; Set Backup Directory
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
+;; Ido mode
+;; use ido mode with plugin ido-vertical in package.el
+(setq ido-enable-flex-matching nil)
+(setq ido-create-new-buffer 'always)
+(setq ido-everywhere t)
+(ido-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -46,7 +52,7 @@
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package))))
+    (smex ido-vertical-mode markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

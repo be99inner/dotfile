@@ -33,3 +33,15 @@
 	 ("\\.md\\'" . markdown-mode)
 	 ("\\.markdown'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+;; ido-vertical
+(use-package ido-vertical-mode
+  :ensure t
+  :init (ido-vertical-mode 1))
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+;; SMEX
+(use-package smex
+  :ensure t
+  :init (smex-initialize)
+  :bind ("M-x" . smex))
