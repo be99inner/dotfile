@@ -1,31 +1,26 @@
-Tux Dotfile
-===========
+# Tux Dotfile #
 
 The new repository for store my dotfile.
 
 * Using git --bare for store my dotfile
 
 
-Installation
-------------
+## Installation ##
 
 * Make sure, you already no have conflict files
 * Clone this repo's with command
 
 ```bash
-git clone --bare <git_remote_url> $HOME/.dotfile
-```
-* Re-source, bashrc
-
-```bash
-source ~/.bashrc
+git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
 ```
 
-or you can run manual alias command 
+or you can run manual alias command
 
 ``` bash
 alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 ```
+
+NOTE: add alias command on your bashrc file and resource it
 
 * Run ignore command on your local
  
@@ -37,4 +32,4 @@ dotcf config --local status.showUntrackedFiles no
 delete. You need to re add file of you repo*
 
 
-[Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
+![Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
