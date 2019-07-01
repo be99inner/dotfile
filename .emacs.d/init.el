@@ -6,6 +6,9 @@
 ;; Set line number
 (global-linum-mode 1)
 
+;; Auto reload file (when file is edited outside emacs)
+(global-auto-revert-mode t)
+
 ;; Set encoding
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
