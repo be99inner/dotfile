@@ -3,7 +3,12 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Set melpa repository
+;; Set encoding
+(set-default-coding-systems 'utf-8)
+(set-language-environment 'utf-8)
+(set-selection-coding-system 'utf-8)
+
+;; Configure repository
 (setq package-enable-at-startup nil)
 (when (load (expand-file-name "~/.emacs.d/repository.el")))
 
@@ -36,6 +41,9 @@
 (setq ido-create-new-buffer 'always)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+;; evil configuration
+(when (load (expand-file-name "~/.emacs.d/evil-config.el")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
