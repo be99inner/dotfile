@@ -3,6 +3,9 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Set line number
+(global-linum-mode 1)
+
 ;; Set encoding
 (set-default-coding-systems 'utf-8)
 (set-language-environment 'utf-8)
