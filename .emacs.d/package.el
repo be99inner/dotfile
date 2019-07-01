@@ -51,3 +51,13 @@
 (use-package evil
   :ensure t
   :config (evil-mode 1))
+
+;; Vim Powerline for Emacs
+(use-package smart-mode-line-powerline-theme
+  :ensure t)
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (setq sml/no-confirm-load-theme t)
+  ;;(setq sml/theme 'dark)
+  (sml/setup))
