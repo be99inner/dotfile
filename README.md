@@ -32,4 +32,4 @@ dotcf config --local status.showUntrackedFiles no
 delete. You need to re add file of you repo*
 
 
-![Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
+[Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
