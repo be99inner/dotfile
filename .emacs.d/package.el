@@ -72,3 +72,8 @@
 (use-package yaml-mode
   :ensure t
   :mode ("\\.yml$" . yaml-mode))
+
+;; Wakatime
+(use-package wakatime-mode
+  :ensure t
+  :init (global-wakatime-mode))
