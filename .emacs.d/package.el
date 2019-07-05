@@ -77,3 +77,14 @@
 (use-package wakatime-mode
   :ensure t
   :init (global-wakatime-mode))
+
+;; Number relative
+(use-package nlinum-relative
+  :ensure t
+  :config
+  (nlinum-relative-setup-evil)
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+  (setq nlinum-relative-redisplay-delay 0)
+  (setq nlinum-relative-current-symbol "->")
+  (setq nlinum-relative-ofset 0)
+  )

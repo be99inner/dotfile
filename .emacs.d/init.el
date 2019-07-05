@@ -4,7 +4,7 @@
 (scroll-bar-mode -1)
 
 ;; Set line number
-(global-linum-mode 1)
+;;(global-linum-mode 1)
 
 ;; Auto reload file (when file is edited outside emacs)
 (global-auto-revert-mode t)
@@ -66,7 +66,9 @@
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (wakatime-mode evil smex ido-vertical-mode markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package))))
+    (nlinum-relative wakatime-mode evil smex ido-vertical-mode markdown-mode makrdown-mode try beacon spacemacs-theme spacemacs-themes which-key use-package)))
+ '(wakatime-cli-path "/usr/bin/wakatime")
+ '(wakatime-python-bin nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
