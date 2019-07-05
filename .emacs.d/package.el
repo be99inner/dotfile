@@ -53,11 +53,22 @@
   :config (evil-mode 1))
 
 ;; Vim Powerline for Emacs
-(use-package smart-mode-line-powerline-theme
+(use-package powerline-evil
   :ensure t)
-(use-package smart-mode-line
+(use-package powerline
   :ensure t
-  :config
-  (setq sml/no-confirm-load-theme t)
-  ;;(setq sml/theme 'dark)
-  (sml/setup))
+  :init (powerline-evil-center-color-theme))
+
+;;(use-package smart-mode-line-powerline-theme
+  ;;:ensure t)
+;;(use-package smart-mode-line
+  ;;:ensure t
+  ;;:config
+  ;;(setq sml/no-confirm-load-theme t)
+  ;;(setq sml/apply-theme 'smart-mode-line-powerline-theme)
+  ;;(sml/setup))
+
+;; Yaml mode
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.yml$" . yaml-mode))
