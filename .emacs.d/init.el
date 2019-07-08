@@ -3,9 +3,6 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Set line number
-;;(global-linum-mode 1)
-
 ;; Auto reload file (when file is edited outside emacs)
 (global-auto-revert-mode t)
 
