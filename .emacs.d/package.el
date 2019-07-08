@@ -82,9 +82,17 @@
 (use-package nlinum-relative
   :ensure t
   :config
-  (nlinum-relative-setup-evil)
-  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (setq nlinum-relative-redisplay-delay 0)
   (setq nlinum-relative-current-symbol "->")
   (setq nlinum-relative-ofset 0)
-  )
+  (nlinum-relative-setup-evil)
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+  (add-hook 'text-mode-hook 'nlinum-relative-mode))
+
+;; Display preview color
+(use-package rainbow-mode
+  :ensure t
+  :init (rainbow-mode 1)
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-mode)
+  (add-hook 'text-mode-hook 'rainbow-mode))
