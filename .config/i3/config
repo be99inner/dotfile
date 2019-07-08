@@ -61,6 +61,9 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
+# Backlight
+bindsym XF86KbdBrightnessUp exec xbacklight -inc 5
+bindsym XF86KbdBrightnessDown exec xbackligth -dec 5
 
 ######################### Focus Movement ##################################
 # change focus
@@ -166,16 +169,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left resize shrink width 10 px or 10 ppt
-        bindsym $right resize grow width 10 px or 10 ppt
-        bindsym $up resize grow height 10 px or 10 ppt
-        bindsym $down resize shrink height 10 px or 10 ppt
+        bindsym $left resize shrink width 2 px or 2 ppt
+        bindsym $right resize grow width 2 px or 2 ppt
+        bindsym $up resize grow height 2 px or 2 ppt
+        bindsym $down resize shrink height 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
+        bindsym Up resize grow height 2 px or 2 ppt
+        bindsym Down resize shrink height 2 px or 2 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -187,7 +190,7 @@ bindsym $mod+r mode "resize"
 
 ############################# Status Bar #####################################
 # Polybar
-exec_always --no-startup-id polybar sweetybar -r &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 gaps config
 smart_borders on
