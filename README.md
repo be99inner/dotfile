@@ -17,7 +17,7 @@ git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
 or you can run manual alias command
 
 ``` bash
-alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+alias dotcf='git --git-dir=$HOME/.git/ --work-tree=$HOME'
 ```
 
 NOTE: add alias command on your bashrc file and resource it
