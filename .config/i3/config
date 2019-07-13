@@ -53,7 +53,7 @@ bindsym $mod+d exec dmenu_run
 # launch emacs
 bindsym $mod+e exec emacs
 
-# lauch rofi
+# launch rofi
 bindsym $mod+space exec rofi -show drun
 
 # Volume control
@@ -62,8 +62,10 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Backlight
-bindsym XF86KbdBrightnessUp exec xbacklight -inc 5
-bindsym XF86KbdBrightnessDown exec xbackligth -dec 5
+#bindsym XF86KbdBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+#bindsym XF86KbdBrightnessDown exec xbackligth -dec 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 ######################### Focus Movement ##################################
 # change focus
