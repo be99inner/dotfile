@@ -22,3 +22,4 @@ And configure wakatime to enable your wakatime
 [settings]
 api_key = YOUR_API_KEY
 debug = true
+```
