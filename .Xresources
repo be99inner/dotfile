@@ -9,3 +9,4 @@
 ! include default config
 #include ".Xresources.d/themes/default"
 #include ".Xresources.d/urxvt/default"
+#include ".Xresources.d/xst/default"
