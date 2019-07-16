@@ -23,41 +23,50 @@
 ;; Try
 ;; use try package for try some plugin
 (use-package try
-  :ensure t)
+  :ensure t
+)
 
 ;; Markdown Mode
 (use-package markdown-mode
   :ensure t
   :commands (mardown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
+  :mode (
+	 ("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode)
-	 ("\\.markdown'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+	 ("\\.markdown'" . markdown-mode)
+	 )
+  :init (setq markdown-command "multimarkdown")
+)
 
 ;; ido-vertical
 (use-package ido-vertical-mode
   :ensure t
-  :init (ido-vertical-mode 1))
+  :init (ido-vertical-mode 1)
+  )
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;; SMEX
 (use-package smex
   :ensure t
   :init (smex-initialize)
-  :bind ("M-x" . smex))
+  :bind ("M-x" . smex)
+  )
 
 
 ;; Evil mode
 (use-package evil
   :ensure t
-  :config (evil-mode 1))
+  :config (evil-mode 1)
+  )
 
 ;; Vim Powerline for Emacs
 (use-package powerline-evil
-  :ensure t)
+  :ensure t
+  )
 (use-package powerline
   :ensure t
-  :init (powerline-evil-center-color-theme))
+  :init (powerline-evil-center-color-theme)
+  )
 
 ;;(use-package smart-mode-line-powerline-theme
   ;;:ensure t)
@@ -76,23 +85,28 @@
 ;; Wakatime
 (use-package wakatime-mode
   :ensure t
-  :init (global-wakatime-mode))
+  :init (global-wakatime-mode)
+  )
 
 ;; Number relative
 (use-package nlinum-relative
   :ensure t
   :config
   (setq nlinum-relative-redisplay-delay 0)
-  (setq nlinum-relative-current-symbol "->")
   (setq nlinum-relative-ofset 0)
   (nlinum-relative-setup-evil)
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-  (add-hook 'text-mode-hook 'nlinum-relative-mode))
+  (add-hook 'text-mode-hook 'nlinum-relative-mode)
+  (add-hook 'conf-mode-hook 'nlinum-relative-mode)
+  )
 
 ;; Display preview color
 (use-package rainbow-mode
   :ensure t
   :init (rainbow-mode 1)
   :config
-  (add-hook 'prog-mode-hook 'rainbow-mode)
-  (add-hook 'text-mode-hook 'rainbow-mode))
+  (add-hook 'conf-mode-hook 'rainbow-mode)
+  ;;(add-hook 'prog-mode-hook 'rainbow-mode)
+  ;;(add-hook 'text-mode-hook 'rainbow-mode)
+  ;;(setq rainbow-mode 1)
+  )
