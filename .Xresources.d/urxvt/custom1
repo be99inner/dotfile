@@ -2,7 +2,10 @@
 URxvt.termName: rxvt-unicode-256color
 
 ! Font
-URxvt.font: xft:Monospace:pixelsize=12,
+URxvt.font: xft:Monospace:pixelsize=12,size=12
+
+! try to fix picture insert mode
+URxvt.iso14755: false
 
 ! Extensions
 URxvt.perl-ext-common: default,clipboard
