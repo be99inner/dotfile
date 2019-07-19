@@ -11,7 +11,7 @@ The new repository for store my dotfile.
 * Clone this repo's with command
 
 ```bash
-git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
+git clone --bare https://github.com/be99inner/dotfile.git $HOME/.git
 ```
 
 or you can run manual alias command
