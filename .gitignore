@@ -3,9 +3,9 @@
 .gitconfig
 !.config/qtile/*
 !.config/i3/*
+!.config/polybar/*
 .config/qtile/*.pyc
 .config/qtile/__pycache__
-.config/*
 
 # User Directories
 Android
