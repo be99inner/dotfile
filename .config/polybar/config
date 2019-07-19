@@ -18,9 +18,11 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+;;background = #222
+background = #490a5e
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
+;;foreground = #dfdfdf
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #f26fa2
@@ -33,22 +35,22 @@ width = 100%
 height = 22
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 0.0
+radius = 2.0
 fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = #f00
+line-size = 3
+line-color = #440a44
 
-border-size = 2
-border-color = #00000000
+border-size = 0
+border-color = #  00000000
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
@@ -281,7 +283,7 @@ label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
-label-muted-foreground = #666
+label-muted-foreground = #f33a5e
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55

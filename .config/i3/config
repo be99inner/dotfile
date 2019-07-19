@@ -53,8 +53,8 @@ bindsym $mod+q kill
 bindsym $mod+e exec emacs
 
 # launch rofi
-bindsym $mod+space exec rofi -show drun
-bindsym $mod+d exec rofi -show run
+bindsym $mod+space exec rofi -show drun -show-icons -theme purple
+bindsym $mod+d exec rofi -show run -theme purple
 
 # Volume control
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
@@ -206,11 +206,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ############################# Colors #########################################
-# class			      	border		background	text	indicator	child_border
-client.focused		      	#fc48a3 	#cb27ca		#ffffff	#ed9297		#fc48a3
-client.focused_inactive      	#9000c0		#7800a0		#b2b2b2	#9000c0		#9000c0
-client.unfocused		#4A0960		#22002E		#5b5b5b #ffffff		#4A0960
-client.urgent			#e84f4f		#e84f4f		#5b5b5b	#e84f4f		#e84f4f
+# class                       border    background  text    indicator child_border
+client.focused                #841aa7   #490a5e     #ffffff #cb27ca   #841aa7
+client.focused_inactive       #9000c0   #7800a0     #b2b2b2 #9000c0   #9000c0
+client.unfocused              #000000   #22002E     #5b5b5b #ffffff   #000000
+client.urgent                 #e84f4f   #e84f4f     #5b5b5b #e84f4f   #e84f4f
 #client.placeholder
 
 #client.background		#ffffff
@@ -226,8 +226,13 @@ gaps outer 2
 
 
 ########################### Autostart ########################################
+# One-time startup
 # start nm-applet
 exec --no-startup-id nm-applet &
+# start compton
+exec --no-startup-id compton -b &
+
+# Always run when restart
 # set background
 exec_always --no-startup-id feh --bg-scale $HOME/.config/i3/images/default_bg.jpg &
 # set keyboard layout
