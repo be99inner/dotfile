@@ -68,6 +68,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 ######################### Focus Movement ##################################
+# find where am i
+bindsym $mod+n exec flash_window
 # change focus
 bindsym $mod+$left focus left
 bindsym $mod+$right focus right
@@ -231,6 +233,8 @@ gaps outer 2
 exec --no-startup-id nm-applet &
 # start compton
 exec --no-startup-id compton -b &
+# start flashfocus
+exec --no-startup-id flashfocus &
 
 # Always run when restart
 # set background
