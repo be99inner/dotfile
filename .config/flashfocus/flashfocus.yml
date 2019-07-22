@@ -9,14 +9,14 @@ flash-opacity: 0.8
 default-opacity: 1
 
 # Length of flash in milliseconds.
-time: 10
+time: 100
 
 # If true, flashes are not faded out. This will improve performance but flashes
 # won't be smooth.
-simple: false
+simple: true
 
 # Number of animation frames in a flash.
-ntimepoints: 10
+ntimepoints: 750
 
 # Set this to False if you don't want windows to flash on focus.
 flash-on-focus: true
