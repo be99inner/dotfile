@@ -59,6 +59,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 ;;modules-center = mpd
+modules-center = powermenu
 modules-right = xbacklight pulseaudio xkeyboard battery date
 
 tray-position = right
@@ -332,36 +333,101 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = AC
+
+; This is useful in case the battery never reports 100% charge
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = Charging %percentage%%
 
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = Discharging %percentage%%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+label-full = Fully charged
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 0
+ramp-capacity-1 = 1
+ramp-capacity-2 = 2
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = ^
+animation-charging-1 = v
+animation-charging-2 = +
+animation-charging-3 = #
+animation-charging-4 = @
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = >
+animation-discharging-1 = <
+animation-discharging-2 = =
+animation-discharging-3 = -
+animation-discharging-4 = .
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+; Prefix for full charging
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+; Format for show on status bar
+;
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-full = <ramp-capacity> <label-full>
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
 
 ;;[module/temperature]
 ;;type = internal/temperature
@@ -389,7 +455,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = menu
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
