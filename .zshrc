@@ -106,3 +106,4 @@ alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 # kubernetes
 alias kbctl='kubectl'
 alias kbctx='kubectx'
+alias kbns='kubens'
