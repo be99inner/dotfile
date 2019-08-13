@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # dotcf
-alias dotcf='git --git-dir=$HOME/.git/ --work-tree=$HOME'
+alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
 # kubernetes
 alias kbctl='kubectl'
