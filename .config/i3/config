@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt_mod Mod1
 
 # Define movement
 set $left h
@@ -66,6 +67,12 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 #bindsym XF86KbdBrightnessDown exec xbackligth -dec 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+# Lauch Keybaoard change layout
+#bindsym $mod+x exec setxkbmap us,th -option 'grp:lalt_lshift_toggle'
+
+# Lockscreen
+bindsym $mod+Ctrl+l exec i3lock-fancy
 
 ######################### Focus Movement ##################################
 # find where am i
