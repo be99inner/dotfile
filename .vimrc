@@ -127,6 +127,7 @@ if has("autocmd")
         " Custom filetype settings:
         au FileType json,yaml,yml set tabstop=2 shiftwidth=2 softtabstop=2
         au BufRead,BufNewfile ~/.Xresources.d/* set filetype=xdefaults
+        au FileType zsh set tabstop=2 shiftwidth=2 softtabstop=2
     augroup END
 endif
 
