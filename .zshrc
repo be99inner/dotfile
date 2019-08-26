@@ -116,3 +116,7 @@ alias kbns='kubens'
 
 # reload zsh
 alias update_profile='source /etc/zsh/zprofile'
+
+# virtualenv
+export WORKON_HOME="$HOME/virt"
+source /usr/bin/virtualenvwrapper.sh
