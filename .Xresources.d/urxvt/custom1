@@ -3,13 +3,33 @@ URxvt.termName: rxvt-unicode-256color
 
 ! Font
 URxvt.font: xft:Monospace:pixelsize=12,size=12
+URxvt.letterSpace: 0
 
 ! try to fix picture insert mode
 URxvt.iso14755: false
 
-! Extensions
-URxvt.perl-ext-common: default,clipboard
+! Scrolling
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: false
+URxvt.scrollTtyKeypress: true
 
-! Clipboard
-URxvt.keysym.Control-Shift-V: perl:clipboard:paste
-URxvt.keysym.Control-Shift-C: perl:clipboard:on_sel_grab
+! Saveline
+URxvt.saveLines: 20000000
+
+! Extensions
+URxvt.perl-ext-common: default,keyboard-select,font-size
+
+! Fontsize
+URxvt.keysym.C-up:      font-size:increase
+URxvt.keysym.C-Down:    font-size:decrease
+URxvt.keysym.C-S-Up:    font-size:incglobal
+URxvt.keysym.C-S-Down:  font-size:decglobal
+URxvt.keysym.C-equal:   font-size:reset
+URxvt.keysym.C-slash:   font-size:show
+
+! Keyboard-Select
+URxvt.keysym.C-c:  keyboard-select:activate
+! Search
+URxvt.keysym.C-f:    keyboard-select:search
+! Copy to clipboard too
+URxvt.keyboard-select.clipboard: true
