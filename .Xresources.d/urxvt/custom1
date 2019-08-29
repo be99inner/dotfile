@@ -28,8 +28,8 @@ URxvt.keysym.C-equal:   font-size:reset
 URxvt.keysym.C-slash:   font-size:show
 
 ! Keyboard-Select
-URxvt.keysym.C-M-t:  keyboard-select:activate
+URxvt.keysym.M-Escape:  keyboard-select:activate
 ! Search
-URxvt.keysym.C-M-f:    keyboard-select:search
+URxvt.keysym.M-s:    keyboard-select:search
 ! Copy to clipboard too
 URxvt.keyboard-select.clipboard: true
