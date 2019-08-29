@@ -117,6 +117,9 @@ alias kbns='kubens'
 # reload zsh
 alias update_profile='source /etc/zsh/zprofile'
 
+# move on nvim
+alias vim='nvim'
+
 # virtualenv
 export WORKON_HOME="$HOME/virt"
 source /usr/bin/virtualenvwrapper.sh
