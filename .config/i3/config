@@ -189,7 +189,7 @@ bindsym $mod+r mode "resize"
 ############################# Colors #########################################
 # class                       border    background  text    indicator child_border
 client.focused                #841aa7   #490a5e     #ffffff #cb27ca   #841aa7
-client.focused_inactive       #9000c0   #22002E     #b2b2b2 #9000c0   #9000c0
+client.focused_inactive       #000000   #22002E     #b2b2b2 #ffffff   #000000
 client.unfocused              #000000   #22002E     #5b5b5b #ffffff   #000000
 client.urgent                 #e84f4f   #e84f4f     #5b5b5b #e84f4f   #e84f4f
 #client.placeholder
