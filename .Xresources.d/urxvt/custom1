@@ -30,6 +30,6 @@ URxvt.keysym.C-slash:   font-size:show
 ! Keyboard-Select
 URxvt.keysym.M-Escape:  keyboard-select:activate
 ! Search
-URxvt.keysym.M-s:    keyboard-select:search
+!URxvt.keysym.M-s:    keyboard-select:search
 ! Copy to clipboard too
 URxvt.keyboard-select.clipboard: true
