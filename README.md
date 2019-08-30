@@ -31,5 +31,11 @@ dotcf config --local status.showUntrackedFiles no
 *This command may be makesome file on your repo is in stages of modified or
 delete. You need to re add file of you repo*
 
-
 [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
+
+## ZSH
+
+I use zsh for my usage.
+
+NOTE: on oh-my-zsh when you add new plugin on your configuration.
+You need to remove `.zcompdump*` on your home directory.
