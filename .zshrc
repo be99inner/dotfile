@@ -31,7 +31,7 @@ ZSH_THEME="miloshadzic"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=2
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -75,6 +75,7 @@ plugins=(
   docker
   docker-compose
   minikube
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -92,6 +93,13 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
+# Preferred xterm for remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export TERM=xterm
+else
+  export TERM=rxvt-unicode-256color
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -111,11 +119,19 @@ alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
 # kubernetes
 alias kbctl='kubectl'
+alias kbl='kubectl'
 alias kbctx='kubectx'
+alias kbx='kubectx'
 alias kbns='kubens'
 
+# terraform
+alias tf='terraform'
+alias tfa='terrafrom apply'
+alias tfp='terrafrom plan'
+alias tfi='terraform init'
+
 # reload zsh
-alias update_profile='source /etc/zsh/zprofile'
+alias upmyprof='rm ~/.zcompdump* && source ~/.zshrc'
 
 # move on nvim
 alias vim='nvim'
