@@ -37,7 +37,10 @@ font pango: Dejavu Mono Sans 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
+# start a terminal with current workspace
+bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
 
 # kill focused window
 bindsym $mod+q kill
