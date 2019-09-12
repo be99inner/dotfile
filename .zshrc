@@ -119,10 +119,11 @@ alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
 
 # kubernetes
 alias kbctl='kubectl'
-alias kbl='kubectl'
+alias kbc='kubectl'
 alias kbctx='kubectx'
 alias kbx='kubectx'
 alias kbns='kubens'
+alias kbn='kubens'
 
 # terraform
 alias tf='terraform'
