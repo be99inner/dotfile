@@ -93,7 +93,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+
+" Hashicorp
 Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-vagrant'
 
 " On-daemon loading
 " NERDTree
@@ -102,10 +105,23 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin outside ~/.vim/pluged with post-update hook
 " fzf (fuzzy finder: pacman -S fzf)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Statusbar (Airline)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Nekomake (asynchronous lint)
+Plug 'neomake/neomake'
+
+" vim-commentary
+Plug 'tpope/vim-commentary'
+
+" ansible-vim
+Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
+
+" vim-better-whitespace
+Plug 'ntpeters/vim-better-whitespace'
 
 " Initialize plugin system
 call plug#end()
@@ -125,5 +141,27 @@ let g:terraform_fmt_on_save=1
 " PLUGIN: NERDTree
 map <C-n> <ESC>:NERDTreeToggle<CR>
 
+" PLUGIN: fzf.vim
+noremap <silent> <Leader>fs :call fzf#run({
+    \ 'down': '40%',
+    \ 'sink': 'botright split' })<CR>
+
 " PLUGIN: Airline
 
+" PLUGIN: neomake
+" When writing a bugger (no delay).
+call neomake#configure#automake('w')
+
+" PLUGIN: ansible-vim
+" Indentation will completely reset (unindent to column 0) after two newlines
+" in insert-mode.
+let g:ansible_unindent_after_newline = 1
+
+" Set filetype for ansible-vim
+" if has("autocmd")
+"     augroup ansible_vim_fthosts
+"         autocmd!
+"         autocmd BufNewFile,BufRead playbooks/*/hosts setfiletype ansible_hosts
+"         autocmd BufNewFile,BufRead playbooks/*/inventor* setfiletype yaml.ansible
+"     " augroup END
+" endif
