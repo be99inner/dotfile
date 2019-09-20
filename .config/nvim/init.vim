@@ -78,7 +78,7 @@ if has("autocmd")
     augroup styless
         autocmd!
         " Custom filetype settings:
-        au FileType json,yaml,yml set tabstop=2 shiftwidth=2 softtabstop=2
+        au FileType ruby,json,yaml,yml set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType zsh set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType,BufNewFile,BufRead ~/.Xresources.d/* set filetype=xdefaults
     augroup END
@@ -122,6 +122,9 @@ Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
 
 " vim-better-whitespace
 Plug 'ntpeters/vim-better-whitespace'
+
+" vim surround
+Plug 'tpope/vim-surround'
 
 " Initialize plugin system
 call plug#end()
