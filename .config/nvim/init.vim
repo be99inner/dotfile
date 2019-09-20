@@ -104,8 +104,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/pluged with post-update hook
 " fzf (fuzzy finder: pacman -S fzf)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 " Statusbar (Airline)
 Plug 'vim-airline/vim-airline'
@@ -145,9 +145,9 @@ let g:terraform_fmt_on_save=1
 map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: fzf.vim
-noremap <silent> <Leader>fs :call fzf#run({
-    \ 'down': '40%',
-    \ 'sink': 'botright split' })<CR>
+" noremap <silent> <Leader>fs :call fzf#run({
+"     \ 'down': '40%',
+"     \ 'sink': 'botright split' })<CR>
 
 " PLUGIN: Airline
 
