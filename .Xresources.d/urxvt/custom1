@@ -2,19 +2,30 @@
 URxvt.termName: rxvt-unicode-256color
 
 ! Font
-URxvt.font: xft:Monospace:pixelsize=12,size=12
-URxvt.letterSpace: 0
+URxvt.font: xft:Monospace:pixelsize=14
+URxvt*letterSpace: -1
+
+URxvt*depth: 32
+URxvt.geometry: 90*34
 
 ! try to fix picture insert mode
 URxvt.iso14755: false
 
+URxvt*buffered: false
+
 ! Scrolling
-URxvt.scrollTtyOutput: false
-URxvt.scrollWithBuffer: false
-URxvt.scrollTtyKeypress: true
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyKeypress: true
 
 ! Saveline
 URxvt.saveLines: 20000000
+
+! Border
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0
 
 ! Extensions
 URxvt.perl-ext-common: default,keyboard-select,font-size
