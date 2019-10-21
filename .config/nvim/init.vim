@@ -1,7 +1,7 @@
 " ============================================================================
 " Common Settings for MY NEOVIM
 " ============================================================================
-" NOTE: .nvimrc on new neovim has change to ~/.config/nvim/init.vim 
+" NOTE: .nvimrc on new neovim has change to ~/.config/nvim/init.vim
 " then i just link file to .nvimrc
 
 " Encoding
@@ -81,6 +81,9 @@ if has("autocmd")
         au FileType ruby,json,yaml,yml set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType zsh set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType,BufNewFile,BufRead ~/.Xresources.d/* set filetype=xdefaults
+        au FileType,BufNewFile,BufRead /*.rasi set filetype=css
+        au FileType,BufNewFile,BufRead ~/.kube/config* set filetype=yaml
+        au FileType,BufNewFile,BufRead ~/.config/termite/config* set filetype=yaml
     augroup END
 endif
 
@@ -114,8 +117,11 @@ Plug 'vim-airline/vim-airline-themes'
 " Nekomake (asynchronous lint)
 Plug 'neomake/neomake'
 
-" vim-commentary
-Plug 'tpope/vim-commentary'
+" " vim-commentary
+" Plug 'tpope/vim-commentary'
+
+" nerdtreecommenter
+Plug 'scrooloose/nerdcommenter'
 
 " ansible-vim
 Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
@@ -168,3 +174,19 @@ let g:ansible_unindent_after_newline = 1
 "         autocmd BufNewFile,BufRead playbooks/*/inventor* setfiletype yaml.ansible
 "     " augroup END
 " endif
+
+" PLUGIN: Nerdcommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comment
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instaed of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
