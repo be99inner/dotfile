@@ -9,7 +9,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="miloshadzic"
+# ZSH_THEME="agnoster"
+ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -31,7 +32,7 @@ ZSH_THEME="miloshadzic"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=2
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -76,6 +77,8 @@ plugins=(
   docker-compose
   minikube
   fzf
+  virtualenvwrapper
+  gcloud
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,13 +96,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-
-# Preferred xterm for remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export TERM=xterm
-else
-  export TERM=rxvt-unicode-256color
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -132,11 +128,22 @@ alias tfp='terrafrom plan'
 alias tfi='terraform init'
 
 # reload zsh
-alias upmyprof='rm ~/.zcompdump* && source ~/.zshrc'
+alias upz='rm ~/.zcompdump* && source ~/.zshrc'
 
 # move on nvim
 alias vim='nvim'
 
-# virtualenv
-export WORKON_HOME="$HOME/virt"
-source /usr/bin/virtualenvwrapper.sh
+# alias ssh
+alias ssh='TERM=xterm-256color ssh'
+
+# configure alias
+alias cfz='vim ~/.zshrc'
+alias cfb='vim ~/.config/bspwm/bspwmrc'
+alias cfs='vim ~/.config/sxhkd/sxhkdrc'
+alias cfp='vim ~/.config/polybar/config'
+alias cfpl='vim ~/.config/polybar/launch.sh'
+alias cfv='vim ~/.nvimrc'
+alias cfr='vim ~/.config/rofi/'
+
+# fix alias not found on watch
+alias watch='watch '
