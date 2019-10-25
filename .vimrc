@@ -1,4 +1,3 @@
-
 " ============================================================================
 " Common Settings for MY VIMRC
 " ============================================================================
@@ -23,7 +22,7 @@ let mapleader = ','
 
 
 " Bind nohl
-" Remove highlight of you last search 
+" Remove highlight of you last search
 noremap <Leader>s <ESC>:nohl<CR>
 vnoremap <Leader>s <ESC>:nohl<CR>
 inoremap <Leader>s <ESC>:nohl<CR>
@@ -69,13 +68,13 @@ set t_Co=256
 ""colorscheme papaya_original
 
 
-" Enable syntax highlighting 
+" Enable syntax highlighting
 syntax off
 filetype plugin indent on
 syntax on
 
 
-" Showing line numbers and length 
+" Showing line numbers and length
 set number	" show line numbers
 set relativenumber  " show relative number
 set tw=79	" width of document (used by gd)
@@ -187,6 +186,6 @@ map <c-n> <esc>:NERDTreeToggle<cr>
 
 
 " vim ansible
-""au BufRead,BufNewFile *.yml set filetype=yaml.ansible
-""au BufRead,BufNewFile *.j2 set filetype=yaml.ansible
-""au BufRead,BufNewFile all,hosts set filetype=yaml.ansible
+au BufRead,BufNewFile *.yml set filetype=yaml.ansible
+au BufRead,BufNewFile *.yml.j2,*.yaml.j2 set filetype=yaml.ansible
+au BufRead,BufNewFile all,hosts set filetype=yaml.ansible
