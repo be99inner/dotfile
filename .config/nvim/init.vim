@@ -87,6 +87,9 @@ if has("autocmd")
     augroup END
 endif
 
+" Set wildignore
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+
 " ============================================================================
 " Setting for using vim-plug
 " ============================================================================
@@ -105,20 +108,12 @@ Plug 'hashivim/vim-vagrant'
 " NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Plugin outside ~/.vim/pluged with post-update hook
-" fzf (fuzzy finder: pacman -S fzf)
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-
 " Statusbar (Airline)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Nekomake (asynchronous lint)
-Plug 'neomake/neomake'
-
-" " vim-commentary
-" Plug 'tpope/vim-commentary'
+" lint engine
+Plug 'dense-analysis/ale'
 
 " nerdtreecommenter
 Plug 'scrooloose/nerdcommenter'
@@ -131,6 +126,12 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " vim surround
 Plug 'tpope/vim-surround'
+
+" indent visual
+Plug 'Yggdroot/indentLine'
+
+" fuzzy search file
+Plug 'kien/ctrlp.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -157,15 +158,15 @@ map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: Airline
 
-" PLUGIN: neomake
-" When writing a bugger (no delay).
-call neomake#configure#automake('w')
+" PLUGIN: ale
+" Disable auto-detection of virtualenvironments
+" Environment variable ${VIRTUAL_ENV} is always used
+let g:ale_virtuelenv_dir_names = []
 
 " PLUGIN: ansible-vim
 " Indentation will completely reset (unindent to column 0) after two newlines
 " in insert-mode.
 let g:ansible_unindent_after_newline = 1
-
 " Set filetype for ansible-vim
 " if has("autocmd")
 "     augroup ansible_vim_fthosts
@@ -190,3 +191,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+" PLUGIN: ctrlp.vim
+" let ctrlp working with variable
+let g:ctrlp_working_path_mode = 'ra'
