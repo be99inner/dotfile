@@ -124,8 +124,8 @@ alias kbn='kubens'
 
 # terraform
 alias tf='terraform'
-alias tfa='terrafrom apply'
-alias tfp='terrafrom plan'
+alias tfa='terraform apply'
+alias tfp='terraform plan'
 alias tfi='terraform init'
 
 # reload zsh
