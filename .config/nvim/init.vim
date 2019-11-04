@@ -7,6 +7,13 @@
 " Encoding
 set encoding=utf-8
 
+" Autoload vimrc per project
+" NOTE: Neovim
+" ./project/.nvimrc
+set exrc
+" prevent from unsafe command in your project setting
+set secure
+
 " Automatic reload of .nvimrc
 autocmd! bufwritepost .nvimrc source %
 
@@ -113,10 +120,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " lint engine
-Plug 'dense-analysis/ale'
+Plug 'neomake/neomake'
 
-" nerdtreecommenter
-Plug 'scrooloose/nerdcommenter'
+" commenter
+Plug 'tpope/vim-commentary'
 
 " ansible-vim
 Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
@@ -133,6 +140,19 @@ Plug 'Yggdroot/indentLine'
 " fuzzy search file
 Plug 'kien/ctrlp.vim'
 
+" markdown mode
+Plug 'gabrielelana/vim-markdown'
+
+" auto complete
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-jedi'
+
+" django
+Plug 'tweekmonster/django-plus.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -148,9 +168,6 @@ let g:terraform_fold_sections=0
 " set format on *.tf, *.tfvars with terraform fmt
 let g:terraform_fmt_on_save=1
 
-" PLUGIN: NERDTree
-map <C-n> <ESC>:NERDTreeToggle<CR>
-
 " PLUGIN: fzf.vim
 " noremap <silent> <Leader>fs :call fzf#run({
 "     \ 'down': '40%',
@@ -158,40 +175,26 @@ map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: Airline
 
-" PLUGIN: ale
-" Disable auto-detection of virtualenvironments
-" Environment variable ${VIRTUAL_ENV} is always used
-let g:ale_virtuelenv_dir_names = []
+" PLUGIN: neomake
+" When writing a buffer (no delay).
+call neomake#configure#automake('w')
+" When writing a buffer (no delay), and on normal mode changes (after 750ms).
+call neomake#configure#automake('nw', 750)
+" When reading a buffer (after 1s), and when writing (no delay).
+call neomake#configure#automake('rw', 1000)
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 1s; no delay when writing).
+call neomake#configure#automake('nrwi', 500)
 
 " PLUGIN: ansible-vim
 " Indentation will completely reset (unindent to column 0) after two newlines
 " in insert-mode.
 let g:ansible_unindent_after_newline = 1
-" Set filetype for ansible-vim
-" if has("autocmd")
-"     augroup ansible_vim_fthosts
-"         autocmd!
-"         autocmd BufNewFile,BufRead playbooks/*/hosts setfiletype ansible_hosts
-"         autocmd BufNewFile,BufRead playbooks/*/inventor* setfiletype yaml.ansible
-"     " augroup END
-" endif
-
-" PLUGIN: Nerdcommenter
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comment
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instaed of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
 
 " PLUGIN: ctrlp.vim
 " let ctrlp working with variable
 let g:ctrlp_working_path_mode = 'ra'
+
+" PLUGIN: ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
