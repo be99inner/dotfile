@@ -168,10 +168,8 @@ let g:terraform_fold_sections=0
 " set format on *.tf, *.tfvars with terraform fmt
 let g:terraform_fmt_on_save=1
 
-" PLUGIN: fzf.vim
-" noremap <silent> <Leader>fs :call fzf#run({
-"     \ 'down': '40%',
-"     \ 'sink': 'botright split' })<CR>
+" PLUGIN: NERDTree
+map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: Airline
 
