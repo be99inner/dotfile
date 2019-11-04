@@ -80,6 +80,7 @@ plugins=(
   fzf
   virtualenvwrapper
   gcloud
+  django
 )
 
 source $ZSH/oh-my-zsh.sh
