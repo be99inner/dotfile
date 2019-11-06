@@ -149,6 +149,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-html-subscope'
 
 " django
 Plug 'tweekmonster/django-plus.vim'
@@ -183,6 +184,8 @@ call neomake#configure#automake('rw', 1000)
 " Full config: when writing or reading a buffer, and on changes in insert and
 " normal mode (after 1s; no delay when writing).
 call neomake#configure#automake('nrwi', 500)
+" open the list automatically
+let g:neomake_open_list = 2
 
 " PLUGIN: ansible-vim
 " Indentation will completely reset (unindent to column 0) after two newlines
