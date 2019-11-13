@@ -103,56 +103,62 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
+" Make sure you use single quotes
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-
-" Hashicorp
-Plug 'hashivim/vim-terraform'
-Plug 'hashivim/vim-vagrant'
-
-" On-daemon loading
-" NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
+" =====================
+" Better visualization
+" =====================
+" vim-better-whitespace
+Plug 'ntpeters/vim-better-whitespace'
+" indent visual
+Plug 'Yggdroot/indentLine'
 " Statusbar (Airline)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" lint engine
-Plug 'neomake/neomake'
+" ===================
+" Syntax highlighting
+" ===================
+" Hashicorp
+Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-vagrant'
+" ansible-vim
+Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
+" markdown mode
+Plug 'gabrielelana/vim-markdown'
+" django
+Plug 'tweekmonster/django-plus.vim'
 
+" =================
+" Easy movetivation
+" =================
+" vim surround
+Plug 'tpope/vim-surround'
 " commenter
 Plug 'tpope/vim-commentary'
 
-" ansible-vim
-Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
-
-" vim-better-whitespace
-Plug 'ntpeters/vim-better-whitespace'
-
-" vim surround
-Plug 'tpope/vim-surround'
-
-" indent visual
-Plug 'Yggdroot/indentLine'
-
+" ==================
+" Working with files
+" ==================
+" NERDTree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " fuzzy search file
 Plug 'kien/ctrlp.vim'
 
-" markdown mode
-Plug 'gabrielelana/vim-markdown'
 
-" auto complete
+" ====================
+" Completion & Linting
+" ====================
+" Neomake (asynch lint engine)
+Plug 'neomake/neomake'
+" NCM2 completion
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-html-subscope'
-
-" django
-Plug 'tweekmonster/django-plus.vim'
 
 " Initialize plugin system
 call plug#end()
