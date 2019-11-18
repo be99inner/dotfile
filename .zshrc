@@ -72,6 +72,7 @@ export UPDATE_ZSH_DAYS=7
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  tmux
   git
   kubectl
   docker
@@ -82,6 +83,9 @@ plugins=(
   gcloud
   django
 )
+
+# Tmux Starting with oh-my-zsh
+ZSH_TMUX_AUTOSTART=true
 
 source $ZSH/oh-my-zsh.sh
 
