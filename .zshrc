@@ -135,6 +135,7 @@ alias tfi='terraform init'
 
 # reload zsh
 alias upz='rm ~/.zcompdump* && source ~/.zshrc'
+alias rez='source ~/.zshrc'
 
 # move on nvim
 alias vim='nvim'
