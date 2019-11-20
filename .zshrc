@@ -151,6 +151,7 @@ alias cfp='vim ~/.config/polybar/config'
 alias cfpl='vim ~/.config/polybar/launch.sh'
 alias cfv='vim ~/.nvimrc'
 alias cfr='vim ~/.config/rofi/'
+alias cft='vim ~/.tmux.conf'
 
 # fix alias not found on watch
 alias watch='watch '
