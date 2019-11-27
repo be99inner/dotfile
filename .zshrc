@@ -127,6 +127,9 @@ alias kbx='kubectx'
 alias kbns='kubens'
 alias kbn='kubens'
 
+# docker
+alias dc='docker-compose'
+
 # terraform
 alias tf='terraform'
 alias tfa='terraform apply'
