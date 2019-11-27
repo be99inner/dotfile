@@ -70,11 +70,11 @@ set number              " show line numbers
 set relativenumber      " show relative number
 set textwidth=79               " width of document (used by gd)
 "" set nowrap           " don't automatically wrap on load
-set fo-=t               " don't automatically wrap text when typing
+"" set fo-=t               " don't automatically wrap text when typing
 set ruler               " determine word
 set showcmd             " show cmd
 " This feature is request for neovim
-"highlight ColorColumn ctermbg=0 guibg=ligthgrey
+"" highlight ColorColumn ctermbg=0 guibg=ligthgrey
 
 " Useful settings
 set history=700
@@ -116,19 +116,31 @@ Plug 'Yggdroot/indentLine'
 " Statusbar (Airline)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Colorscheme
+Plug 'rakr/vim-one'
+Plug 'tomasr/molokai'
+Plug 'sonph/onehalf', {'rtp':'vim/'}
+
+" ===============
+" Version Control
+" ===============
+" visualize different on git
+Plug 'airblade/vim-gitgutter'
 
 " ===================
 " Syntax highlighting
 " ===================
 " Hashicorp
-Plug 'hashivim/vim-terraform'
-Plug 'hashivim/vim-vagrant'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+
 " ansible-vim
-Plug 'pearofducks/ansible-vim' ", { 'do': 'cd ./UltiSnips;./generate.py' }
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips;./generate.py' , 'for': ['ansible', 'yaml.ansible', 'ruby.ansible'] }
 " markdown mode
-Plug 'gabrielelana/vim-markdown'
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 " django
-Plug 'tweekmonster/django-plus.vim'
+Plug 'tweekmonster/django-plus.vim', { 'for': ['django', 'python'] }
 
 " =================
 " Easy movetivation
@@ -146,7 +158,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " fuzzy search file
 Plug 'kien/ctrlp.vim'
 
-
 " ====================
 " Completion & Linting
 " ====================
@@ -157,7 +168,7 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
 Plug 'ncm2/ncm2-html-subscope'
 
 " Initialize plugin system
@@ -179,6 +190,13 @@ let g:terraform_fmt_on_save=1
 map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: Airline
+let g:airline_theme='onehalfdark'
+
+" PLUGIN: vim-one
+" colorscheme one
+" set background=dark
+" PLUGIN: onehalf
+colorscheme onehalfdark
 
 " PLUGIN: neomake
 " When writing a buffer (no delay).
