@@ -140,7 +140,7 @@ Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 " django
-Plug 'tweekmonster/django-plus.vim', { 'for': ['django', 'python'] }
+Plug 'tweekmonster/django-plus.vim', { 'for': ['htmldjango', 'python'] }
 
 " =================
 " Easy movetivation
@@ -163,6 +163,9 @@ Plug 'kien/ctrlp.vim'
 " ====================
 " Neomake (asynch lint engine)
 Plug 'neomake/neomake'
+" Neoformat (beatifuler)
+Plug 'sbdchd/neoformat'
+
 " NCM2 completion
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
