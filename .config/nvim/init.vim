@@ -119,6 +119,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Colorscheme
 Plug 'rakr/vim-one'
 Plug 'tomasr/molokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp':'vim/'}
 
 " ===============
@@ -193,13 +194,15 @@ let g:terraform_fmt_on_save=1
 map <C-n> <ESC>:NERDTreeToggle<CR>
 
 " PLUGIN: Airline
-let g:airline_theme='onehalfdark'
+" set powerline
+let g:airline_powerline_fonts = 1
+" set theme for airline
+let g:airline_theme='dracula'
+" set airline enable for tab extension
+let g:airline#extensions#tabline#enabled = 1
 
-" PLUGIN: vim-one
-" colorscheme one
-" set background=dark
-" PLUGIN: onehalf
-colorscheme onehalfdark
+" PLUGIN: dracula
+colorscheme dracula
 
 " PLUGIN: neomake
 " When writing a buffer (no delay).
