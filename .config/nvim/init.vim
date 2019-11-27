@@ -117,10 +117,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Colorscheme
-Plug 'rakr/vim-one'
-Plug 'tomasr/molokai'
+" Plug 'rakr/vim-one'
+" Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'sonph/onehalf', {'rtp':'vim/'}
+" Plug 'sonph/onehalf', {'rtp':'vim/'}
 
 " =======================
 " Interactive with system
