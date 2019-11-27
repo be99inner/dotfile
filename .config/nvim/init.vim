@@ -122,11 +122,13 @@ Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp':'vim/'}
 
-" ===============
-" Version Control
-" ===============
+" =======================
+" Interactive with system
+" =======================
 " visualize different on git
 Plug 'airblade/vim-gitgutter'
+" python virtualenv
+Plug 'jmcantrell/vim-virtualenv'
 
 " ===================
 " Syntax highlighting
