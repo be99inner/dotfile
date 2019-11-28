@@ -70,7 +70,7 @@ set number              " show line numbers
 set relativenumber      " show relative number
 set textwidth=79               " width of document (used by gd)
 "" set nowrap           " don't automatically wrap on load
-"" set fo-=t               " don't automatically wrap text when typing
+set fo-=t               " don't automatically wrap text when typing
 set ruler               " determine word
 set showcmd             " show cmd
 " This feature is request for neovim
