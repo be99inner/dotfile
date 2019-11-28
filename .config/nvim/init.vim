@@ -129,6 +129,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'airblade/vim-gitgutter'
 " python virtualenv
 Plug 'jmcantrell/vim-virtualenv'
+" Wakatime
+Plug 'wakatime/vim-wakatime'
 
 " ===================
 " Syntax highlighting
