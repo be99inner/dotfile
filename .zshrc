@@ -128,6 +128,7 @@ alias kbns='kubens'
 alias kbn='kubens'
 
 # docker
+alias dk='docker'
 alias dc='docker-compose'
 
 # terraform
