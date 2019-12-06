@@ -33,7 +33,7 @@ delete. You need to re add file of you repo*
 
 [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
 
-## ZSH
+## ZSH ###
 
 I use zsh for my usage.
 
