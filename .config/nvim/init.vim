@@ -143,7 +143,6 @@ Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips;./generate.py' , 'for': 
 " markdown mode
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
-Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 " django
 Plug 'tweekmonster/django-plus.vim', { 'for': ['htmldjango', 'python'] }
 " Jinja
