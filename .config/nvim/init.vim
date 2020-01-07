@@ -85,8 +85,8 @@ if has("autocmd")
     augroup styless
         autocmd!
         " Custom filetype settings:
-        au FileType ruby,json,yaml,yml set tabstop=2 shiftwidth=2 softtabstop=2
-        au FileType zsh set tabstop=2 shiftwidth=2 softtabstop=2
+        au FileType ruby,json,yaml,yml,css,javascript,html set tabstop=2 shiftwidth=2 softtabstop=2
+        au FileType sh,zsh set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType,BufNewFile,BufRead ~/.Xresources.d/* set filetype=xdefaults
         au FileType,BufNewFile,BufRead /*.rasi set filetype=css
         au FileType,BufNewFile,BufRead ~/.kube/config* set filetype=yaml
@@ -146,6 +146,11 @@ Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 " django
 Plug 'tweekmonster/django-plus.vim', { 'for': ['htmldjango', 'python'] }
+" Jinja
+Plug 'Glench/Vim-Jinja2-Syntax'
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " =================
 " Easy movetivation
@@ -177,7 +182,12 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-html-subscope', { 'for': ['html','htmldjango'] }
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install', 'for': ['javascript','html','htmldjango']}
+Plug 'ncm2/ncm2-cssomni', {'for': ['html', 'css', 'htmldjango']}
+" based on ultisnips
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
 
 " Initialize plugin system
 call plug#end()
@@ -221,6 +231,12 @@ call neomake#configure#automake('nrwi', 500)
 " Disable open the list automatically
 let g:neomake_open_list = 0
 
+" PLUGIN: neofarmat
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
+
 " PLUGIN: ansible-vim
 " Indentation will completely reset (unindent to column 0) after two newlines
 " in insert-mode.
@@ -229,6 +245,16 @@ let g:ansible_unindent_after_newline = 1
 " PLUGIN: ctrlp.vim
 " let ctrlp working with variable
 let g:ctrlp_working_path_mode = 'ra'
+
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " PLUGIN: ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
