@@ -4,6 +4,19 @@
 " NOTE: .nvimrc on new neovim has change to ~/.config/nvim/init.vim
 " then i just link file to .nvimrc
 
+" Ignore widerc setup
+set nocompatible
+
+" Let neovim show true color
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
 " Encoding
 set encoding=utf-8
 
@@ -76,6 +89,9 @@ set showcmd             " show cmd
 " This feature is request for neovim
 "" highlight ColorColumn ctermbg=0 guibg=ligthgrey
 
+" Make cursorline easy to find out!.
+set cursorline
+
 " Useful settings
 set history=700
 set undolevels=700
@@ -117,76 +133,76 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Colorscheme
-" Plug 'rakr/vim-one'
-" Plug 'tomasr/molokai'
+Plug 'rakr/vim-one'
+Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'sonph/onehalf', {'rtp':'vim/'}
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ayu-theme/ayu-vim'
+Plug 'kaicataldo/material.vim'
+" Emoji
+Plug 'junegunn/vim-emoji'
 
 " =======================
 " Interactive with system
 " =======================
-" visualize different on git
-Plug 'airblade/vim-gitgutter'
-" python virtualenv
-Plug 'jmcantrell/vim-virtualenv'
+" Git
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 " Wakatime
 Plug 'wakatime/vim-wakatime'
+" Editorconfig
+Plug 'editorconfig/editorconfig-vim'
 
 " ===================
 " Syntax highlighting
 " ===================
 " Hashicorp
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-
-" ansible-vim
-Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips;./generate.py' , 'for': ['ansible', 'yaml.ansible', 'ruby.ansible'] }
 " markdown mode
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
-" django
-Plug 'tweekmonster/django-plus.vim', { 'for': ['htmldjango', 'python'] }
 " Jinja
 Plug 'Glench/Vim-Jinja2-Syntax'
 " JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sebdah/vim-delve'
+"" dependecies of vim-deleve
+if !has("nvim")
+    Plug 'Shougo/vimshell.vim'
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+endif
 
 " =================
 " Easy movetivation
 " =================
 " vim surround
-Plug 'tpope/vim-surround'
+""Plug 'tpope/vim-surround'
 " commenter
 Plug 'tpope/vim-commentary'
+" multi-cursor
+Plug 'terryma/vim-multiple-cursors'
+" Splitjoin line
+Plug 'AndrewRadev/splitjoin.vim'
 
 " ==================
 " Working with files
 " ==================
 " NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " fuzzy search file
 Plug 'kien/ctrlp.vim'
 
 " ====================
 " Completion & Linting
 " ====================
-" Neomake (asynch lint engine)
-Plug 'neomake/neomake'
-" Neoformat (beatifuler)
-Plug 'sbdchd/neoformat'
-
-" NCM2 completion
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi', { 'for': 'python' }
-Plug 'ncm2/ncm2-html-subscope', { 'for': ['html','htmldjango'] }
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install', 'for': ['javascript','html','htmldjango']}
-Plug 'ncm2/ncm2-cssomni', {'for': ['html', 'css', 'htmldjango']}
-" based on ultisnips
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'SirVer/ultisnips'
 
 " Initialize plugin system
 call plug#end()
@@ -194,67 +210,121 @@ call plug#end()
 " ============================================================================
 " Pluggins Setting and Custom configuration
 " ============================================================================
+" ----------------------------------------------------------------------------
+" PLUGIN: colorscheme
+" Need to combine more color theme for make it look nice.
+" Set background color
+set background=dark
 
+" Material colorscheme settings
+let g:material_theme_style = 'dark'
+
+" Ayu colorscheme settings
+let ayucolor = 'dark'
+
+" One colorscheme settings
+let g:one_allow_italics = 1
+
+" Set color theme to one
+colorscheme one
+
+" *CAUTION*: Need to set CursorLine under color scheme
+highlight CursorLine term=bold cterm=bold guibg=Grey22
+
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-emoji
+" emoji completion
+set completefunc=emoji#complete
+
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-multiple-cursor
+" Disable default multiple cursor
+let g:multi_cursor_use_default_mapping=0
+
+" ----------------------------------------------------------------------------
+" PLUGIN: git-signify
+" Default updatetime 4000ms is not good for async update
+set updatetime=100
+
+" ----------------------------------------------------------------------------
 " PLUGIN: vim-terraform
 " auto align on terraform
 let g:terraform_align=1
+
 " auto fold terraform
 let g:terraform_fold_sections=0
+
 " set format on *.tf, *.tfvars with terraform fmt
 let g:terraform_fmt_on_save=1
 
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-go
+" By default, vim-go don't set color because it causes too much distraction.
+" Set syntax highlighting
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+
+" Let auto show identifier type
+let g:go_auto_type_info = 1
+
+" Highlighting matching identifier
+let g:go_auto_sameids = 1
+
+" Build and run on leader
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+" ----------------------------------------------------------------------------
 " PLUGIN: NERDTree
 map <C-n> <ESC>:NERDTreeToggle<CR>
 
+" ----------------------------------------------------------------------------
 " PLUGIN: Airline
 " set powerline
 let g:airline_powerline_fonts = 1
+
 " set theme for airline
-let g:airline_theme='dracula'
+let g:airline_theme='badwolf'
+
 " set airline enable for tab extension
-let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tabline#enabled = 1
 
-" PLUGIN: dracula
-colorscheme dracula
+" ----------------------------------------------------------------------------
+" PLUGIN: editorconfig-vim
+" To ensure that this plugin works well with Tim Pope's fugitive, and avoid loading EditorConfig for any remote files over ssh
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" PLUGIN: neomake
-" When writing a buffer (no delay).
-call neomake#configure#automake('w')
-" When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
-" When reading a buffer (after 1s), and when writing (no delay).
-call neomake#configure#automake('rw', 1000)
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
-" Disable open the list automatically
-let g:neomake_open_list = 0
+" Resolve conflicts of trailing whitespace trimming and buffer autosaving
+let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
-" PLUGIN: neofarmat
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre * undojoin | Neoformat
-" augroup END
-
-" PLUGIN: ansible-vim
-" Indentation will completely reset (unindent to column 0) after two newlines
-" in insert-mode.
-let g:ansible_unindent_after_newline = 1
-
+" ----------------------------------------------------------------------------
 " PLUGIN: ctrlp.vim
 " let ctrlp working with variable
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'rca'
 
-" Press enter key to trigger snippet expansion
-" The parameters are the same as `:help feedkeys()`
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" ----------------------------------------------------------------------------
+" PLUGIN: nerdtree git
+" Change variable symbols
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
-" c-j c-k for moving in snippet
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-
-" PLUGIN: ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-delve
+" Set backend
+let g:delve_backend = "native"
