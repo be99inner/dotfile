@@ -153,6 +153,7 @@ if has('nvim') || has('patch-8.0.902')
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
+Plug 'tpope/vim-fugitive'
 " Wakatime
 Plug 'wakatime/vim-wakatime'
 " Editorconfig
