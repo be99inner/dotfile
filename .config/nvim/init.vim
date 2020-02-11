@@ -274,11 +274,14 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
+" Just show quick fix
+let g:go_list_type = "quickfix"
+
 " Let auto show identifier type
 let g:go_auto_type_info = 1
 
 " Highlighting matching identifier
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 
 " Disable vim-go to use gd command to open GoDef
 let g:go_def_mapping_enabled = 0
