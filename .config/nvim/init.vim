@@ -101,13 +101,16 @@ set undolevels=700
 if has("autocmd")
     augroup styless
         autocmd!
-        " Custom filetype settings:
+        " Custom tabstop for filetype
         au FileType ruby,json,yaml,yml,css,javascript,html set tabstop=2 shiftwidth=2 softtabstop=2
         au FileType sh,zsh set tabstop=2 shiftwidth=2 softtabstop=2
+        " Set syntax highlighting for somefile
         au FileType,BufNewFile,BufRead ~/.Xresources.d/* set filetype=xdefaults
         au FileType,BufNewFile,BufRead /*.rasi set filetype=css
         au FileType,BufNewFile,BufRead ~/.kube/config* set filetype=yaml
         au FileType,BufNewFile,BufRead ~/.config/termite/config* set filetype=yaml
+        " Require vim-helm
+        au FileType,BufNewFile,BufRead mustache set filetype=helm
     augroup END
 endif
 
@@ -180,6 +183,8 @@ if !has("nvim")
     Plug 'Shougo/vimshell.vim'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 endif
+" Helm chart
+Plug 'towolf/vim-helm'
 
 " =================
 " Easy movetivation
