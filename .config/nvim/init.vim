@@ -324,6 +324,10 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 let g:ctrlp_working_path_mode = 'rca'
 
 " ----------------------------------------------------------------------------
+" PLUGIN: vim-commentary
+autocmd FileType helm setlocal commentstring=#\ %s
+
+" ----------------------------------------------------------------------------
 " PLUGIN: nerdtree git
 " Change variable symbols
 let g:NERDTreeIndicatorMapCustom = {
