@@ -33,7 +33,7 @@ delete. You need to re add file of you repo*
 
 ## Configuration ##
 
-CoC configuration.
+CoC configuration (vim plugin).
 
 ```json
 {
@@ -49,6 +49,8 @@ CoC configuration.
   "coc.source.emoji.disableSyntaxes": []
 }
 ```
+
+## References ##
 
 [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
 
