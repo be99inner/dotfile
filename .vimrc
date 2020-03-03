@@ -158,34 +158,3 @@ augroup OmniCompletionSetup
     autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
     autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
 augroup END
-
-
-" ============================================================================
-" Pathogen Plugin
-" ============================================================================
-call pathogen#infect()
-call pathogen#helptags()
-"" Insert Plugin on ~/.vim/bundle and configure them below
-
-
-" ycm
-let g:syntastic_python_binary_path = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_key_list_select_completion = ['<TAB>','<ENTER>']
-let g:ycm_key_list_stop_completion = ['<TAB>','<C-y>']
-
-
-" vim powerline
-set laststatus=2
-set showtabline=2
-
-
-" autostart nerdtree
-""autocmd vimenter * NERDTree
-map <c-n> <esc>:NERDTreeToggle<cr>
-
-
-" vim ansible
-au BufRead,BufNewFile *.yml set filetype=yaml.ansible
-au BufRead,BufNewFile *.yml.j2,*.yaml.j2 set filetype=yaml.ansible
-au BufRead,BufNewFile all,hosts set filetype=yaml.ansible
