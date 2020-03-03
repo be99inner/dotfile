@@ -31,6 +31,25 @@ dotcf config --local status.showUntrackedFiles no
 *This command may be makesome file on your repo is in stages of modified or
 delete. You need to re add file of you repo*
 
+## Configuration ##
+
+CoC configuration.
+
+```json
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    }
+  },
+  "coc.source.emoji.enable": true,
+  "coc.source.emoji.filetypes": null,
+  "coc.source.emoji.disableSyntaxes": []
+}
+```
+
 [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
 
 ## ZSH ###
