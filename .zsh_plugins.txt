@@ -19,10 +19,16 @@ MichaelAquilina/zsh-auto-notify
 # code review
 xorkevin/code-review-zsh
 
+# git
+ltj/gitgo
+
 # ohmyzsh
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/gcloud
-robbyrussell/oh-my-zsh path:plugins/docker-compose
-robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/alias-finder
+robbyrussell/oh-my-zsh path:plugins/virtualenv
 
+# mycustom
+be99inner/be99inner-zsh-plugins path:plugins/helm3
+be99inner/be99inner-zsh-plugins path:plugins/dotcf
+be99inner/be99inner-zsh-plugins path:plugins/gitmoji
