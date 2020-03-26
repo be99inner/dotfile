@@ -1,0 +1,28 @@
+# caarlos0/jvm
+djui/alias-tips
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+
+# theme
+romkatv/powerlevel10k
+zpm-zsh/ls
+
+# comments are supported like this
+caarlos0/zsh-mkc
+zsh-users/zsh-completions
+caarlos0/zsh-open-github-pr
+
+# notify
+MichaelAquilina/zsh-auto-notify
+
+# code review
+xorkevin/code-review-zsh
+
+# ohmyzsh
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/gcloud
+robbyrussell/oh-my-zsh path:plugins/docker-compose
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/alias-finder
+

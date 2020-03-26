@@ -1,145 +1,70 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+##
+# Common ZSH Configuration
+##
+# Load completions
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+# completion style
+zstyle ':completion:*' menu select
 
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+# history
+export HISTFILE="${HOME}/.zsh_history"
+export HISTSIZE=2000000
+export SAVEHIST=2000000
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="random"
-ZSH_THEME="bureau"
+# Antibody
+# Set antibody home
+export ANTIBODY_HOME=~/.antibody
+# Load antibody
+source <(antibody init)
+# Load plugins
+antibody bundle < ~/.zsh_plugins.txt
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Set Color for autocolor-ls
+export CLICOLOR=1
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Set notify
+export AUTO_NOTIFY_THRESHOLD=30
+export AUTO_NOTIFY_EXPIRE_TIME=2000
+export AUTO_NOTIFY_WHITELIST=("yay" "helm3" "kbc" "kubectl")
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  tmux
-  git
-  kubectl
-  docker
-  docker-compose
-  minikube
-  fzf
-  virtualenvwrapper
-  gcloud
-  django
-)
-
-# Tmux Starting with oh-my-zsh
-ZSH_TMUX_AUTOSTART=true
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-export PATH="${PATH}:${HOME}/bin:${HOME}/go/bin"
+# Set history search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Golang
 export GOPATH="${HOME}/go"
 export GO15VENDOREXPERIMENT=1
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # dotcf
 alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
+alias d='dotcf'
+alias dp='dotcf push'
+alias dst='dotcf status'
+alias dsd='dotcf diff'
+alias da='dotcf add'
+alias dcmsg='dotcf commit -m'
+alias dav='dotcf add ~/.config/nvim/init.vim'
+alias daz='dotcf add ~/.zshrc'
 
 # kubernetes
-alias kbctl='kubectl'
 alias kbc='kubectl'
-alias kbctx='kubectx'
 alias kbx='kubectx'
-alias kbns='kubens'
 alias kbn='kubens'
+
+# gitmoji
+alias gj='gitmoji'
+alias gjc='gitmoji -c'
+alias gjs='gitmoji -s'
+alias gju='gitmoji -u'
 
 # docker
 alias dk='docker'
 alias dc='docker-compose'
-
-# terraform
-alias tf='terraform'
-alias tfa='terraform apply'
-alias tfp='terraform plan'
-alias tfi='terraform init'
 
 # reload zsh
 alias upz='rm ~/.zcompdump* && source ~/.zshrc'
@@ -153,13 +78,20 @@ alias ssh='TERM=xterm-256color ssh'
 
 # configure alias
 alias cfz='vim ~/.zshrc'
-alias cfb='vim ~/.config/bspwm/bspwmrc'
-alias cfs='vim ~/.config/sxhkd/sxhkdrc'
-alias cfp='vim ~/.config/polybar/config'
-alias cfpl='vim ~/.config/polybar/launch.sh'
+alias cfzp='vim ~/.zsh_plugins.txt'
 alias cfv='vim ~/.nvimrc'
-alias cfr='vim ~/.config/rofi/'
 alias cft='vim ~/.tmux.conf'
 
 # fix alias not found on watch
 alias watch='watch '
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# load virtualenv
+[[ ! -f /usr/bin/virtualenvwrapper.sh ]] || source /usr/bin/virtualenvwrapper.sh
+
+# load helm3 completion
+if [ $commands[helm3] ]; then
+  source <(helm3 completion zsh)
+fi
