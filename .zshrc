@@ -1,6 +1,9 @@
 ##
 # Common ZSH Configuration
 ##
+# Measure Preformance
+##zmodload zsh/zprof
+
 # Load completions
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
@@ -21,9 +24,10 @@ export SAVEHIST=2000000
 # Set antibody home
 export ANTIBODY_HOME=~/.antibody
 # Load antibody
-source <(antibody init)
-# Load plugins
-antibody bundle < ~/.zsh_plugins.txt
+##source <(antibody init)
+##antibody bundle < ~/.zsh_plugins.txt
+# Load static file
+source "${HOME}/.zsh_plugins.sh"
 
 # Set Color for autocolor-ls
 export CLICOLOR=1
@@ -31,7 +35,7 @@ export CLICOLOR=1
 # Set notify
 export AUTO_NOTIFY_THRESHOLD=30
 export AUTO_NOTIFY_EXPIRE_TIME=2000
-export AUTO_NOTIFY_WHITELIST=("yay" "helm3" "kbc" "kubectl")
+export AUTO_NOTIFY_WHITELIST=("yay" "helm3" "kbc" "kubectl" "gcloud" "gsutils")
 
 # Set history search
 bindkey '^[[A' history-substring-search-up
@@ -39,7 +43,15 @@ bindkey '^[[B' history-substring-search-down
 
 # Golang
 export GOPATH="${HOME}/go"
+export GO111MODULE=on
 export GO15VENDOREXPERIMENT=1
+
+# working with golang
+alias cgh="cd ${GOPATH}/src/github.com/be99inner"
+alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
+
+# Setpath
+export PATH="${PATH}:${GOPATH}/bin"
 
 # kubernetes
 alias kbc='kubectl'
@@ -67,7 +79,10 @@ alias ssh='TERM=xterm-256color ssh'
 alias watch='watch '
 
 # alias antibody
-alias abt='antibody update -p 11'
+alias abt="antibody update -p 12 && antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# display time
+##zprof
