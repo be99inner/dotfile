@@ -29,7 +29,7 @@ ltj/gitgo
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/gcloud
 robbyrussell/oh-my-zsh path:plugins/alias-finder
-robbyrussell/oh-my-zsh path:plugins/virtualenv
+robbyrussell/oh-my-zsh path:plugins/virtualenvwrapper
 
 # mycustom
 be99inner/be99inner-zsh-plugins path:plugins/helm3
