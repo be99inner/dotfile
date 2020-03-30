@@ -27,7 +27,12 @@ export ANTIBODY_HOME=~/.antibody
 ##source <(antibody init)
 ##antibody bundle < ~/.zsh_plugins.txt
 # Load static file
-source "${HOME}/.zsh_plugins.sh"
+if [ ! -f "${HOME}/.zsh_plugins.sh" ]; then
+  antibody bundle < "${HOME}/.zsh_plugins.txt" > "${HOME}/.zsh_plugins.sh"
+  source "${HOME}/.zsh_plugins.sh"
+else
+  source "${HOME}/.zsh_plugins.sh"
+fi
 
 # Set Color for autocolor-ls
 export CLICOLOR=1
@@ -51,7 +56,7 @@ alias cgh="cd ${GOPATH}/src/github.com/be99inner"
 alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
 
 # Setpath
-export PATH="${PATH}:${GOPATH}/bin"
+export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
 
 # kubernetes
 alias kbc='kubectl'
