@@ -22,6 +22,9 @@ xorkevin/code-review-zsh
 # git
 ltj/gitgo
 
+# buffalo
+1995parham/buffalo.zsh
+
 # ohmyzsh
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/gcloud
