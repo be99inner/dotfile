@@ -1,3 +1,6 @@
 # configfile
 .dotfile
 .gitconfig
+*.key
+*.pem
+*.crt
