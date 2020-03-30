@@ -4,11 +4,16 @@ The new repository for store my dotfile.
 
 * Using git --bare for store my dotfile
 
+## Prerequisite ##
+
+* [vim-plug](https://github.com/junegunn/vim-plug) for vim
+* [antibody](https://github.com/getantibody/antibody) for zsh
+* [tpm](https://github.com/tmux-plugins/tpm) for tmux
 
 ## Installation ##
 
 * Make sure, you already no have conflict files
-* Clone this repo's with command
+* Clone this repository with command
 
 ```bash
 git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
@@ -28,27 +33,12 @@ NOTE: add alias command on your bashrc file and resource it
 dotcf config --local status.showUntrackedFiles no
 ```
 
-*This command may be makesome file on your repo is in stages of modified or
+*This command may be make some file on your repo is in stages of modified or
 delete. You need to re add file of you repo*
 
 ## Configuration ##
 
-CoC configuration (vim plugin).
-
-```json
-{
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
-    }
-  },
-  "coc.source.emoji.enable": true,
-  "coc.source.emoji.filetypes": null,
-  "coc.source.emoji.disableSyntaxes": []
-}
-```
+Additional Configuration.
 
 ## References ##
 
@@ -58,5 +48,5 @@ CoC configuration (vim plugin).
 
 I use zsh for my usage.
 
-NOTE: on oh-my-zsh when you add new plugin on your configuration.
+**NOTE**: on oh-my-zsh when you add new plugin on your configuration.
 You need to remove `.zcompdump*` on your home directory.
