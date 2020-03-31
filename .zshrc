@@ -15,18 +15,21 @@ fi
 # completion style
 zstyle ':completion:*' menu select
 
+# turn of bell
+unsetopt BEEP
+
 # history
 export HISTFILE="${HOME}/.zsh_history"
 export HISTSIZE=2000000
 export SAVEHIST=2000000
 
+# Auto start tmux
+export ZSH_TMUX_AUTOSTART=true
+
 # Antibody
 # Set antibody home
 export ANTIBODY_HOME=~/.antibody
-# Load antibody
-##source <(antibody init)
-##antibody bundle < ~/.zsh_plugins.txt
-# Load static file
+# load antibody with static method
 if [ ! -f "${HOME}/.zsh_plugins.sh" ]; then
   antibody bundle < "${HOME}/.zsh_plugins.txt" > "${HOME}/.zsh_plugins.sh"
   source "${HOME}/.zsh_plugins.sh"
@@ -51,10 +54,6 @@ export GOPATH="${HOME}/go"
 export GO111MODULE=on
 export GO15VENDOREXPERIMENT=1
 
-# working with golang
-alias cgh="cd ${GOPATH}/src/github.com/be99inner"
-alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
-
 # Setpath
 export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
 
@@ -62,6 +61,10 @@ export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
 alias kbc='kubectl'
 alias kbx='kubectx'
 alias kbn='kubens'
+
+# working with golang
+alias cgh="cd ${GOPATH}/src/github.com/be99inner"
+alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
 
 # docker
 alias dk='docker'
@@ -84,7 +87,8 @@ alias ssh='TERM=xterm-256color ssh'
 alias watch='watch '
 
 # alias antibody
-alias abt="antibody update -p 12 && antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
+alias abtu="antibody update -p 12 && antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
+alias abtg="antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
