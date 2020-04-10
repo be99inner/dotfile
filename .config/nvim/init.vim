@@ -28,19 +28,6 @@ autocmd! bufwritepost .nvimrc source %
 " you need to install software to interact with neovim clipboard
 " :h clipboard
 set clipboard+=unnamedplus
-" integrate clipboard with tmux
-let g:clipboard = {
-        \   'name': 'myClipboard',
-        \   'copy': {
-        \      '+': 'tmux load-buffer -',
-        \      '*': 'tmux load-buffer -',
-        \    },
-        \   'paste': {
-        \      '+': 'tmux save-buffer -',
-        \      '*': 'tmux save-buffer -',
-        \   },
-        \   'cache_enabled': 1,
-        \ }
 
 " Rebind <Loader> key
 let mapleader = ','
