@@ -50,11 +50,6 @@ if has('autocmd')
     augroup END
 endif
 
-" Refact indent on buffer file
-noremap <Leader>f <C-C>gg=G<CR>:update<CR>
-" Delete blank line on buffer file
-noremap <Leader>b <C-C>:g/^$/d<CR>:update<CR>
-
 " Make search case insensitive
 set hlsearch
 set incsearch
@@ -74,7 +69,12 @@ noremap <C-q> :quit<CR>
 
 " Easier moving of code tabs
 vnoremap < <gv
-vnoremap > >gk
+vnoremap > >gv
+
+" Refact indent on buffer file
+noremap <Leader>f <C-C>gg=G<CR>:update<CR>
+" Delete blank line on buffer file
+noremap <Leader>b <C-C>:g/^$/d<CR>:update<CR>
 
 " Bind Ctril+<Movement> key  to move around the windows
 " instead of use Ctrl+w <movement>
@@ -109,6 +109,11 @@ set undolevels=700
 " Set wildignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
+" Jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " ============================================================================
 " Setting for using vim-plug
 " ============================================================================
@@ -130,15 +135,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Colorscheme
 "Plug 'rakr/vim-one'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
 "Plug 'tomasr/molokai'
-"Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'NLKNguyen/papercolor-theme'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'kaicataldo/material.vim'
 " Emoji
 Plug 'ryanoasis/vim-devicons'
+" Limelight
+Plug 'junegunn/limelight.vim'
 
 " =======================
 " Interactive with system
@@ -159,8 +166,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 " Unix file opertions
 Plug 'tpope/vim-eunuch'
-" Fix when typing in Thai layout
-Plug 'chakrit/vim-thai-keys'
+" PlatformIO
+Plug 'coddingtonbear/neomake-platformio'
+" vim-localvimrc
+Plug 'embear/vim-localvimrc'
 
 " ===================
 " Syntax highlighting
@@ -189,6 +198,8 @@ Plug 'towolf/vim-helm'
 Plug 'zinit-zsh/zinit-vim-syntax'
 " Jenkins
 Plug 'martinda/Jenkinsfile-vim-syntax'
+" Arduino
+Plug 'vim-scripts/Arduino-syntax-file'
 
 " =================
 " Easy movetivation
@@ -218,8 +229,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " ====================
 " Completion & Linting
 " ====================
-" " CoC
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Deoplate
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -229,29 +238,27 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " python
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
 " emoji
-Plug 'fszymanski/deoplete-emoji'
+Plug 'fszymanski/deoplete-emoji', {'for': 'gitcommit'}
 " golang
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
 " phpactor
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'kristijanhusak/deoplete-phpactor'
 " zsh
-Plug 'deoplete-plugins/deoplete-zsh'
+Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 " vim
-Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-vim', {'for': 'vim'}
 " tabline
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " many completion with keyword
 Plug 'Shougo/neco-syntax'
 " prettier
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/1.x'
-  \ }
-" demiteMate
-Plug 'Raimondi/delimitMate'
+\ 'do': 'yarn install',
+\ 'branch': 'release/1.x'
+\ }
 
 " Initialize plugin system
 call plug#end()
@@ -275,14 +282,25 @@ set background=dark
 " One colorscheme settings
 "let g:one_allow_italics = 1
 " One dark
-let g:onedark_termcolors = 256
-let g:onedark_terminal_italics = 1
+"let g:onedark_termcolors = 256
+"let g:onedark_terminal_italics = 1
 
 " Set color theme to one
-colorscheme onedark
+"colorscheme onedark
+colorscheme dracula
+
+" dracula setup color
+let g:dracula_italic = 1
+let g:dracula_bold = 1
+let g:dracula_underline = 1
+let g:dracula_undercurl = 1
+let g:dracula_colorterm = 1
+let g:dracula_inverse = 1
 
 " *CAUTION*: Need to set CursorLine under color scheme
-highlight CursorLine term=bold cterm=bold guibg=Grey22
+"highlight CursorLine term=bold cterm=bold guibg=Grey22
+autocmd ColorScheme dracula hi CursorLine cterm=underline term=underline
+
 " change hightligh search color
 "hi Search guibg=peru guifg=wheat
 highlight Search guibg=LightBlue
@@ -291,34 +309,43 @@ highlight Search guibg=LightBlue
 " PLUGIN: vim-better-whitespace
 " enable remove whitespace on save
 let g:strip_whitespace_on_save = 1
+
 " disable confirm on strip whitespace
-let g:strip_whitespace_confirm=0
+let g:strip_whitespace_confirm = 0
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-devicons
 " loading the plugin
 let g:webdeviconss_enable = 1
+
 " adding the flags to NERDTree
 let g:webdeviconss_enable_nerdtree = 1
+
 " ctrlp glyphs
 let g:webdevicons_enable_ctrlp = 1
+
 " adding to vim-airline's statusline
 let g:webdevicons_enable_airline_statusline = 1
+
 " whether or not to show the nerdtree brackets around flags
 let g:webdevicons_conceal_nerdtree_brackets = 1
+
 " Force extra padding in NERDTree so that the filetype icons line up vertically
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
 " the amount of space to use after the glyph character (default ' ')
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
 " turn on/off file node glyph decorations (not particularly useful)
 let g:WebDevIconsUnicodeDecorateFileNodes = 1
+
 " enable pattern matching glyphs on folder/directory (enabled by default with 1)
 let g:DevIconsEnableFolderPatternMatching = 1
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-multiple-cursor
 " Disable default multiple cursor
-let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_use_default_mapping = 0
 
 " ----------------------------------------------------------------------------
 " PLUGIN: git-signify
@@ -328,13 +355,13 @@ set updatetime=100
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-terraform
 " auto align on terraform
-let g:terraform_align=1
+let g:terraform_align = 1
 
 " auto fold terraform
-let g:terraform_fold_sections=0
+let g:terraform_fold_sections = 0
 
 " set format on *.tf, *.tfvars with terraform fmt
-let g:terraform_fmt_on_save=1
+let g:terraform_fmt_on_save = 1
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-go
@@ -361,6 +388,9 @@ let g:go_auto_sameids = 0
 " Disable vim-go to use gd command to open GoDef
 let g:go_def_mapping_enabled = 0
 
+" Auto import lib
+let g:go_fmt_command = "goimports"
+
 " Build and run on leader
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -375,10 +405,28 @@ map <C-n> <ESC>:NERDTreeToggle<CR>
 let g:airline_powerline_fonts = 1
 
 " set theme for airline
-let g:airline_theme='onedark'
+let g:airline_theme = 'dracula'
 
 " set airline enable for tab extension
 ""let g:airline#extensions#tabline#enabled = 1
+
+" ----------------------------------------------------------------------------
+" PLUGIN: limelight
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 12
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Key mapping for toggle limelight
+nmap <silent> <Space> <Esc>:Limelight!!<CR>
 
 " ----------------------------------------------------------------------------
 " PLUGIN: editorconfig-vim
@@ -387,6 +435,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Resolve conflicts of trailing whitespace trimming and buffer autosaving
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-localvimrc
+" Disable localvimrc sandbox
+let g:localvimrc_sandbox = 0
 
 " ----------------------------------------------------------------------------
 " PLUGIN: ctrlp.vim
@@ -401,17 +454,18 @@ autocmd FileType helm setlocal commentstring=#\ %s
 " PLUGIN: nerdtree git
 " Change variable symbols
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+\ "Modified"  : "✹",
+\ "Staged"    : "✚",
+\ "Untracked" : "✭",
+\ "Renamed"   : "➜",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "✗",
+\ "Clean"     : "✔︎",
+\ 'Ignored'   : '☒',
+\ "Unknown"   : "?"
+\ }
+
 " let show ignored
 let g:NERDTreeShowIgnoredStatus = 0
 
@@ -422,12 +476,15 @@ let g:delve_backend = "native"
 
 " ----------------------------------------------------------------------------
 " PLUGIN: deoplete
+" autostart
 let g:deoplete#enable_at_startup = 1
+
 " ----------------------------------------------------------------------------
 " PLUGIN: deoplete-emoji
 " enable emoji to another file
 call deoplete#custom#source('emoji', 'filetypes', ['gitcommit', 'markdown', 'rst'])
 call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
+
 " ----------------------------------------------------------------------------
 " PLUGIN: deoplete-go
 " deoplete-go settings
@@ -438,7 +495,21 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 " PLUGIN: vim-prettier
 " disable focus on quick-fix
 let g:prettier#quickfix_auto_focus = 1
+
 " force prettier to async
 let g:prettier#exec_cmd_async = 1
+
 " Max line length that prettier will wrap on: a number or 'auto'
 let g:prettier#config#print_width = 'auto'
+
+" ----------------------------------------------------------------------------
+" PLUGIN: deoplete-necosyntax
+" set min keyword
+let g:necosyntax#min_key_length = 3
+
+" ----------------------------------------------------------------------------
+" PLUGIN: deoplete-tabnine
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 200,
+\ 'max_num_results': 2,
+\ })
