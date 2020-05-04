@@ -43,28 +43,32 @@ export CLICOLOR=1
 # Set notify
 export AUTO_NOTIFY_THRESHOLD=30
 export AUTO_NOTIFY_EXPIRE_TIME=2000
-export AUTO_NOTIFY_WHITELIST=("yay" "helm3" "kbc" "kubectl" "gcloud" "gsutils")
+export AUTO_NOTIFY_WHITELIST=("yay" "helm3" "kbc" "kubectl" "gcloud" "gsutils" "openvpn")
 
 # Set history search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Golang
-export GOPATH="${HOME}/go"
-export GO111MODULE=on
-export GO15VENDOREXPERIMENT=1
+# User bin path
+if [ -d "{HOME}/bin" ]; then
+  export PATH="{PATH}:${HOME}/bin"
+fi
 
-# Setpath
-export PATH="${PATH}:${HOME}/bin:${GOPATH}/bin"
+# Golang
+if [[ -d "${HOME}/go" ]] && [[ $command(go) ]]; then
+  export GOPATH="${HOME}/go"
+  export PATH="${PATH}:${GOPATH}/bin"
+  export GO111MODULE=on
+  export GO15VENDOREXPERIMENT=1
+  # working with golang
+  alias cgh="cd ${GOPATH}/src/github.com/be99inner"
+  alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
+fi
 
 # kubernetes
 alias kbc='kubectl'
 alias kbx='kubectx'
 alias kbn='kubens'
-
-# working with golang
-alias cgh="cd ${GOPATH}/src/github.com/be99inner"
-alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
 
 # docker
 alias dk='docker'
@@ -89,6 +93,9 @@ alias watch='watch '
 # alias antibody
 alias abtu="antibody update -p 12 && antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
 alias abtg="antibody bundle < ${HOME}/.zsh_plugins.txt > ${HOME}/.zsh_plugins.sh"
+
+# sudoedit
+alias se='sudoedit'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
