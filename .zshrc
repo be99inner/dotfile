@@ -50,8 +50,8 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # User bin path
-if [ -d "{HOME}/bin" ]; then
-  export PATH="{PATH}:${HOME}/bin"
+if [ -d "${HOME}/bin" ]; then
+  export PATH="${PATH}:${HOME}/bin"
 fi
 
 # Golang
