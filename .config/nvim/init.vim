@@ -164,6 +164,7 @@ Plug 'editorconfig/editorconfig-vim'
 " Tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
 " Unix file opertions
 Plug 'tpope/vim-eunuch'
 " PlatformIO
@@ -252,8 +253,6 @@ Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 Plug 'Shougo/neco-vim', {'for': 'vim'}
 " tabline
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-" many completion with keyword
-Plug 'Shougo/neco-syntax'
 " prettier
 Plug 'prettier/vim-prettier', {
 \ 'do': 'yarn install',
