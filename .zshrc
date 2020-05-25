@@ -70,6 +70,9 @@ alias kbx='kubectx'
 alias kn='kubens'
 alias kbn='kubens'
 
+# helm
+alias h='helm'
+
 # docker
 alias dk='docker'
 alias dc='docker-compose'
