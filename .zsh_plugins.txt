@@ -32,6 +32,7 @@ robbyrussell/oh-my-zsh path:plugins/gcloud
 robbyrussell/oh-my-zsh path:plugins/alias-finder
 robbyrussell/oh-my-zsh path:plugins/virtualenvwrapper
 robbyrussell/oh-my-zsh path:plugins/tmux
+robbyrussell/oh-my-zsh path:plugins/jump
 
 # mycustom
 be99inner/be99inner-zsh-plugins path:plugins/helm3

@@ -60,14 +60,14 @@ if [[ -d "${HOME}/go" ]] && [[ $command(go) ]]; then
   export PATH="${PATH}:${GOPATH}/bin"
   export GO111MODULE=on
   export GO15VENDOREXPERIMENT=1
-  # working with golang
-  alias cgh="cd ${GOPATH}/src/github.com/be99inner"
-  alias cgl="cd ${GOPATH}/src/gitlab.com/be99inner"
 fi
 
 # kubernetes
+alias k='kubectl'
 alias kbc='kubectl'
+alias kx='kubectx'
 alias kbx='kubectx'
+alias kn='kubens'
 alias kbn='kubens'
 
 # docker
@@ -83,6 +83,7 @@ alias rez='source ~/.zshrc'
 
 # move on nvim
 alias vim='nvim'
+alias v='nvim'
 
 # alias ssh
 alias ssh='TERM=xterm-256color ssh'
