@@ -244,9 +244,6 @@ Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
 Plug 'fszymanski/deoplete-emoji', {'for': 'gitcommit'}
 " golang
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
-" phpactor
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
-Plug 'kristijanhusak/deoplete-phpactor'
 " zsh
 Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 " vim
