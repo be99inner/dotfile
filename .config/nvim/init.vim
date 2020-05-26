@@ -47,6 +47,7 @@ if has('autocmd')
         autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        autocmd FileType markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2
     augroup END
 endif
 
@@ -57,7 +58,7 @@ set ignorecase
 set smartcase
 
 " Remove hightlight of you last search
-noremap <Leader>s <ESC>:nohl<CR>
+noremap <silent> <Leader>s <ESC>:nohl<CR>
 
 " Quicksave command
 noremap <C-s> :update<CR>
@@ -82,6 +83,15 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
+
+" Set splition
+set splitright
+set splitbelow
+
+" Easy move between tab
+nmap <silent> <Leader>c :tabnew<CR>
+nmap <silent> <Leader>n :tabnext<CR>
+nmap <silent> <Leader>m :tabprevious<CR>
 
 " Enable syntax highlighting
 syntax off
@@ -178,8 +188,8 @@ Plug 'embear/vim-localvimrc'
 " Hashicorp
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 " markdown mode
-Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
+Plug 'godlygeek/tabular', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Jinja
 Plug 'Glench/Vim-Jinja2-Syntax'
 " JavaScript
@@ -248,7 +258,7 @@ Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
 Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
 " vim
 Plug 'Shougo/neco-vim', {'for': 'vim'}
-" tabline
+" tabnine
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " prettier
 Plug 'prettier/vim-prettier', {
@@ -404,7 +414,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dracula'
 
 " set airline enable for tab extension
-""let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " ----------------------------------------------------------------------------
 " PLUGIN: limelight
@@ -438,6 +448,26 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 let g:localvimrc_sandbox = 0
 
 " ----------------------------------------------------------------------------
+" PLUGIN: ctrlp.vim
+" Disable conceal
+let g:vim_markdown_conceal = 0
+" Disale folding on markdown
+let g:vim_markdown_folding_disabled = 1
+" Follow anchor links
+let g:vim_markdown_follow_anchor = 1
+" Disable code blocks conceal
+let g:vim_markdown_conceal_code_blocks = 0
+" Item list idents
+let g:vim_markdown_new_list_item_indent = 2
+" Syntax extensions
+let g:vim_markdown_math = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+
+" --------------------------------let g:vim_markdown_strikethrough = 1--------------------------------------------
 " PLUGIN: ctrlp.vim
 " let ctrlp working with variable
 let g:ctrlp_working_path_mode = 'rca'
@@ -498,13 +528,15 @@ let g:prettier#exec_cmd_async = 1
 " Max line length that prettier will wrap on: a number or 'auto'
 let g:prettier#config#print_width = 'auto'
 
-" ----------------------------------------------------------------------------
-" PLUGIN: deoplete-necosyntax
-" set min keyword
-let g:necosyntax#min_key_length = 3
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+" KeyBindings
+nmap <Leader>py <Plug>(PrettierAsync)
 
 " ----------------------------------------------------------------------------
-" PLUGIN: deoplete-tabnine
+" plugin: deoplete-tabnine
 call deoplete#custom#var('tabnine', {
 \ 'line_limit': 200,
 \ 'max_num_results': 2,
