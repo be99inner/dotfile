@@ -30,7 +30,7 @@ autocmd! bufwritepost .nvimrc source %
 set clipboard+=unnamedplus
 
 " Rebind <Loader> key
-let mapleader = ','
+let mapleader = ' '
 
 " Real Programmers don't use TABs but spaces
 set tabstop=4
@@ -432,7 +432,7 @@ let g:limelight_bop = '^\s'
 let g:limelight_eop = '\ze\n^\s'
 
 " Key mapping for toggle limelight
-nmap <silent> <Space> <Esc>:Limelight!!<CR>
+nmap <silent> <Leader><Space> <Esc>:Limelight!!<CR>
 
 " ----------------------------------------------------------------------------
 " PLUGIN: editorconfig-vim
