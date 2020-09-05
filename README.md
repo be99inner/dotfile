@@ -4,6 +4,10 @@ The new repository for store my dotfile.
 
 * Using git --bare for store my dotfile
 
+## STATUS ##
+
+INPROGRESS: To migrate to link file (deprecated for bare repos)
+
 ## Prerequisite ##
 
 * [vim-plug](https://github.com/junegunn/vim-plug) for vim
