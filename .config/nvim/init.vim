@@ -240,26 +240,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " ====================
 " Completion & Linting
 " ====================
-" Deoplate
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" python
-Plug 'deoplete-plugins/deoplete-jedi', {'for': 'python'}
-" emoji
-Plug 'fszymanski/deoplete-emoji', {'for': 'gitcommit'}
-" golang
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go'}
-" zsh
-Plug 'deoplete-plugins/deoplete-zsh', {'for': 'zsh'}
-" vim
-Plug 'Shougo/neco-vim', {'for': 'vim'}
-" tabnine
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 " prettier
 Plug 'prettier/vim-prettier', {
 \ 'do': 'yarn install',
@@ -501,23 +481,6 @@ let g:NERDTreeShowIgnoredStatus = 0
 let g:delve_backend = "native"
 
 " ----------------------------------------------------------------------------
-" PLUGIN: deoplete
-" autostart
-let g:deoplete#enable_at_startup = 1
-
-" ----------------------------------------------------------------------------
-" PLUGIN: deoplete-emoji
-" enable emoji to another file
-call deoplete#custom#source('emoji', 'filetypes', ['gitcommit', 'markdown', 'rst'])
-call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
-
-" ----------------------------------------------------------------------------
-" PLUGIN: deoplete-go
-" deoplete-go settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-" ----------------------------------------------------------------------------
 " PLUGIN: vim-prettier
 " disable focus on quick-fix
 let g:prettier#quickfix_auto_focus = 1
@@ -534,10 +497,3 @@ autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,
 
 " KeyBindings
 nmap <Leader>py <Plug>(PrettierAsync)
-
-" ----------------------------------------------------------------------------
-" plugin: deoplete-tabnine
-call deoplete#custom#var('tabnine', {
-\ 'line_limit': 200,
-\ 'max_num_results': 2,
-\ })
