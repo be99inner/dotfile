@@ -6,7 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export GOPATH=$(go env GOPATH)
+export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/be99inner/.oh-my-zsh"
@@ -71,7 +72,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Auto start tmux session
-export ZSH_TMUX_AUTOSTART="true"
+#export ZSH_TMUX_AUTOSTART="false"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -79,19 +80,24 @@ export ZSH_TMUX_AUTOSTART="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    alias-finder
-    aws
-    docker
-    docker-compose
-    gcloud
-    git
-    jump
-    kubectl
-    tmux
-    # custom
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
+  alias-finder
+  aws
+  docker
+  docker-compose
+  gcloud
+  git
+  gitignore
+  jump
+  kubectl
+  tmux
+  terraform
+  virtualenv
+  virtualenvwrapper
+  # custom
+  zsh-autosuggestions
+  zsh-completions
+  zsh-mkc
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -124,6 +130,19 @@ source $ZSH/oh-my-zsh.sh
 alias kx='kubectx'
 alias kn='kubens'
 alias gjc='gitmoji -c'
+alias cfz='nvim ~/.zshrc'
+alias cft='nvim ~/.tmux.conf'
+alias cfv='nvim ~/.nvimrc'
+alias vim='nvim'
+alias v='nvim'
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfv='terraform validate'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+
+# Set Golang option
+export GO111MODULE=on
 
 # Require by powerline10k installation (brew install)
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
