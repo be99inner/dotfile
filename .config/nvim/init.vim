@@ -13,13 +13,16 @@ if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 if (has("termguicolors"))
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    let &t_ZH="\e[3m"
+    let &t_ZR="\e[23m"
     set termguicolors
 endif
 
 " Encoding
 set encoding=utf-8
+
+" Font for MacOS
+set guifont=MesloLGF\ NF
 
 " Automatic reload of .nvimrc
 autocmd! bufwritepost .nvimrc source %
@@ -30,7 +33,7 @@ autocmd! bufwritepost .nvimrc source %
 set clipboard+=unnamedplus
 
 " Rebind <Loader> key
-let mapleader = ' '
+let mapleader = ','
 
 " Real Programmers don't use TABs but spaces
 set tabstop=4
@@ -152,8 +155,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'kaicataldo/material.vim'
-" Emoji
-Plug 'ryanoasis/vim-devicons'
+
 " Limelight
 Plug 'junegunn/limelight.vim'
 
@@ -181,6 +183,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'coddingtonbear/neomake-platformio'
 " vim-localvimrc
 Plug 'embear/vim-localvimrc'
+" vim-notes
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 " ===================
 " Syntax highlighting
@@ -211,6 +216,8 @@ Plug 'zinit-zsh/zinit-vim-syntax'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 " Arduino
 Plug 'vim-scripts/Arduino-syntax-file'
+" Json
+Plug 'elzr/vim-json', { 'for': [ 'json','markdown'] }
 
 " =================
 " Easy movetivation
@@ -235,15 +242,39 @@ Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 " fuzzy search file
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " ====================
 " Completion & Linting
 " ====================
+" coc.nvim
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Snippets
+Plug 'honza/vim-snippets'
+
 " prettier
 Plug 'prettier/vim-prettier', {
 \ 'do': 'yarn install',
-\ 'branch': 'release/1.x'
+\ 'branch': 'release/1.x',
+\ 'for': [
+\   'javascript',
+\   'typescript',
+\   'css',
+\   'less',
+\   'scss',
+\   'json',
+\   'graphql',
+\   'markdown',
+\   'vue',
+\   'lua',
+\   'php',
+\   'python',
+\   'ruby',
+\   'html',
+\   'swift',
+\   'yaml']
 \ }
 
 " Initialize plugin system
@@ -258,23 +289,18 @@ call plug#end()
 " Need to combine more color theme for make it look nice.
 " Set background color
 set background=dark
-
 " Material colorscheme settings
 "let g:material_theme_style = 'dark'
-
 " Ayu colorscheme settings
-" let ayucolor = 'dark'
-
+"let ayucolor = 'dark'
 " One colorscheme settings
 "let g:one_allow_italics = 1
 " One dark
 "let g:onedark_termcolors = 256
 "let g:onedark_terminal_italics = 1
-
 " Set color theme to one
 "colorscheme onedark
 colorscheme dracula
-
 " dracula setup color
 let g:dracula_italic = 1
 let g:dracula_bold = 1
@@ -282,11 +308,10 @@ let g:dracula_underline = 1
 let g:dracula_undercurl = 1
 let g:dracula_colorterm = 1
 let g:dracula_inverse = 1
+let g:dracula_colorterm = 1
 
 " *CAUTION*: Need to set CursorLine under color scheme
-"highlight CursorLine term=bold cterm=bold guibg=Grey22
 autocmd ColorScheme dracula hi CursorLine cterm=underline term=underline
-
 " change hightligh search color
 "hi Search guibg=peru guifg=wheat
 highlight Search guibg=LightBlue
@@ -295,38 +320,8 @@ highlight Search guibg=LightBlue
 " PLUGIN: vim-better-whitespace
 " enable remove whitespace on save
 let g:strip_whitespace_on_save = 1
-
 " disable confirm on strip whitespace
 let g:strip_whitespace_confirm = 0
-
-" ----------------------------------------------------------------------------
-" PLUGIN: vim-devicons
-" loading the plugin
-let g:webdeviconss_enable = 1
-
-" adding the flags to NERDTree
-let g:webdeviconss_enable_nerdtree = 1
-
-" ctrlp glyphs
-let g:webdevicons_enable_ctrlp = 1
-
-" adding to vim-airline's statusline
-let g:webdevicons_enable_airline_statusline = 1
-
-" whether or not to show the nerdtree brackets around flags
-let g:webdevicons_conceal_nerdtree_brackets = 1
-
-" Force extra padding in NERDTree so that the filetype icons line up vertically
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-
-" the amount of space to use after the glyph character (default ' ')
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
-" turn on/off file node glyph decorations (not particularly useful)
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-
-" enable pattern matching glyphs on folder/directory (enabled by default with 1)
-let g:DevIconsEnableFolderPatternMatching = 1
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-multiple-cursor
@@ -342,10 +337,8 @@ set updatetime=100
 " PLUGIN: vim-terraform
 " auto align on terraform
 let g:terraform_align = 1
-
 " auto fold terraform
 let g:terraform_fold_sections = 0
-
 " set format on *.tf, *.tfvars with terraform fmt
 let g:terraform_fmt_on_save = 1
 
@@ -361,19 +354,14 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
-
 " Just show quick fix
 let g:go_list_type = "quickfix"
-
 " Let auto show identifier type
 let g:go_auto_type_info = 1
-
 " Highlighting matching identifier
 let g:go_auto_sameids = 0
-
 " Disable vim-go to use gd command to open GoDef
 let g:go_def_mapping_enabled = 0
-
 " Auto import lib
 let g:go_fmt_command = "goimports"
 
@@ -383,34 +371,54 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 " ----------------------------------------------------------------------------
 " PLUGIN: NERDTree
-map <C-n> <ESC>:NERDTreeToggle<CR>
+" Change variable symbols
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+" Let show ignored
+let g:NERDTreeGitStatusShowIgnored = 0
+" map key
+map <silent> <Leader>n <ESC>:NERDTreeToggle<CR>
 
 " ----------------------------------------------------------------------------
 " PLUGIN: Airline
 " set powerline
 let g:airline_powerline_fonts = 1
-
 " set theme for airline
 let g:airline_theme = 'dracula'
-
 " set airline enable for tab extension
 " let g:airline#extensions#tabline#enabled = 1
+
+" ----------------------------------------------------------------------------
+" PLUGIN: indentLine
+" Auto conceal and unconceal
+augroup JSON_CONCEAL
+    " this one is which you're most likely to use?
+    autocmd InsertEnter *.json setlocal concealcursor=
+    autocmd InsertLeave *.json setlocal concealcursor=inc
+augroup end
 
 " ----------------------------------------------------------------------------
 " PLUGIN: limelight
 " Highlighting priority (default: 10)
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
-
 " Number of preceding/following paragraphs to include (default: 0)
 let g:limelight_paragraph_span = 12
-
 " Beginning/end of paragraph
 "   When there's no empty line between the paragraphs
 "   and each paragraph starts with indentation
 let g:limelight_bop = '^\s'
 let g:limelight_eop = '\ze\n^\s'
-
 " Key mapping for toggle limelight
 nmap <silent> <Leader><Space> <Esc>:Limelight!!<CR>
 
@@ -418,7 +426,6 @@ nmap <silent> <Leader><Space> <Esc>:Limelight!!<CR>
 " PLUGIN: editorconfig-vim
 " To ensure that this plugin works well with Tim Pope's fugitive, and avoid loading EditorConfig for any remote files over ssh
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
 " Resolve conflicts of trailing whitespace trimming and buffer autosaving
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
@@ -428,7 +435,7 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 let g:localvimrc_sandbox = 0
 
 " ----------------------------------------------------------------------------
-" PLUGIN: ctrlp.vim
+" PLUGIN: vim-markown
 " Disable conceal
 let g:vim_markdown_conceal = 0
 " Disale folding on markdown
@@ -447,33 +454,51 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
-" --------------------------------let g:vim_markdown_strikethrough = 1--------------------------------------------
+" ----------------------------------------------------------------------------
 " PLUGIN: ctrlp.vim
 " let ctrlp working with variable
-let g:ctrlp_working_path_mode = 'rca'
+" let g:ctrlp_working_path_mode = 'ca'
+" ### Problem with CtrlP cant finds entires
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" ----------------------------------------------------------------------------
+" PLUGIN: fzf.vim
+" Always enable preview window on the right with 60% width
+let g:fzf_preview_window = 'right:60%'
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" Enable fzf work with tmux
+let g:fzf_prefer_tmux = 1
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" Map find files
+map <silent> <Leader>p <ESC>:Files<CR>
+
+" ----------------------------------------------------------------------------
+" PLUGIN: vim-json
+" Disable conceal on json
+let g:vim_json_syntax_conceal = 0
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-commentary
 autocmd FileType helm setlocal commentstring=#\ %s
 
 " ----------------------------------------------------------------------------
-" PLUGIN: nerdtree git
-" Change variable symbols
-let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-\ "Staged"    : "✚",
-\ "Untracked" : "✭",
-\ "Renamed"   : "➜",
-\ "Unmerged"  : "═",
-\ "Deleted"   : "✖",
-\ "Dirty"     : "✗",
-\ "Clean"     : "✔︎",
-\ 'Ignored'   : '☒',
-\ "Unknown"   : "?"
-\ }
-
-" let show ignored
-let g:NERDTreeShowIgnoredStatus = 0
+" PLUGIN: vim-notes
+" Set default directory for vim-notes
+let g:notes_directories = ['~/workspace/notes']
+" Set file extensions for notes
+let g:notes_suffix = '.txt'
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-delve
@@ -482,18 +507,161 @@ let g:delve_backend = "native"
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-prettier
-" disable focus on quick-fix
+" Disable focus on quick-fix
 let g:prettier#quickfix_auto_focus = 1
-
-" force prettier to async
+" Force prettier to async
 let g:prettier#exec_cmd_async = 1
-
 " Max line length that prettier will wrap on: a number or 'auto'
 let g:prettier#config#print_width = 'auto'
-
-" when running at every change you may want to disable quickfix
+" When running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
+autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" Ovverid file instead of parse buffer (Fix: failed to parse buffer)
+let g:prettier#config#config_precedence = 'file-override'
 " KeyBindings
 nmap <Leader>py <Plug>(PrettierAsync)
+
+" ----------------------------------------------------------------------------
+" PLUGIN: coc.nvim
+" TextEdit might fail if hidden is not set.
+set hidden
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Mappings for CoCList
+" Show all diagnostics.
+"nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+"nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+"nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+"nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+"nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" ----------------------------------------------------------------------------
+" PLUGIN: coc-snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
