@@ -104,8 +104,8 @@ syntax on
 " Showing line numbers and length
 set number              " show line numbers
 set relativenumber      " show relative number
-set textwidth=79               " width of document (used by gd)
-"" set nowrap           " don't automatically wrap on load
+set textwidth=79        " width of document (used by gd)
+set nowrap              " don't automatically wrap on load
 set fo-=t               " don't automatically wrap text when typing
 set ruler               " determine word
 set showcmd             " show cmd
@@ -183,8 +183,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'coddingtonbear/neomake-platformio'
 " vim-localvimrc
 Plug 'embear/vim-localvimrc'
-" vim-notes
-Plug 'xolox/vim-notes'
+" vim-misc
 Plug 'xolox/vim-misc'
 
 " ===================
@@ -227,13 +226,15 @@ Plug 'elzr/vim-json', { 'for': [ 'json','markdown'] }
 " commenter
 Plug 'tpope/vim-commentary'
 " multi-cursor
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Splitjoin line
 Plug 'AndrewRadev/splitjoin.vim'
 " abolish-vim
 Plug 'tpope/vim-abolish'
 " vim-repeat
 Plug 'tpope/vim-repeat'
+" auto-pairs
+Plug 'jiangmiao/auto-pairs'
 
 " ==================
 " Working with files
@@ -322,11 +323,6 @@ highlight Search guibg=LightBlue
 let g:strip_whitespace_on_save = 1
 " disable confirm on strip whitespace
 let g:strip_whitespace_confirm = 0
-
-" ----------------------------------------------------------------------------
-" PLUGIN: vim-multiple-cursor
-" Disable default multiple cursor
-let g:multi_cursor_use_default_mapping = 0
 
 " ----------------------------------------------------------------------------
 " PLUGIN: git-signify
@@ -483,6 +479,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 " Map find files
 map <silent> <Leader>p <ESC>:Files<CR>
+map <silent> <Leader>r <ESC>:Rg<CR>
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-json
@@ -492,13 +489,6 @@ let g:vim_json_syntax_conceal = 0
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-commentary
 autocmd FileType helm setlocal commentstring=#\ %s
-
-" ----------------------------------------------------------------------------
-" PLUGIN: vim-notes
-" Set default directory for vim-notes
-let g:notes_directories = ['~/workspace/notes']
-" Set file extensions for notes
-let g:notes_suffix = '.txt'
 
 " ----------------------------------------------------------------------------
 " PLUGIN: vim-delve
@@ -650,18 +640,3 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-" ----------------------------------------------------------------------------
-" PLUGIN: coc-snippets
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
