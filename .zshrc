@@ -7,7 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$(go env GOPATH)
-export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/be99inner/.oh-my-zsh"
@@ -71,9 +71,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Auto start tmux session
-#export ZSH_TMUX_AUTOSTART="false"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -87,9 +84,9 @@ plugins=(
   gcloud
   git
   gitignore
+  golang
   jump
   kubectl
-  tmux
   terraform
   virtualenv
   virtualenvwrapper
@@ -140,6 +137,8 @@ alias tfi='terraform init'
 alias tfv='terraform validate'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+# macOS need to setup this option for python fork()
+alias ast='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 
 # Set Golang option
 export GO111MODULE=on
