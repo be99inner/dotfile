@@ -1,54 +1,41 @@
-# Tux Dotfile #
+# Tux Dotfile
 
 The new repository for store my dotfile.
 
-* Using git --bare for store my dotfile
+- Using git --bare for store my dotfile
 
-## STATUS ##
+## STATUS
 
 INPROGRESS: To migrate to link file (deprecated for bare repos)
 
-## Prerequisite ##
+## Prerequisite
 
-* [vim-plug](https://github.com/junegunn/vim-plug) for vim
-* [antibody](https://github.com/getantibody/antibody) for zsh
-* [tpm](https://github.com/tmux-plugins/tpm) for tmux
+- [vim-plug](https://github.com/junegunn/vim-plug) for vim
+- [tpm](https://github.com/tmux-plugins/tpm) for tmux
 
-## Installation ##
+## Installation
 
-* Make sure, you already no have conflict files
-* Clone this repository with command
+- Make sure, you already no have conflict files
+- Clone this repository with command
 
 ```bash
 git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
 ```
 
-or you can run manual alias command
+Then link configuration file to target.
 
-``` bash
-alias dotcf='git --git-dir=$HOME/.dotfile/ --work-tree=$HOME'
-```
+_This command may be make some file on your repo is in stages of modified or
+delete. You need to re add file of you repo_
 
-NOTE: add alias command on your bashrc file and resource it
-
-* Run ignore command on your local
- 
-```bash
-dotcf config --local status.showUntrackedFiles no
-```
-
-*This command may be make some file on your repo is in stages of modified or
-delete. You need to re add file of you repo*
-
-## Configuration ##
+## Configuration
 
 Additional Configuration.
 
-## References ##
+## References
 
 [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
 
-## ZSH ###
+## ZSH
 
 I use zsh for my usage.
 
