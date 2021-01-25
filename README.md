@@ -2,7 +2,7 @@
 
 The new repository for store my dotfile.
 
-- Using git --bare for store my dotfile
+- Using git for store my dotfile
 
 ## STATUS
 
@@ -19,7 +19,7 @@ INPROGRESS: To migrate to link file (deprecated for bare repos)
 - Clone this repository with command
 
 ```bash
-git clone --bare https://github.com/be99inner/dotfile.git $HOME/.dotfile
+git clone https://github.com/be99inner/dotfile.git $HOME/.dotfile
 ```
 
 Then link configuration file to target.
