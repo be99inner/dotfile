@@ -185,6 +185,8 @@ Plug 'coddingtonbear/neomake-platformio'
 Plug 'embear/vim-localvimrc'
 " vim-misc
 Plug 'xolox/vim-misc'
+" Ansible
+Plug 'pearofducks/ansible-vim'
 
 " ===================
 " Syntax highlighting
@@ -640,3 +642,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" ----------------------------------------------------------------------------
+" PLUGIN: ansible-vim
+augroup ansible_vim_fthosts
+  autocmd!
+  autocmd BufNewFile,BufRead hosts setfiletype yaml.ansible
+augroup END
