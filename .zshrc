@@ -10,7 +10,7 @@ export GOPATH=$(go env GOPATH)
 export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/be99inner/.oh-my-zsh"
+export ZSH="/home/be99inner/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -98,7 +98,6 @@ plugins=(
   # custom
   zsh-autosuggestions
   zsh-completions
-  zsh-mkc
   zsh-syntax-highlighting
 )
 
