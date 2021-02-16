@@ -1,11 +1,11 @@
 #!/bin/bash -xe
 echo "Install zsh..."
 echo "Cleanup oh-my-zsh..."
-rm -rf /home/${USER}/.oh-my-zsh
+rm -rf $HOME/.oh-my-zsh
 echo "Install oh-my-zsh..."
-git clone https://github.com/ohmyzsh/ohmyzsh.git /home/$USER/.oh-my-zsh
+git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 echo "Link zsh configuration files..."
-ln -sf $PWD/.zshrc /home/$USER/.zshrc
+ln -sf $PWD/.zshrc $HOME/.zshrc
 ln -sf $PWD/.p10k.zsh $HOME/.p10k.zsh
 
 echo "Cleanup tmux configuration..."
