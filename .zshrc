@@ -98,7 +98,6 @@ plugins=(
   # custom
   zsh-autosuggestions
   zsh-completions
-  zsh-mkc
   zsh-syntax-highlighting
 )
 
