@@ -77,6 +77,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_ITERM2=false
 
+# Set python virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
