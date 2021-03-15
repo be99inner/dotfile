@@ -8,6 +8,8 @@ fi
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$(go env GOPATH)
 export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin:$PATH
+# kubectl krew plugins
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/be99inner/.oh-my-zsh"
