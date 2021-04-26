@@ -654,3 +654,5 @@ augroup ansible_vim_fthosts
   autocmd!
   autocmd BufNewFile,BufRead hosts setfiletype yaml.ansible
 augroup END
+
+source ~/.config/nvim/plugins.vim

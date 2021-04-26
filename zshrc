@@ -96,6 +96,7 @@ plugins=(
   golang
   jump
   kubectl
+  pyenv
   terraform
   tmux
   virtualenv
@@ -157,3 +158,8 @@ export GO111MODULE=on
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# tmp setting
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
+export ANDROID_SDK_ROOT='/Users/be99inner/android-sdk'
+export ANDROID_HOME='/Users/be99inner/android-sdk'
