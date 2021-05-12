@@ -140,8 +140,6 @@ alias gjc='gitmoji -c'
 alias cfz='nvim ~/.zshrc'
 alias cft='nvim ~/.tmux.conf'
 alias cfv='nvim ~/.nvimrc'
-alias vim='nvim'
-alias v='nvim'
 alias tf='terraform'
 alias tfi='terraform init'
 alias tfv='terraform validate'
@@ -158,6 +156,10 @@ export GO111MODULE=on
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Set editor
+export EDITOR=nvim
+export VISUAL="$EDITOR"
 
 # tmp setting
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
