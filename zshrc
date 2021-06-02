@@ -75,10 +75,17 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Tmux Configuration
 export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_UNICODE=true
 export ZSH_TMUX_ITERM2=false
 
 # Set python virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+# Set pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval $(pyenv init --path)
+
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -102,9 +109,10 @@ plugins=(
   virtualenv
   virtualenvwrapper
   # custom
+  fast-syntax-highlighting
   zsh-autosuggestions
   zsh-completions
-  zsh-syntax-highlighting
+  # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -145,6 +153,7 @@ alias tfi='terraform init'
 alias tfv='terraform validate'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+
 # macOS need to setup this option for python fork()
 alias ast='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 
