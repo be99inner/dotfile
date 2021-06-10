@@ -12,7 +12,7 @@
   "jedi.markupKindPreferred": "plaintext",
   "jedi.trace.server": true,
   "jedi.jediSettings.autoImportModules": [],
-  "jedi.executable.command": "/Users/be99inner/.virtualenvs/jedi-server/bin/jedi-language-server",
+  "jedi.executable.command": "$HOME/.virtualenvs/jedi-server/bin/jedi-language-server",
   "jedi.executable.args": [],
   "jedi.completion.disableSnippets": false,
   "jedi.diagnostics.enable": true,

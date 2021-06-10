@@ -27,14 +27,14 @@ set clipboard+=unnamedplus
 "" Rebind <Loader> key
 let mapleader = ' '
 
-" Real Programmers don't use TABs but spaces
+"" Use space instead of TAB
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-" set default indent
+"" Set default indent
 if has('autocmd')
     augroup default
         autocmd!
@@ -46,54 +46,46 @@ if has('autocmd')
     augroup END
 endif
 
-" Make search case insensitive
+"" Make search case insensitive
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" Remove hightlight of you last search
+"" Remove hightlight of you last search
 noremap <silent> <Leader>s <ESC>:nohl<CR>
 
-" Quicksave command
-noremap <C-s> :update<CR>
-vnoremap <C-s> <C-C>:update<CR>
-inoremap <C-s> <C-C>:update<CR>
-
-" Quice quite
-noremap <C-q> :quit<CR>
-
-" Easier moving of code tabs
+"" Easier moving of code tabs
 vnoremap < <gv
 vnoremap > >gv
 
-" Refact indent on buffer file
+"" Refact indent on buffer file
 noremap <Leader>f <C-C>gg=G<CR>:update<CR>
-" Delete blank line on buffer file
+"" Delete blank line on buffer file
 noremap <Leader>b <C-C>:g/^$/d<CR>:update<CR>
 
-" Bind Ctril+<Movement> key  to move around the windows
-" instead of use Ctrl+w <movement>
+"" Bind Ctril+<Movement> key  to move around the windows
+"" instead of use Ctrl+w <movement>
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
-" Set splition
+"" Set splition
 set splitright
 set splitbelow
 
-" Easy move between tab
-nmap <silent> <Leader>c :tabnew<CR>
-nmap <silent> <Leader>n :tabnext<CR>
-nmap <silent> <Leader>m :tabprevious<CR>
+"" Easy move between tab
+nmap <silent> <Leader>' :tabnew<CR>
+nmap <silent> <Leader>] :tabnext<CR>
+nmap <silent> <Leader>[ :tabprevious<CR>
 
-" Enable syntax highlighting
+"" Enable syntax highlighting
 syntax off
 filetype plugin indent on
 syntax on
 
-" Showing line numbers and length
+"" Showing line numbers and length
 set number              " show line numbers
 set relativenumber      " show relative number
 set textwidth=79        " width of document (used by gd)
@@ -102,25 +94,30 @@ set fo-=t               " don't automatically wrap text when typing
 set ruler               " determine word
 set showcmd             " show cmd
 
-" Set scrolling always show 2 line of header/tail screen
+"" Set scrolling always show 2 line of header/tail screen
 set scrolloff=2
 
-" Make cursorline easy to find out!.
+"" Make cursorline easy to find out!.
 set cursorline
 
-" Useful settings
+"" Make cursor shapes and blink
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+    \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+"" Useful settings
 set history=700
 set undolevels=700
 
-" Set wildignore
+"" Set wildignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
-" Jump to the last position when reopening a file
+"" Jump to the last position when reopening a file
 if has("autocmd")
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Set Python provider
-" currently has a problem with pyenv
+"" Set Python provider
+"" currently has a problem with pyenv
 " let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim/bin/python3"
 let g:python3_host_prog  = $HOME . "/.virtualenvs/neovim/bin/python3"
