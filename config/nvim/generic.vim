@@ -60,9 +60,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 "" Refact indent on buffer file
-noremap <Leader>f <C-C>gg=G<CR>:update<CR>
+noremap <Leader>rf <C-C>gg=G<CR>:update<CR>
 "" Delete blank line on buffer file
-noremap <Leader>b <C-C>:g/^$/d<CR>:update<CR>
+noremap <Leader>rb <C-C>:g/^$/d<CR>:update<CR>
 
 "" Bind Ctril+<Movement> key  to move around the windows
 "" instead of use Ctrl+w <movement>
@@ -102,8 +102,8 @@ set cursorline
 
 "" Make cursor shapes and blink
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-    \,sm:block-blinkwait175-blinkoff150-blinkon175
+            \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+            \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 "" Useful settings
 set history=700
@@ -112,12 +112,14 @@ set undolevels=700
 "" Set wildignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
-"" Jump to the last position when reopening a file
-if has("autocmd")
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+" "" Jump to the last position when reopening a file
+" if has("autocmd")
+"     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" endif
+
+"" Set auto change directory on nvim
+set autochdir
 
 "" Set Python provider
 "" currently has a problem with pyenv
-" let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim/bin/python3"
 let g:python3_host_prog  = $HOME . "/.virtualenvs/neovim/bin/python3"

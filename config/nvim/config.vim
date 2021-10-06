@@ -3,10 +3,25 @@
 "" ============================================================================
 "" Generic
 "" ============================================================================
-" ----------------------------------------------------------------------------
-" PLUGIN: vim-localvimrc
-" Disable localvimrc sandbox
+"" ----------------------------------------------------------------------------
+"" PLUGIN: vim-localvimrc
+"" Disable localvimrc sandbox
 let g:localvimrc_sandbox = 0
+
+"" ----------------------------------------------------------------------------
+"" PLUGIN: incsearch
+"" Maping key
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
+" map n  <Plug>(incsearch-nohl-n)
+" map N  <Plug>(incsearch-nohl-N)
+" map *  <Plug>(incsearch-nohl-*)
+" map #  <Plug>(incsearch-nohl-#)
+" map g* <Plug>(incsearch-nohl-g*)
+" map g# <Plug>(incsearch-nohl-g#)
+"" Auto exit from hightligh
+" let g:incsearch#auto_nohlsearch = 1
 
 
 "" ============================================================================
@@ -19,7 +34,7 @@ let g:localvimrc_sandbox = 0
 "" Set background color
 set background=dark
 "" Set color theme to onedark
-colorscheme onedark
+colorscheme wombat256grf
 "" Set onedark to 256colors
 let g:onedark_termcolors=256
 "" Set onedark to support italic font
@@ -33,7 +48,7 @@ let g:onedark_terminal_italics=1
 "" Set powerline
 let g:airline_powerline_fonts = 1
 "" Set theme for airline
-let g:airline_theme = 'onedark'
+let g:airline_theme = 'wombat256grf'
 "" Set airline enable for tab extension
 let g:airline#extensions#tabline#enabled = 1
 
@@ -62,7 +77,7 @@ let g:limelight_paragraph_span = 12
 let g:limelight_bop = '^\s'
 let g:limelight_eop = '\ze\n^\s'
 "" Key mapping for toggle limelight
-nmap <silent> <Leader><Space> <Esc>:Limelight!!<CR>
+nmap <silent> <leader><Space> <Esc>:Limelight!!<CR>
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: vim-startify
@@ -79,13 +94,13 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_session_dir = $HOME.'/.nvim/sessions'
 "" Set common bookmark
 let g:startify_bookmarks = [
-    \ {'cz': $HOME.'/.zshrc'},
-    \ {'ct': $HOME.'/.tmux.conf'},
-    \ {'ci': $HOME.'/.config/nvim/init.vim'},
-    \ {'cg': $HOME.'/.config/nvim/generic.vim'},
-    \ {'cp': $HOME.'/.config/nvim/packages.vim'},
-    \ {'cc': $HOME.'/.config/nvim/config.vim'}
-    \ ]
+            \ {'cz': $HOME.'/.zshrc'},
+            \ {'ct': $HOME.'/.tmux.conf'},
+            \ {'ci': $HOME.'/.config/nvim/init.vim'},
+            \ {'cg': $HOME.'/.config/nvim/generic.vim'},
+            \ {'cp': $HOME.'/.config/nvim/packages.vim'},
+            \ {'cc': $HOME.'/.config/nvim/config.vim'}
+            \ ]
 "" Returns all commits of the current git repo
 function! s:list_commits()
     let git = 'git -C ' . getcwd()
@@ -113,33 +128,33 @@ function! s:nerdtreeBookmarks()
 endfunction
 "" Setup startify list
 let g:startify_lists = [
-    \ { 'type': 'sessions',  'header': ['   Sessions'] },
-    \ { 'type': function('s:list_commits'), 'header': ['   Last commits on current directory: ' . getcwd()] },
-    \ { 'type': function('s:gitModified'),  'header': ['   Git Modified']},
-    \ { 'type': function('s:gitUntracked'), 'header': ['   Git Untracked']},
-    \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   NERDTree Bookmarks']},
-    \ { 'type': 'dir',       'header': ['   My most recently used files current directory'] },
-    \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
-    \ { 'type': 'files',     'header': ['   My most recently used files'] },
-    \ { 'type': 'commands',  'header': ['   Commands'] },
-    \ ]
+            \ { 'type': 'sessions',  'header': ['   Sessions'] },
+            \ { 'type': function('s:list_commits'), 'header': ['   Last commits on current directory: ' . getcwd()] },
+            \ { 'type': function('s:gitModified'),  'header': ['   Git Modified']},
+            \ { 'type': function('s:gitUntracked'), 'header': ['   Git Untracked']},
+            \ { 'type': function('s:nerdtreeBookmarks'), 'header': ['   NERDTree Bookmarks']},
+            \ { 'type': 'dir',       'header': ['   My most recently used files current directory'] },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+            \ { 'type': 'files',     'header': ['   My most recently used files'] },
+            \ { 'type': 'commands',  'header': ['   Commands'] },
+            \ ]
 "" Custom header with random quote from Fortune
 let g:startify_custom_header = 'startify#pad(startify#fortune#boxed())'
 "" Map startify keymap
-map <silent> <Leader>h <ESC>:Startify<CR>
+map <silent> <leader>h <ESC>:Startify<CR>
 
-"" ----------------------------------------------------------------------------
-"" PLUGIN: lens
-"" When resizing don't go beyond the following height
-let g:lens#height_resize_max = 20
-"" When resizing don't go below the following height
-let g:lens#height_resize_min = 5
-"" When resizing don't go beyond the following width
-let g:lens#width_resize_max = 80
-"" When resizing don't go below the following width
-let g:lens#width_resize_min = 20
-"" The plugin can be disabled for specific filetypes
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" "" ----------------------------------------------------------------------------
+" "" PLUGIN: lens
+" "" The plugin can be disabled for specific filetypes
+" let g:lens#disabled_filetypes = [ 'nerdtree', 'fzf' ]
+" "" When resizing don't go beyond the following height
+" let g:lens#height_resize_max = 20
+" "" When resizing don't go below the following height
+" let g:lens#height_resize_min = 5
+" "" When resizing don't go beyond the following width
+" let g:lens#width_resize_max = 80
+" "" When resizing don't go below the following width
+" let g:lens#width_resize_min = 20
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: vim-which-key
@@ -165,39 +180,39 @@ lua require'colorizer'.setup()
 "" PLUGIN: vim-visual-multi
 "" Work around to create vertical cursor
 let g:VM_maps = {}
-let g:VM_maps["Add Cursor Down"]    = '<Leader><Down>'   " new cursoDowndown
-let g:VM_maps["Add Cursor Up"]      = '<Leader><Up>'   " new cursoUpown
+let g:VM_maps["Add Cursor Down"]    = '<leader><Down>'   " new cursoDowndown
+let g:VM_maps["Add Cursor Up"]      = '<leader><Up>'   " new cursoUpown
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: NERDTree
 "" Change variable symbols
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
 "" Let show ignored
 let g:NERDTreeGitStatusShowIgnored = 1
 "" Toggle NERDTree with map command
-map <silent> <Leader>n <ESC>:NERDTreeToggle<CR>
+map <silent> <leader>fn <ESC>:NERDTreeToggle<CR>
 "" Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+            \ quit | endif
 "" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+            \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: fzf.vim
 "" Always enable preview window on the right with 60% width
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'right:70%'
 "" [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
 "" Enable fzf work with tmux
@@ -215,22 +230,23 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 "" Map find files
-map <silent> <Leader>p <ESC>:Files<CR>
-map <silent> <Leader>r <ESC>:Rg<CR>
+map <silent><nowait> <leader>ff <ESC>:Files<CR>
+map <silent><nowait> <leader>fr <ESC>:Rg<CR>
+map <silent><nowait> <leader>fb <ESC>:Buffers<CR>
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: vim-commentary
 autocmd FileType helm setlocal commentstring=#\ %s
 
+"" ----------------------------------------------------------------------------
+"" PLUGIN: vim-commentary
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 
 "" ============================================================================
 "" Tools
 "" ============================================================================
-"" ----------------------------------------------------------------------------
-"" PLUGIN: git-signify
-"" Default updatetime 4000ms is not good for async update
-set updatetime=100
-
 "" ----------------------------------------------------------------------------
 "" PLUGIN: editorconfig-vim
 "" To ensure that this plugin works well with Tim Pope's fugitive, and avoid loading EditorConfig for any remote files over ssh
@@ -287,7 +303,7 @@ let g:prettier#quickfix_enabled = 0
 "" Overrid file instead of parse buffer (Fix: failed to parse buffer)
 let g:prettier#config#config_precedence = 'file-override'
 "" KeyBindings
-nmap <Leader>py <Plug>(PrettierAsync)
+nmap <leader>py <Plug>(PrettierAsync)
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: coc.nvim
@@ -300,7 +316,7 @@ set nowritebackup
 set cmdheight=2
 "" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 "" delays and poor user experience.
-set updatetime=300
+set updatetime=200
 "" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 "" Always show the signcolumn, otherwise it would shift the text each time
@@ -315,9 +331,9 @@ endif
 "" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 "" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -325,9 +341,9 @@ function! s:check_back_space() abort
 endfunction
 "" Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 "" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 "" position. Coc only does snippet and additional edit on confirm.
@@ -349,19 +365,19 @@ nmap <silent> gr <Plug>(coc-references)
 "" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 "" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 "" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fp  <Plug>(coc-format-selected)
+nmap <leader>fp  <Plug>(coc-format-selected)
 augroup mygroup
     autocmd!
     "" Setup formatexpr specified filetype(s).
@@ -403,24 +419,52 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "" Mappings for CoCList
 "" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
 "" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
 "" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
 "" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
 "" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 "" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
 "" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
 "" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>cp  :<C-u>CocListResume<CR>
 "" Auto download CoC Plugins List if it's missing
 let g:coc_global_extensions = [
-    \ 'coc-jedi',
-    \ 'coc-snippets',
-    \ 'coc-vimlsp'
-    \ ]
+            \ 'coc-pyright',
+            \ 'coc-snippets',
+            \ 'coc-vimlsp',
+            \ 'coc-yaml',
+            \ 'coc-sh',
+            \ 'coc-cmake',
+            \ 'coc-prettier',
+            \ 'coc-markdownlint',
+            \ 'coc-json',
+            \ 'coc-tsserver'
+            \ ]
+
+
+"" ----------------------------------------------------------------------------
+"" PLUGIN: coc-snippets
+"" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+"" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+"" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+"" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+"" ----------------------------------------------------------------------------
+"" PLUGIN: coc-prettier
+"" Define coc-prettier command
+command! -nargs=0 CocPrettier :CocCommand prettier.formatFile

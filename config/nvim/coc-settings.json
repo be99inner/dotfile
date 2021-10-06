@@ -6,18 +6,5 @@
       "initializationOptions": {},
       "settings": {}
     }
-  },
-  "jedi.enable": true,
-  "jedi.startupMessage": true,
-  "jedi.markupKindPreferred": "plaintext",
-  "jedi.trace.server": true,
-  "jedi.jediSettings.autoImportModules": [],
-  "jedi.executable.command": "$HOME/.virtualenvs/jedi-server/bin/jedi-language-server",
-  "jedi.executable.args": [],
-  "jedi.completion.disableSnippets": false,
-  "jedi.diagnostics.enable": true,
-  "jedi.diagnostics.didOpen": true,
-  "jedi.diagnostics.didChange": true,
-  "jedi.diagnostics.didSave": true,
-  "jedi.workspace.extraPaths": []
+  }
 }

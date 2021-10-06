@@ -13,6 +13,7 @@ call plug#begin('~/.nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'embear/vim-localvimrc'
 Plug 'xolox/vim-misc'
+" Plug 'haya14busa/incsearch.vim'
 
 
 "" =====================
@@ -20,8 +21,11 @@ Plug 'xolox/vim-misc'
 "" =====================
 "" Color theme plugins
 " Plug 'morhetz/gruvbox'
+Plug 'gryf/wombat256grf'
+Plug 'vim-scripts/wombat256.vim'
+" Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'rakr/vim-one'
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 " Plug 'tomasr/molokai'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'NLKNguyen/papercolor-theme'
@@ -43,20 +47,22 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'liuchengxu/vim-which-key'
 Plug 'hecal3/vim-leader-guide'
 " Plug 'folke/todo-comments.nvim'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
+" Plug 'camspiers/animate.vim'
+" Plug 'camspiers/lens.vim'
 
 
 "" =================
 "" Easy Motivation
 "" =================
+Plug 'farmergreg/vim-lastplace'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree'
 Plug 'haya14busa/incsearch.vim'
@@ -68,6 +74,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'unblevable/quick-scope'
 "" Outline
 "" required nvim 0.5+ (nightly)
 " Plug 'simrat39/symbols-outline.nvim'
@@ -127,26 +134,26 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'prettier/vim-prettier', {
-    \ 'do': 'yarn install',
-    \ 'branch': 'release/1.x',
-    \ 'for': [
-    \   'javascript',
-    \   'typescript',
-    \   'css',
-    \   'less',
-    \   'scss',
-    \   'json',
-    \   'graphql',
-    \   'markdown',
-    \   'vue',
-    \   'lua',
-    \   'php',
-    \   'python',
-    \   'ruby',
-    \   'html',
-    \   'swift',
-    \   'yaml']
-    \ }
+      \ 'do': 'yarn install',
+      \ 'branch': 'release/1.x',
+      \ 'for': [
+      \   'javascript',
+      \   'typescript',
+      \   'css',
+      \   'less',
+      \   'scss',
+      \   'json',
+      \   'graphql',
+      \   'markdown',
+      \   'vue',
+      \   'lua',
+      \   'php',
+      \   'python',
+      \   'ruby',
+      \   'html',
+      \   'swift',
+      \   'yaml']
+      \ }
 
 
 " Initialize plugin system

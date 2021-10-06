@@ -1,11 +1,12 @@
-" ############################################################################
-" ##
-" ## Init configuration to source all of configuration
-" ##
-" ############################################################################
+"" ############################################################################
+"" ##
+"" ## Init configuration to source all of configuration
+"" ##
+"" ############################################################################
 source $HOME/.config/nvim/generic.vim
 source $HOME/.config/nvim/packages.vim
 source $HOME/.config/nvim/config.vim
+source $HOME/.config/nvim/whichkeys.vim
 
 "" Auto load configuration when configuration is saved
 " if has('autocmd')
