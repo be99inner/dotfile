@@ -41,6 +41,7 @@ if has('autocmd')
         " Custom filetype settings:
         autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType zsh setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType markdown setlocal tabstop=2 softtabstop=2 shiftwidth=2
     augroup END

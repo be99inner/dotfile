@@ -20,9 +20,11 @@ Plug 'xolox/vim-misc'
 "" UI
 "" =====================
 "" Color theme plugins
+Plug 'sainnhe/gruvbox-material'
+Plug 'wuelnerdotexe/vim-enfocado'
 " Plug 'morhetz/gruvbox'
-Plug 'gryf/wombat256grf'
-Plug 'vim-scripts/wombat256.vim'
+" Plug 'gryf/wombat256grf'
+" Plug 'vim-scripts/wombat256.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
@@ -154,6 +156,7 @@ Plug 'prettier/vim-prettier', {
       \   'swift',
       \   'yaml']
       \ }
+Plug 'github/copilot.vim'
 
 
 " Initialize plugin system

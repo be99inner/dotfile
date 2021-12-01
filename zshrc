@@ -7,12 +7,12 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$(go env GOPATH)
-export PATH=$HOME/.bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin
 # kubectl krew plugins
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/be99inner/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -41,6 +41,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+ZSH_CUSTOM_AUTOUPDATE_QUITE=true
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -82,9 +83,9 @@ export ZSH_TMUX_ITERM2=false
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # Set pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval $(pyenv init --path)
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval $(pyenv init --path)
 
 
 # Which plugins would you like to load?
@@ -103,12 +104,13 @@ plugins=(
   golang
   jump
   kubectl
-  pyenv
+  # pyenv
   terraform
   tmux
   virtualenv
   virtualenvwrapper
   # custom
+  autoupdate
   fast-syntax-highlighting
   zsh-autosuggestions
   zsh-completions
@@ -160,6 +162,9 @@ alias ast='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 # Set Golang option
 export GO111MODULE=on
 
+# Setup brew
+export HOMEBREW_NO_GITHUB_API=true
+
 # Require by powerline10k installation (brew install)
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -172,5 +177,5 @@ export VISUAL="$EDITOR"
 
 # tmp setting
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
-export ANDROID_SDK_ROOT='/Users/be99inner/android-sdk'
-export ANDROID_HOME='/Users/be99inner/android-sdk'
+export ANDROID_SDK_ROOT="$HOME/android-sdk"
+export ANDROID_HOME="$HOME/android-sdk"
