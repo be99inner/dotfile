@@ -34,7 +34,7 @@ let g:localvimrc_sandbox = 0
 "" Set background color
 set background=dark
 "" Set color theme to onedark
-colorscheme enfocado
+colorscheme gruvbox
 "" Set onedark to 256colors
 let g:onedark_termcolors=256
 "" Set onedark to support italic font
@@ -44,19 +44,11 @@ let g:onedark_terminal_italics=1
 " highlight Search guibg=LightCyan
 
 "" ----------------------------------------------------------------------------
-"" PLUGIN: Enfocado
-"" Set color theme to nature
-let g:enfocado_theme = 'nature'
-" IMPORTANT: This autocmd ensures the activation of the theme in all compatible plugins that are activated.
-"            If it is not enabled in this way, the theme is not guaranteed to apply to all your plugins.
-autocmd VimEnter * ++nested colorscheme enfocado
-
-"" ----------------------------------------------------------------------------
 "" PLUGIN: Airline
 "" Set powerline
 let g:airline_powerline_fonts = 1
 "" Set theme for airline
-let g:airline_theme = 'enfocado'
+let g:airline_theme = 'gruvbox'
 "" Set airline enable for tab extension
 let g:airline#extensions#tabline#enabled = 1
 

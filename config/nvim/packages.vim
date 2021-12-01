@@ -20,9 +20,7 @@ Plug 'xolox/vim-misc'
 "" UI
 "" =====================
 "" Color theme plugins
-Plug 'sainnhe/gruvbox-material'
-Plug 'wuelnerdotexe/vim-enfocado'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " Plug 'gryf/wombat256grf'
 " Plug 'vim-scripts/wombat256.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
