@@ -33,12 +33,9 @@ let g:localvimrc_sandbox = 0
 "" Need to combine more color theme for make it look nice.
 "" Set background color
 set background=dark
-"" Set color theme to onedark
-colorscheme gruvbox
-"" Set onedark to 256colors
-let g:onedark_termcolors=256
-"" Set onedark to support italic font
-let g:onedark_terminal_italics=1
+
+" Set color theme to onedark
+colorscheme dracula
 "" Change hightligh search color
 " hightligh Search guibg=peru guifg=wheat
 " highlight Search guibg=LightCyan
@@ -48,9 +45,9 @@ let g:onedark_terminal_italics=1
 "" Set powerline
 let g:airline_powerline_fonts = 1
 "" Set theme for airline
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'dracula'
 "" Set airline enable for tab extension
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: indentLine
@@ -156,10 +153,10 @@ map <silent> <leader>h <ESC>:Startify<CR>
 " "" When resizing don't go below the following width
 " let g:lens#width_resize_min = 20
 
-"" ----------------------------------------------------------------------------
-"" PLUGIN: vim-which-key
-"" Use SPC to toggle whichkey
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" "" ----------------------------------------------------------------------------
+" "" PLUGIN: vim-which-key
+" "" Use SPC to toggle whichkey
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: vim-better-whitespace
@@ -167,11 +164,6 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 let g:strip_whitespace_on_save = 1
 "" Disable confirm on strip whitespace
 let g:strip_whitespace_confirm = 0
-
-"" ----------------------------------------------------------------------------
-"" PLUGIN: nvim-colorizer
-lua require'colorizer'.setup()
-
 
 "" ============================================================================
 "" Easy Motivation
@@ -291,6 +283,8 @@ let g:vim_markdown_strikethrough = 1
 "" ============================================================================
 "" ----------------------------------------------------------------------------
 "" PLUGIN: vim-prettier
+"" Prettier Cli Path
+let g:prettier#exec_cmd_path = '/opt/homebrew/bin/prettier'
 "" Disable focus on quick-fix
 let g:prettier#quickfix_auto_focus = 1
 "" Force prettier to async
@@ -331,20 +325,32 @@ endif
 "" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 "" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackSpace() ? "\<TAB>" :
+      \ coc#refresh()
+
+let g:coc_snippet_next = '<tab>'
+
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1):
+"       \ CheckBackspace() ? "\<Tab>" :
+"       \ coc#refresh()
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackSpace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
 "" Use <c-space> to trigger completion.
 if has('nvim')
     inoremap <silent><expr> <c-space> coc#refresh()
 else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
 "" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 "" position. Coc only does snippet and additional edit on confirm.
 "" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
@@ -353,15 +359,18 @@ if exists('*complete_info')
 else
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
 "" Use `[g` and `]g` to navigate diagnostics
 "" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 "" GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 "" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -371,6 +380,7 @@ function! s:show_documentation()
         call CocAction('doHover')
     endif
 endfunction
+
 "" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Symbol renaming.
@@ -442,12 +452,15 @@ let g:coc_global_extensions = [
             \ 'coc-yaml',
             \ 'coc-sh',
             \ 'coc-cmake',
+            \ 'coc-docker',
             \ 'coc-prettier',
             \ 'coc-markdownlint',
             \ 'coc-json',
-            \ 'coc-tsserver'
+            \ 'coc-tsserver',
             \ ]
-
+            " \ 'coc-spell-checker',
+            " \ 'coc-omnisharp',
+            " \ 'coc-pairs',
 
 "" ----------------------------------------------------------------------------
 "" PLUGIN: coc-snippets

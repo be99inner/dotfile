@@ -1,0 +1,16 @@
+{
+  "languageserver": {
+    "terraform-lsp": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "csharp-ls": {
+      "command": "csharp-ls",
+      "filetypes": ["cs"],
+      "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"],
+      "trace.server": "verbose"
+    }
+  }
+}

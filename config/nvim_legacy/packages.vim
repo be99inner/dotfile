@@ -1,4 +1,4 @@
-"" Setting for using vim-plug
+
 "" Specify a directory for plugins
 "" - For Neovim: ~/.local/share/nvim/plugged
 "" - Avoid using standard Vim directory names like 'plugin'
@@ -11,7 +11,7 @@ call plug#begin('~/.nvim/plugged')
 "" =====================
 "" Generic configuration
 Plug 'tpope/vim-sensible'
-Plug 'embear/vim-localvimrc'
+" Plug 'embear/vim-localvimrc'
 Plug 'xolox/vim-misc'
 " Plug 'haya14busa/incsearch.vim'
 
@@ -20,14 +20,14 @@ Plug 'xolox/vim-misc'
 "" UI
 "" =====================
 "" Color theme plugins
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 " Plug 'gryf/wombat256grf'
 " Plug 'vim-scripts/wombat256.vim'
 " Plug 'kyoz/purify', { 'rtp': 'vim' }
 " Plug 'rakr/vim-one'
 " Plug 'joshdick/onedark.vim'
 " Plug 'tomasr/molokai'
-" Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'NLKNguyen/papercolor-theme'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'ayu-theme/ayu-vim'
@@ -39,13 +39,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/vim-gitbranch'  " required to work with gitbrach on startify
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'osyo-manga/vim-over'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'liuchengxu/vim-which-key'
-Plug 'hecal3/vim-leader-guide'
+" Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'liuchengxu/vim-which-key'
+" Plug 'hecal3/vim-leader-guide'
 " Plug 'folke/todo-comments.nvim'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
@@ -54,21 +54,24 @@ Plug 'hecal3/vim-leader-guide'
 "" =================
 "" Easy Motivation
 "" =================
+Plug 'tpope/vim-sleuth'
 Plug 'farmergreg/vim-lastplace'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'terrortylor/nvim-comment'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 " Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
+" Plug 'windwp/nvim-autopairs'
 Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree'
 Plug 'haya14busa/incsearch.vim'
 Plug 'moll/vim-bbye'
 Plug 'airblade/vim-rooter'
-Plug 'dbakker/vim-projectroot'
+" Plug 'dbakker/vim-projectroot'
 Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -101,13 +104,14 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'christoomey/vim-tmux-navigator'
 "" PlatformIO
-Plug 'coddingtonbear/neomake-platformio'
+" Plug 'coddingtonbear/neomake-platformio'
 
 
 "" ===================
 "" Languages
 "" ===================
 Plug 'sheerun/vim-polyglot'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'godlygeek/tabular', { 'for': 'markdown' }
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'pedrohdz/vim-yaml-folds'
@@ -134,7 +138,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
+      \ 'do': 'yarn install --frozen-lockfile --production',
       \ 'branch': 'release/1.x',
       \ 'for': [
       \   'javascript',
@@ -154,7 +158,7 @@ Plug 'prettier/vim-prettier', {
       \   'swift',
       \   'yaml']
       \ }
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 
 " Initialize plugin system

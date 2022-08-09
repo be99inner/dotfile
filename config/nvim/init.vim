@@ -1,22 +1,15 @@
-"" ############################################################################
-"" ##
-"" ## Init configuration to source all of configuration
-"" ##
-"" ############################################################################
-source $HOME/.config/nvim/generic.vim
-source $HOME/.config/nvim/packages.vim
-source $HOME/.config/nvim/config.vim
-source $HOME/.config/nvim/whichkeys.vim
+"" LUA configuration
+lua require('init')
+lua require('plugins')
+lua require('ui')
+lua require('motivation')
+lua require('completions')
 
-"" Auto load configuration when configuration is saved
-" if has('autocmd')
-"     augroup reload_config
-"         autocmd!
-"         autocmd bufwritepost $HOME/.config/nvim/init.vim source $HOME/.config/nvim/init.vim
-"         " autocmd bufwritepost $HOME/.config/nvim/init.vim execute ":AirlineRefresh"
-"         autocmd bufwritepost $HOME/.config/nvim/packages.vim source $HOME/.config/nvim/init.vim
-"         " autocmd bufwritepost $HOME/.config/nvim/packages.vim execute ":AirlineRefresh"
-"         autocmd bufwritepost $HOME/.config/nvim/config.vim source $HOME/.config/nvim/init.vim
-"         " autocmd bufwritepost $HOME/.config/nvim/config.vim execute ":AirlineRefresh"
-"     augroup END
-" endif
+"" LEGACY configuration
+"" Easier moving of code tabs
+vnoremap < <gv
+vnoremap > >gv
+"" Make cursor shapes and blink
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+    \,sm:block-blinkwait175-blinkoff150-blinkon175
