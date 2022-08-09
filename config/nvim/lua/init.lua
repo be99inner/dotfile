@@ -6,6 +6,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 ]])
 
+-- Set cursor line
+vim.opt.cursorline = true
+
 -- Default indent
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
