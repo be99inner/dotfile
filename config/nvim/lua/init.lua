@@ -6,6 +6,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 ]])
 
+-- UI
+vim.opt.termguicolors = true
+
 -- Set cursor line
 vim.opt.cursorline = true
 
