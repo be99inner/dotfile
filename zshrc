@@ -10,6 +10,16 @@ export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin
 # kubectl krew plugins
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# .NET
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="$PATH:$DOTNET_ROOT"
+# Add .NET Core SDK tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+# Add n
+export N_PREFIX=$HOME/.n
+export PATH=$N_PREFIX/bin:$PATH
+# Coreutils - Conflict with ls colors
+#export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -83,9 +93,9 @@ export ZSH_TMUX_ITERM2=false
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # Set pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval $(pyenv init --path)
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval $(pyenv init --path)
 
 
 # Which plugins would you like to load?
@@ -102,9 +112,11 @@ plugins=(
   git
   gitignore
   golang
+  fzf
   jump
   kubectl
-  # pyenv
+  pyenv
+  rust
   terraform
   tmux
   virtualenv
@@ -112,6 +124,7 @@ plugins=(
   # custom
   autoupdate
   fast-syntax-highlighting
+  zsh-tfenv
   zsh-autosuggestions
   zsh-completions
   # zsh-syntax-highlighting
@@ -155,6 +168,7 @@ alias tfi='terraform init'
 alias tfv='terraform validate'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+alias tfay='terraform apply --auto-approve'
 
 # macOS need to setup this option for python fork()
 alias ast='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
@@ -172,10 +186,12 @@ export HOMEBREW_NO_GITHUB_API=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Set editor
-export EDITOR=nvim
+alias vim='nvim'
+export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
 # tmp setting
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
 export ANDROID_SDK_ROOT="$HOME/android-sdk"
 export ANDROID_HOME="$HOME/android-sdk"
+alias ssh='TERM=xterm-256color ssh'
