@@ -155,7 +155,7 @@ require'lspconfig'.terraform_lsp.setup {
 
 -- Vim - https://github.com/iamcco/vim-language-server
 require'lspconfig'.vimls.setup {
-  capabilities = capabilities 
+  capabilities = capabilities
 }
 
 -- Bash - https://github.com/bash-lsp/bash-language-server
@@ -164,29 +164,30 @@ require'lspconfig'.bashls.setup {
 }
 
 -- Lua - https://github.com/sumneko/lua-language-server
--- require('lspconfig')['sumneko_lua'].setup {
---   capabilities = capabilities,
---   -- settings = {
---   --   Lua = {
---   --     runtime = {
---   --       -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---   --       version = 'LuaJIT',
---   --     },
---   --     diagnostics = {
---   --       -- Get the language server to recognize the `vim` global
---   --       globals = {'vim'},
---   --     },
---   --     workspace = {
---   --       -- Make the server aware of Neovim runtime files
---   --       library = vim.api.nvim_get_runtime_file("", true),
---   --     },
---   --     -- Do not send telemetry data containing a randomized but unique identifier
---   --     telemetry = {
---   --       enable = false,
---   --     },
---   --   },
---   -- },
--- }
+-- Mac: `brew install lua-language-server`
+require'lspconfig'.sumneko_lua.setup {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
 
 -- Python
 require'lspconfig'.pyright.setup{
