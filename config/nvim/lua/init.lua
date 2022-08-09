@@ -43,8 +43,8 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 
 -- Easy to move of code tabs
--- vnoremap < <gv
--- vnoremap > >gv
+vim.api.nvim_set_keymap('v', '>', ">gv", {silent = true})
+vim.api.nvim_set_keymap('v', '<', "<gv", {silent = true})
 
 -- Make search case insensitive
 vim.opt.hlsearch = true
