@@ -20,7 +20,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Set virtualenv for python3
-vim.g.python3_host_prog = '~/.virtualenvs/neovim3/bin/python'
+-- vim.g.python3_host_prog = '~/.virtualenvs/neovim3/bin/python'
 
 -- Map Leader key
 vim.g.mapleader = " "
