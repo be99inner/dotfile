@@ -1,10 +1,9 @@
+-- Docs
+-- https://github.com/nanotee/nvim-lua-guide
+
 -- Set encoding
--- vim.opt.encoding = utf-8
--- vim.opt.fileencoding = utf-8
-vim.cmd([[
-set encoding=utf-8
-set fileencoding=utf-8
-]])
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 -- UI
 vim.opt.termguicolors = true

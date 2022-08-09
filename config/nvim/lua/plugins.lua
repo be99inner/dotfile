@@ -21,21 +21,34 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Tools
+  -- ################################################
+  -- # Tools
+  -- ################################################
+  -- Git
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup() 
     end
   }
+  -- Editconfig
   use 'editorconfig/editorconfig-vim'
 
-  -- Basic
+  -- ################################################
+  -- # BASIC
+  -- ################################################
   use 'tpope/vim-sensible'
 
-  -- Motivation
+  -- ################################################
+  -- # MOTIVATION
+  -- ################################################
+  -- auto match bracket and closer
   use 'rstacruz/vim-closer'
-  use { "alexghergh/nvim-tmux-navigation" } -- Tmux integration
+  -- Tmux integration
+  use { 'alexghergh/nvim-tmux-navigation' }
+  use { 'tmux-plugins/vim-tmux-focus-events' }
+  use { 'tmux-plugins/vim-tmux' }
+  -- Ident Line
   use {
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
@@ -43,7 +56,9 @@ return require('packer').startup(function(use)
     -- guess-indent vs indent-o-matic
     -- https://github.com/Darazaki/indent-o-matic/issues/12
   }
+  -- Comment
   use 'terrortylor/nvim-comment' -- some issue, can't run config from packer
+  -- File Explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -51,13 +66,21 @@ return require('packer').startup(function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+  -- fuzzy search
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} , { 'themercorp/themer.lua'} }
-  } -- fuzzy search
-  use { 'farmergreg/vim-lastplace' }
+  }
+  use { 'farmergreg/vim-lastplace' } -- remember last place of cursor
+  use { 'mg979/vim-visual-multi' } -- multi cursor
+  use { 'tpope/vim-repeat' } -- replace native repeat behavior
+  use { 'tpope/vim-surround' } -- easy change surround text
+  use { 'mbbill/undotree' } -- Undo Tree
+  use { 'unblevable/quick-scope' } -- fast motivation
 
-  -- UI
+  -- ################################################
+  -- # UI
+  -- ################################################
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -65,7 +88,10 @@ return require('packer').startup(function(use)
   use {'dracula/vim', as = 'dracula'} -- colorscheme
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  -- Completions & Linters
+  -- ################################################
+  -- # Completions & Linters
+  -- ################################################
+  -- prettier
   use {
     'MunifTanjim/prettier.nvim',
     -- opt = true,
@@ -74,6 +100,7 @@ return require('packer').startup(function(use)
       { 'neovim/nvim-lspconfig' },
     }
   }
+  -- completions
   use {
     'hrsh7th/nvim-cmp',
     requires = {

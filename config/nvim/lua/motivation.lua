@@ -54,6 +54,14 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
+  log = {
+    enable = true,
+    truncate = true,
+    types = {
+      git = true,
+      profile = true,
+    },
+  },
 })
 vim.api.nvim_set_keymap('n', "<Leader>fn",":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
@@ -63,3 +71,7 @@ vim.api.nvim_set_keymap('n', "<Leader>ff", ":lua require('telescope.builtin').fi
 vim.api.nvim_set_keymap('n', "<Leader>fg", ":lua require('telescope.builtin').live_grep()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<Leader>fb", ":lua require('telescope.builtin').buffers()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<Leader>fh", ":lua require('telescope.builtin').help_tags()<cr>", { noremap = true, silent = true })
+
+-- Quick Scope
+-- Trigger a highlight in the appropriate direction when pressing these keys
+vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
