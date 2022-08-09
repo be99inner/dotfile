@@ -148,17 +148,20 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 -- Terraform - https://github.com/juliosueiras/terraform-lsp
-require('lspconfig')['terraform_lsp'].setup {
+require'lspconfig'.terraform_lsp.setup {
   capabilities = capabilities
 }
+
 -- Vim - https://github.com/iamcco/vim-language-server
-require('lspconfig')['vimls'].setup {
+require'lspconfig'.vimls.setup {
   capabilities = capabilities 
 }
+
 -- Bash - https://github.com/bash-lsp/bash-language-server
-require('lspconfig')['bashls'].setup {
+require'lspconfig'.bashls.setup {
   capabilities = capabilities
 }
+
 -- Lua - https://github.com/sumneko/lua-language-server
 -- require('lspconfig')['sumneko_lua'].setup {
 --   capabilities = capabilities,
@@ -183,3 +186,8 @@ require('lspconfig')['bashls'].setup {
 --   --   },
 --   -- },
 -- }
+
+-- Python
+require'lspconfig'.pyright.setup{
+  capabilities = capabilities
+}
