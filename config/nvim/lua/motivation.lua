@@ -75,3 +75,6 @@ vim.api.nvim_set_keymap('n', "<Leader>fh", ":lua require('telescope.builtin').he
 -- Quick Scope
 -- Trigger a highlight in the appropriate direction when pressing these keys
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
+
+-- Outline
+require("symbols-outline").setup({})

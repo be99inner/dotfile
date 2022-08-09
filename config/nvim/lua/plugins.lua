@@ -77,6 +77,7 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-surround' } -- easy change surround text
   use { 'mbbill/undotree' } -- Undo Tree
   use { 'unblevable/quick-scope' } -- fast motivation
+  use { 'simrat39/symbols-outline.nvim' } -- Outline
 
   -- ################################################
   -- # UI
