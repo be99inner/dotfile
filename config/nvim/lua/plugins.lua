@@ -87,7 +87,8 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {'dracula/vim', as = 'dracula'} -- colorscheme
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- syntax highlighting
+  use { 'lukas-reineke/indent-blankline.nvim' } -- indent line
 
   -- ################################################
   -- # Completions & Linters
