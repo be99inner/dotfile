@@ -155,6 +155,10 @@ require('lspconfig')['terraform_lsp'].setup {
 require('lspconfig')['vimls'].setup {
   capabilities = capabilities 
 }
+-- Bash - https://github.com/bash-lsp/bash-language-server
+require('lspconfig')['bashls'].setup {
+  capabilities = capabilities
+}
 -- Lua - https://github.com/sumneko/lua-language-server
 require('lspconfig')['sumneko_lua'].setup {
   -- settings = {
