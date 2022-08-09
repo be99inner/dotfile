@@ -66,7 +66,7 @@ require("nvim-tree").setup({
 vim.api.nvim_set_keymap('n', "<Leader>fn",":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- Fuzzy
-require("telescope").load_extension("themes") -- relate with themer on UI part
+require('telescope').load_extension('themes') -- relate with themer on UI part
 vim.api.nvim_set_keymap('n', "<Leader>ff", ":lua require('telescope.builtin').find_files()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<Leader>fg", ":lua require('telescope.builtin').live_grep()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<Leader>fb", ":lua require('telescope.builtin').buffers()<cr>", { noremap = true, silent = true })
@@ -77,4 +77,4 @@ vim.api.nvim_set_keymap('n', "<Leader>fh", ":lua require('telescope.builtin').he
 vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
 
 -- Outline
-require("symbols-outline").setup({})
+require('symbols-outline').setup({})
