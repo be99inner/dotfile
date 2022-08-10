@@ -13,7 +13,7 @@ require("themer").setup({
 -- Sytax color
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "lua", "vim", "hcl", "go", "bash", "yaml" },
+  ensure_installed = { "typescript", "javascript", "lua", "vim", "hcl", "go", "bash", "yaml" },
   -- ensure_installed = "all",
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -52,7 +52,7 @@ require('lualine').setup()
 
 -- Indent line
 vim.opt.list = true
--- vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {

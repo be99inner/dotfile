@@ -217,7 +217,7 @@ local lsp_flags = {
 -- Bash - https://github.com/bash-lsp/bash-language-server
 -- Lua - https://github.com/sumneko/lua-language-server --> Mac: `brew install lua-language-server`
 -- Python - https://github.com/microsoft/pyright
-local servers = { 'terraform_lsp', 'vimls', 'bashls', 'pyright', 'sumneko_lua' }
+local servers = { 'terraform_lsp', 'vimls', 'bashls', 'pyright', 'sumneko_lua', 'eslint' }
 local lspconfig = require('lspconfig');
 
 for _, server in ipairs(servers) do
