@@ -3,6 +3,9 @@ local null_ls = require("null-ls")
 local prettier = require("prettier")
 
 null_ls.setup({
+  sources = {
+    null_ls.builtins.code_actions.gitsigns,
+  },
   on_attach = function(client, bufnr)
     if client.resolved_capabilities.document_formatting then
       vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
@@ -93,8 +96,8 @@ cmp.setup({
     }),
   },
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
     { name = "luasnip" }, -- For luasnip users.
+    { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
   }),
@@ -106,7 +109,6 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     -- Use Tab for select completion a snippet
@@ -126,6 +128,21 @@ cmp.setup({
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    -- Snippet Jump
+    ["<C-j>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<C-k>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end

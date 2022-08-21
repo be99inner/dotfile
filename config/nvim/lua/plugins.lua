@@ -1,9 +1,10 @@
 -- This file can be loaded by calling `lua require("plugins")` from your init.vim
 -- Boostrapping packer
 local fn = vim.fn
-local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -49,7 +50,7 @@ return require("packer").startup(function(use)
     config = function()
       require("guess-indent").setup {}
     end,
-    -- To comparasion about performance 
+    -- To comparasion about performance
     -- guess-indent vs indent-o-matic
     -- https://github.com/Darazaki/indent-o-matic/issues/12
   }
@@ -66,7 +67,10 @@ return require("packer").startup(function(use)
   -- fuzzy search
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { {"nvim-lua/plenary.nvim"} , { "themercorp/themer.lua"} }
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "themercorp/themer.lua" }
+    }
   }
   use { "farmergreg/vim-lastplace" } -- remember last place of cursor
   use { "mg979/vim-visual-multi" } -- multi cursor
@@ -83,9 +87,15 @@ return require("packer").startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
-  use {"dracula/vim", as = "dracula"} -- colorscheme
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" } -- syntax highlighting
   use { "lukas-reineke/indent-blankline.nvim" } -- indent line
+  use {
+    "goolord/alpha-nvim",
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  }
 
   -- ################################################
   -- # Completions & Linters

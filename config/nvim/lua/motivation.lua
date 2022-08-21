@@ -40,6 +40,7 @@ vim.api.nvim_set_keymap("n", "<C-Space>", ":lua require'nvim-tmux-navigation'.Nv
 -- File explorer
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
+  reload_on_bufenter = true,
   view = {
     adaptive_size = true,
     mappings = {
@@ -50,9 +51,18 @@ require("nvim-tree").setup({
   },
   renderer = {
     group_empty = true,
+    highlight_git = true,
+    icons = {
+      show = {
+        folder_arrow = false,
+      }
+    },
   },
   filters = {
     dotfiles = true,
+  },
+  git = {
+    timeout = 2000,
   },
   log = {
     enable = true,
@@ -61,6 +71,10 @@ require("nvim-tree").setup({
       git = true,
       profile = true,
     },
+  },
+  filesystem_watchers = {
+    enable = true,
+    debounce_delay = 100,
   },
 })
 vim.api.nvim_set_keymap("n", "<Leader>fn",":NvimTreeToggle<CR>", { noremap = true, silent = true })
