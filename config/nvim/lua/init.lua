@@ -20,16 +20,16 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Set virtualenv for python3
--- vim.g.python3_host_prog = '~/.virtualenvs/neovim3/bin/python'
+-- vim.g.python3_host_prog = "~/.virtualenvs/neovim3/bin/python"
 
 -- Map Leader key
 vim.g.mapleader = " "
 
 -- Map key to easier to move between windows
-vim.api.nvim_set_keymap('n', "<C-h>", "<C-w>h", {})
-vim.api.nvim_set_keymap('n', "<C-j>", "<C-w>j", {})
-vim.api.nvim_set_keymap('n', "<C-k>", "<C-w>k", {})
-vim.api.nvim_set_keymap('n', "<C-l>", "<C-w>l", {})
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", {})
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", {})
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", {})
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", {})
 
 -- Line Number
 vim.opt.number = true
@@ -43,8 +43,8 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 
 -- Easy to move of code tabs
-vim.api.nvim_set_keymap('v', '>', ">gv", {silent = true})
-vim.api.nvim_set_keymap('v', '<', "<gv", {silent = true})
+vim.api.nvim_set_keymap("v", ">", ">gv", {silent = true})
+vim.api.nvim_set_keymap("v", "<", "<gv", {silent = true})
 
 -- Make search case insensitive
 vim.opt.hlsearch = true
@@ -53,7 +53,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keymap to nohl
-vim.api.nvim_set_keymap('n', "<Leader>s", ":nohl<cr>", {silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>s", ":nohl<CR>", {silent = true})
 
 -- Set scrolling always show 5 line of header/tail screen
 vim.opt.scrolloff = 5
@@ -63,3 +63,6 @@ vim.opt.updatetime = 100
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
+
+-- Complete Opt
+vim.opt.completeopt = { "menu", "menuone", "noselect" }

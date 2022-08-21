@@ -28,11 +28,11 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup() 
+      require('gitsigns').setup()
     end
   }
-  -- Editconfig
-  use 'editorconfig/editorconfig-vim'
+  use { 'editorconfig/editorconfig-vim' } -- editorconfig
+  use { 'wakatime/vim-wakatime' } -- wakatime
 
   -- ################################################
   -- # BASIC
@@ -106,13 +106,17 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'neovim/nvim-lspconfig' },
+      -- Generic
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/vim-vsnip' },
+      -- LSP
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'neovim/nvim-lspconfig' },
+      -- Snippets
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
     }
   }
 
