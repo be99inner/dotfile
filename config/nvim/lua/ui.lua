@@ -11,7 +11,7 @@ require("themer").setup({
 })
 
 -- Sytax color
-require'nvim-treesitter.configs'.setup {
+require"nvim-treesitter.configs".setup {
   -- A list of parser names, or "all"
   ensure_installed = { "typescript", "javascript", "lua", "vim", "hcl", "go", "bash", "yaml" },
   -- ensure_installed = "all",
@@ -48,7 +48,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Status line 
-require('lualine').setup()
+require("lualine").setup()
 
 -- Indent line
 vim.opt.list = true

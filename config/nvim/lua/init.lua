@@ -63,6 +63,3 @@ vim.opt.updatetime = 100
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
-
--- Complete Opt
-vim.opt.completeopt = { "menu", "menuone", "noselect" }

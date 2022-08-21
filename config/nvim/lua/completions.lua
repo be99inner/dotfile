@@ -53,6 +53,8 @@ prettier.setup({
 })
 
 -- Completion
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
 require("luasnip.loaders.from_vscode").lazy_load() -- luasnippet
 
 local has_words_before = function()
@@ -60,36 +62,9 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
-}
-
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require("lspkind")
 
 cmp.setup({
   snippet = {
@@ -99,26 +74,23 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
   },
   view = {
-    entries = "custom"
+    entries = "native"
   },
   formatting = {
-    format = function(entry, vim_item)
-      -- Kind Icon
-      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      -- Source
-      vim_item.menu = ({
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-      return vim_item
-    end
+        latex_symbols = "[Latex]",
+      })
+    }),
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
@@ -133,7 +105,10 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     -- Use Tab for select completion a snippet
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -150,7 +125,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1) 
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -172,6 +147,9 @@ cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" }
+  },
+  view = {
+    entries = { name = "wildmenu" , separator = " | " }
   }
 })
 
@@ -182,14 +160,14 @@ cmp.setup.cmdline(":", {
     { name = "path" }
   }, {
     { name = "cmdline" }
-  })
+  }),
+  view = {
+    entries = { name = "wildmenu" , separator = " | " }
+  }
 })
 
 -- Setup lspconfig.
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you"ve enabled.
--- https://github.com/neovim/nvim-lspconfig
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -204,7 +182,6 @@ vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -255,11 +232,7 @@ local lsp_flags = {
 }
 
 -- List of LSP
--- Terraform - https://github.com/juliosueiras/terraform-lsp
--- Vim - https://github.com/iamcco/vim-language-server
--- Bash - https://github.com/bash-lsp/bash-language-server
--- Lua - https://github.com/sumneko/lua-language-server --> Mac: `brew install lua-language-server`
--- Python - https://github.com/microsoft/pyright
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = { "terraform_lsp", "vimls", "bashls", "pyright", "sumneko_lua", "eslint", "gopls" }
 local lspconfig = require("lspconfig");
 
