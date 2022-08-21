@@ -149,7 +149,7 @@ cmp.setup.cmdline("/", {
     { name = "buffer" }
   },
   view = {
-    entries = { name = "wildmenu" , separator = " | " }
+    entries = { name = "wildmenu", separator = " | " }
   }
 })
 
@@ -162,7 +162,7 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" }
   }),
   view = {
-    entries = { name = "wildmenu" , separator = " | " }
+    entries = { name = "wildmenu", separator = " | " }
   }
 })
 
@@ -171,7 +171,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -184,7 +184,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -211,7 +211,7 @@ local on_attach = function(client, bufnr)
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
-          globals = {"vim"},
+          globals = { "vim" },
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
@@ -230,6 +230,18 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+-- LSP installer
+require("nvim-lsp-installer").setup({
+  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+})
 
 -- List of LSP
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

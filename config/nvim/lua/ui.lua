@@ -1,6 +1,9 @@
 -- Syntax Highlight
 require("themer").setup({
-  colorscheme = "dracula",
+  colorscheme = "onedark",
+  dim_inactive = true,
+  term_colors = true,
+  transparent = false,
   styles = {
     ["function"] = { style = 'italic' },
     functionbuiltin = { style = 'italic' },
@@ -8,10 +11,19 @@ require("themer").setup({
     variableBuiltIn = { style = 'italic' },
     parameter  = { style = 'italic' },
   },
+  plugins = {
+    treesitter = true,
+    cmp = true,
+    indentline = true,
+    lsp = true,
+    gitsigns = true,
+    telescope = true,
+    lualine = true,
+  },
 })
 
 -- Sytax color
-require"nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
   ensure_installed = { "typescript", "javascript", "lua", "vim", "hcl", "go", "bash", "yaml" },
   -- ensure_installed = "all",
@@ -52,7 +64,7 @@ require("lualine").setup()
 
 -- Indent line
 vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
+-- vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 require("indent_blankline").setup {

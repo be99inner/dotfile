@@ -1,9 +1,10 @@
 "" LUA configuration
-lua require('init')
-lua require('plugins')
-lua require('ui')
-lua require('motivation')
-lua require('completions')
+lua require("init")
+lua require("plugins")
+lua require("tools")
+lua require("ui")
+lua require("motivation")
+lua require("completions")
 
 "" LEGACY configuration
 "" Make cursor shapes and blink

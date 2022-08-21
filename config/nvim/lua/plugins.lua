@@ -19,31 +19,26 @@ vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup(function(use)
   -- Packer can manage itself
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim" }
 
   -- ################################################
   -- # Tools
   -- ################################################
   -- Git
-  use {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup()
-    end
-  }
+  use { "lewis6991/gitsigns.nvim" }
   use { "editorconfig/editorconfig-vim" } -- editorconfig
   use { "wakatime/vim-wakatime" } -- wakatime
 
   -- ################################################
   -- # BASIC
   -- ################################################
-  use "tpope/vim-sensible"
+  use { "tpope/vim-sensible" }
 
   -- ################################################
   -- # MOTIVATION
   -- ################################################
   -- auto match bracket and closer
-  use "rstacruz/vim-closer"
+  use { "rstacruz/vim-closer" }
   -- Tmux integration
   use { "alexghergh/nvim-tmux-navigation" }
   use { "tmux-plugins/vim-tmux-focus-events" }
@@ -51,7 +46,9 @@ return require("packer").startup(function(use)
   -- Ident Line
   use {
     "nmac427/guess-indent.nvim",
-    config = function() require("guess-indent").setup {} end,
+    config = function()
+      require("guess-indent").setup {}
+    end,
     -- To comparasion about performance 
     -- guess-indent vs indent-o-matic
     -- https://github.com/Darazaki/indent-o-matic/issues/12
@@ -93,6 +90,13 @@ return require("packer").startup(function(use)
   -- ################################################
   -- # Completions & Linters
   -- ################################################
+  -- better whitespace
+  use {
+    "lewis6991/spaceless.nvim",
+    config = function()
+      require("spaceless").setup()
+    end
+  }
   -- prettier
   use {
     "MunifTanjim/prettier.nvim",
@@ -115,6 +119,7 @@ return require("packer").startup(function(use)
       -- LSP
       { "hrsh7th/cmp-nvim-lsp" },
       { "neovim/nvim-lspconfig" },
+      { "williamboman/nvim-lsp-installer" },
       -- Snippets
       { "saadparwaiz1/cmp_luasnip" },
       { "L3MON4D3/LuaSnip" },
