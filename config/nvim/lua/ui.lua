@@ -5,11 +5,11 @@ require("themer").setup({
   term_colors = true,
   transparent = false,
   styles = {
-    ["function"] = { style = 'italic' },
+    ["function"]    = { style = 'italic' },
     functionbuiltin = { style = 'italic' },
-    variable = { style = 'italic' },
+    variable        = { style = 'italic' },
     variableBuiltIn = { style = 'italic' },
-    parameter  = { style = 'italic' },
+    parameter       = { style = 'italic' },
   },
   plugins = {
     treesitter = true,
@@ -53,13 +53,16 @@ require("nvim-treesitter.configs").setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
+  indent = {
+    enable = true,
+  }
 }
 
 -- Line number
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Status line 
+-- Status line
 require("lualine").setup()
 
 -- Indent line

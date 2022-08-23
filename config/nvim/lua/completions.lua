@@ -70,7 +70,7 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-  autorestart = true,
+  -- autorestart = true,
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -263,7 +263,7 @@ require("nvim-lsp-installer").setup({
 
 -- List of LSP
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = { "terraform_lsp", "vimls", "bashls", "pyright", "sumneko_lua", "eslint", "gopls" }
+local servers = { "terraformls", "tflint", "vimls", "bashls", "pyright", "sumneko_lua", "eslint", "gopls" }
 local lspconfig = require("lspconfig");
 
 for _, server in ipairs(servers) do
