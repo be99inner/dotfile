@@ -36,15 +36,17 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Wild ignore
-vim.opt.wildignore:append { "*/tmp/*","*.so","*.swp","*.zip","*.pyc","*./.terraform/*",".git" }
+vim.opt.wildignore:append { "*/tmp/*", "*.so", "*.swp", "*.zip", "*.pyc", "*./.terraform/*", ".git" }
 
 -- Backup configuration
 vim.opt.backup = false
 vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.hidden = true
 
 -- Easy to move of code tabs
-vim.api.nvim_set_keymap("v", ">", ">gv", {silent = true})
-vim.api.nvim_set_keymap("v", "<", "<gv", {silent = true})
+vim.api.nvim_set_keymap("v", ">", ">gv", { silent = true })
+vim.api.nvim_set_keymap("v", "<", "<gv", { silent = true })
 
 -- Make search case insensitive
 vim.opt.hlsearch = true
@@ -53,7 +55,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keymap to nohl
-vim.api.nvim_set_keymap("n", "<Leader>s", ":nohl<CR>", {silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>s", ":nohl<CR>", { silent = true })
 
 -- Set scrolling always show 5 line of header/tail screen
 vim.opt.scrolloff = 5

@@ -27,6 +27,12 @@ return require("packer").startup(function(use)
   -- ################################################
   -- Git
   use { "lewis6991/gitsigns.nvim" }
+  use { "akinsho/git-conflict.nvim",
+    tag = "*",
+    config = function()
+      require("git-conflict").setup()
+    end
+  }
   use { "editorconfig/editorconfig-vim" } -- editorconfig
   use { "wakatime/vim-wakatime" } -- wakatime
 
@@ -93,9 +99,11 @@ return require("packer").startup(function(use)
     "goolord/alpha-nvim",
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function()
-      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+      require("alpha").setup(require("alpha.themes.startify").config)
     end
   }
+  use { "petertriho/nvim-scrollbar" } -- scrollbar
+  use { "kevinhwang91/nvim-hlslens" } -- enrich search
 
   -- ################################################
   -- # Completions & Linters
@@ -110,7 +118,6 @@ return require("packer").startup(function(use)
   -- prettier
   use {
     "MunifTanjim/prettier.nvim",
-    -- opt = true,
     requires = {
       { "jose-elias-alvarez/null-ls.nvim" },
       { "neovim/nvim-lspconfig" },

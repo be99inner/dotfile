@@ -1,6 +1,6 @@
 -- Syntax Highlight
 require("themer").setup({
-  colorscheme = "onedark",
+  colorscheme = "gruvbox",
   dim_inactive = true,
   term_colors = true,
   transparent = false,
@@ -54,7 +54,7 @@ require("nvim-treesitter.configs").setup {
     additional_vim_regex_highlighting = true,
   },
   indent = {
-    enable = true,
+    enable = false,
   }
 }
 
@@ -76,3 +76,8 @@ require("indent_blankline").setup {
   show_current_context_start = true,
   space_char_blankline = " ",
 }
+
+-- Scrollbar and search
+require("hlslens").setup({})
+require("scrollbar").setup()
+require("scrollbar.handlers.search").setup()
