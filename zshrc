@@ -194,4 +194,5 @@ export VISUAL="$EDITOR"
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
 export ANDROID_SDK_ROOT="$HOME/android-sdk"
 export ANDROID_HOME="$HOME/android-sdk"
-alias ssh='TERM=xterm-256color ssh'
+alias ssh="TERM=xterm-256color ssh"
+alias htop="TERM=xterm-256color htop"
