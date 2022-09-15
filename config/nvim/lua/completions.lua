@@ -60,7 +60,7 @@ prettier.setup({
 })
 
 -- Completion
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+-- vim.opt.completeopt = { "menu", "menuone", "noselect", }
 
 require("luasnip.loaders.from_vscode").lazy_load() -- luasnippet
 
@@ -86,7 +86,13 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   view = {
-    entries = "native"
+    entries = "native_menu"
+  },
+  comfirmation = {
+    completeopt = "menu,menuone,noselect",
+  },
+  experimental = {
+    ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -114,7 +120,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({
-      select = true,
+      select = false,
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ['<C-l>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -274,7 +280,20 @@ require("nvim-lsp-installer").setup({
 
 -- List of LSP
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = { "terraformls", "tflint", "vimls", "bashls", "pyright", "sumneko_lua", "eslint", "gopls" }
+local servers = {
+  "terraformls",
+  "tflint",
+  "vimls",
+  "bashls",
+  "pyright",
+  "sumneko_lua",
+  "eslint",
+  "gopls",
+  "jsonls",
+  "dockerls",
+  "yamlls",
+}
+
 local lspconfig = require("lspconfig");
 
 for _, server in ipairs(servers) do

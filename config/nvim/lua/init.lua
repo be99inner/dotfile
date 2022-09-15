@@ -65,3 +65,7 @@ vim.opt.updatetime = 100
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
+
+-- Split
+vim.opt.splitright = true
+vim.opt.splitbelow = true

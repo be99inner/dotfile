@@ -1,9 +1,9 @@
 -- Syntax Highlight
 require("themer").setup({
-  colorscheme = "gruvbox",
+  colorscheme = "onedark",
   dim_inactive = true,
   term_colors = true,
-  transparent = false,
+  transparent = true,
   styles = {
     ["function"]    = { style = 'italic' },
     functionbuiltin = { style = 'italic' },
