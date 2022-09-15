@@ -5,12 +5,16 @@ local prettier = require("prettier")
 null_ls.setup({
   sources = {
     null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.formatting.terraform_fmt,
+    null_ls.builtins.completion.luasnip,
+    null_ls.builtins.code_actions.eslint_d,
   },
   on_attach = function(client, bufnr)
     if client.resolved_capabilities.document_formatting then
       vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
-      -- format on save -> hook formatting before write
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+
+      -- format on save -> use sync formatting to prevent buffer's changed after writing
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
 
     if client.resolved_capabilities.document_range_formatting then
@@ -78,11 +82,11 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
   },
   view = {
-    entries = "custom"
+    entries = "native"
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -124,8 +128,8 @@ cmp.setup({
         cmp.select_next_item()
         -- elseif luasnip.expand_or_jumpable() then
         --   luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
+        -- elseif has_words_before() then
+        --   cmp.complete()
       else
         fallback()
       end

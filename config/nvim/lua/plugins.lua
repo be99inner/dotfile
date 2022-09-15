@@ -29,9 +29,11 @@ return require("packer").startup(function(use)
   use { "lewis6991/gitsigns.nvim" }
   use { "akinsho/git-conflict.nvim",
     tag = "*",
-    config = function()
-      require("git-conflict").setup()
-    end
+    requires = {
+      {
+        "https://gitlab.com/yorickpeterse/nvim-pqf.git",
+      }
+    }
   }
   use { "editorconfig/editorconfig-vim" } -- editorconfig
   use { "wakatime/vim-wakatime" } -- wakatime
@@ -50,7 +52,7 @@ return require("packer").startup(function(use)
   use { "alexghergh/nvim-tmux-navigation" }
   use { "tmux-plugins/vim-tmux-focus-events" }
   use { "tmux-plugins/vim-tmux" }
-  -- Ident Line
+  -- Indent Line
   use {
     "nmac427/guess-indent.nvim",
     config = function()
