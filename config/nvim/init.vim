@@ -5,6 +5,7 @@ lua require("tools")
 lua require("ui")
 lua require("motivation")
 lua require("completions")
+lua require("keymaps")
 
 "" LEGACY configuration
 "" Make cursor shapes and blink

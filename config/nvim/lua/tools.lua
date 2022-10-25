@@ -44,3 +44,13 @@ require('gitsigns').setup {
 -- Git Conflict
 require("pqf").setup()
 require("git-conflict").setup()
+
+-- Org --> Note Taking
+local orgmode = require('orgmode')
+
+orgmode.setup_ts_grammar() -- Load custom tree-sitter grammar for org filetype
+orgmode.setup({
+  org_agenda_files = { '~/workspace/org/*' },
+  org_default_notes_file = '~/workspace/org/refile.org',
+  win_split_mode = 'float',
+})

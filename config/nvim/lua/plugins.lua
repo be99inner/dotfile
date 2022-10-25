@@ -37,6 +37,8 @@ return require("packer").startup(function(use)
   }
   use { "editorconfig/editorconfig-vim" } -- editorconfig
   use { "wakatime/vim-wakatime" } -- wakatime
+  -- Note taking
+  use { "nvim-orgmode/orgmode" }
 
   -- ################################################
   -- # BASIC
@@ -47,7 +49,7 @@ return require("packer").startup(function(use)
   -- # MOTIVATION
   -- ################################################
   -- auto match bracket and closer
-  use { "rstacruz/vim-closer" }
+  use { "windwp/nvim-autopairs" }
   -- Tmux integration
   use { "alexghergh/nvim-tmux-navigation" }
   use { "tmux-plugins/vim-tmux-focus-events" }
@@ -87,10 +89,22 @@ return require("packer").startup(function(use)
   use { "mbbill/undotree" } -- Undo Tree
   use { "unblevable/quick-scope" } -- fast motivation
   use { "simrat39/symbols-outline.nvim" } -- Outline
+  use { "tversteeg/registers.nvim" } -- registers
+  use { "natecraddock/workspaces.nvim" } -- workspace
+
+  -- ################################################
+  -- # Key Maps
+  -- ################################################
+  use { 'mrjones2014/legendary.nvim' }
+  use {
+    "FeiyouG/command_center.nvim",
+    requires = { "nvim-telescope/telescope.nvim" }
+  }
 
   -- ################################################
   -- # UI
   -- ################################################
+  use { "themercorp/themer.lua" }
   use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
@@ -100,9 +114,6 @@ return require("packer").startup(function(use)
   use {
     "goolord/alpha-nvim",
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require("alpha").setup(require("alpha.themes.startify").config)
-    end
   }
   use { "petertriho/nvim-scrollbar" } -- scrollbar
   use { "kevinhwang91/nvim-hlslens" } -- enrich search
@@ -117,11 +128,10 @@ return require("packer").startup(function(use)
       require("spaceless").setup()
     end
   }
-  -- prettier
+  -- formatting with lsp -> null-ls
   use {
-    "MunifTanjim/prettier.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
     requires = {
-      { "jose-elias-alvarez/null-ls.nvim" },
       { "neovim/nvim-lspconfig" },
     }
   }

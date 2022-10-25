@@ -1,63 +1,42 @@
 -- Prettier
 local null_ls = require("null-ls")
-local prettier = require("prettier")
 
 null_ls.setup({
   sources = {
+    -- Code Action
     null_ls.builtins.code_actions.gitsigns,
+
+    -- Code Formatting
+    null_ls.builtins.formatting.prettier, -- need to figure out how to config with prettier
     null_ls.builtins.formatting.terraform_fmt,
-    null_ls.builtins.completion.luasnip,
-    null_ls.builtins.code_actions.eslint_d,
   },
   on_attach = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
       vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
 
-      -- format on save -> use sync formatting to prevent buffer's changed after writing
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+      -- format on save
+      -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     end
 
-    if client.resolved_capabilities.document_range_formatting then
+    if client.server_capabilities.documentRangeFormattingProvider then
       vim.cmd("xnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.range_formatting({})<CR>")
     end
+    --
+    --
+    -- if client.resolved_capabilities.document_formatting then
+    --   vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
+    --
+    --   -- format on save -> use sync formatting to prevent buffer's changed after writing
+    --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    -- end
+    --
+    -- if client.resolved_capabilities.document_range_formatting then
+    --   vim.cmd("xnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.range_formatting({})<CR>")
+    -- end
   end,
 })
 
-prettier.setup({
-  bin = "prettier", -- or `prettierd`
-  filetypes = {
-    "css",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-  },
-
-  -- prettier format options (you can use config files too. ex: `.prettierrc`)
-  arrow_parens = "always",
-  bracket_spacing = true,
-  embedded_language_formatting = "auto",
-  end_of_line = "lf",
-  html_whitespace_sensitivity = "css",
-  jsx_bracket_same_line = false,
-  jsx_single_quote = false,
-  print_width = 80,
-  prose_wrap = "preserve",
-  quote_props = "as-needed",
-  semi = true,
-  single_quote = false,
-  tab_width = 2,
-  trailing_comma = "es5",
-  use_tabs = false,
-  vue_indent_script_and_style = false,
-})
 
 -- Completion
 -- vim.opt.completeopt = { "menu", "menuone", "noselect", }
@@ -109,6 +88,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "luasnip" }, -- For luasnip users.
     { name = "nvim_lsp" },
+    { name = "orgmode" },
     { name = "buffer" },
     { name = "path" },
   }),
@@ -201,7 +181,7 @@ cmp.setup.cmdline(":", {
 })
 
 -- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -259,6 +239,14 @@ local on_attach = function(client, bufnr)
       },
     }
   end
+
+  -- if client.name ~= "jsonls" then
+  --   client.resolved_capabilities.document_formatting = false
+  -- end
+  --
+  -- if client.name ~= "terraformls" then
+  --   client.resolved_capabilities.document_formatting = true
+  -- end
 end
 
 local lsp_flags = {
