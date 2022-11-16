@@ -95,7 +95,7 @@ return require("packer").startup(function(use)
   -- ################################################
   -- # Key Maps
   -- ################################################
-  use { 'mrjones2014/legendary.nvim' }
+  -- use { 'mrjones2014/legendary.nvim' }
   use {
     "FeiyouG/command_center.nvim",
     requires = { "nvim-telescope/telescope.nvim" }

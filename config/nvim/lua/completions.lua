@@ -53,7 +53,9 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-  -- autorestart = true,
+  -- preselect
+  preselect = cmp.PreselectMode.None,
+  autorestart = true,
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -65,10 +67,11 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   view = {
-    entries = "native_menu"
+    entries = "custom"
   },
   comfirmation = {
-    completeopt = "menu,menuone,noselect",
+    -- completeopt = "menu,menuone,noselect",
+    completeopt = "menu,menuone,noinsert,noselect",
   },
   experimental = {
     ghost_text = false -- this feature conflict with copilot.vim's preview.

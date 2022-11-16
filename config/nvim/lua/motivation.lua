@@ -1,6 +1,6 @@
 -- Auto Pairs
 require("nvim-autopairs").setup({
-  disable_filetype = { "TelescopePrompt" , "vim" },
+  disable_filetype = { "TelescopePrompt", "vim" },
 })
 
 -- Guess indent
@@ -65,7 +65,7 @@ require("nvim-tree").setup({
     },
   },
   renderer = {
-    group_empty = true,
+    group_empty = false,
     highlight_git = true,
     icons = {
       show = {
@@ -86,7 +86,7 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = true,
-    custom = {"^\\.git"},
+    custom = { "^\\.git" },
     exclude = {},
   },
   git = {
@@ -175,10 +175,10 @@ require("workspaces").setup({
   -- lua hooks take a name, a path, and an optional state table
   -- if only one hook is needed, the list may be omitted
   hooks = {
-      add = {},
-      remove = {},
-      rename = {},
-      open_pre = {},
-      open = {"NvimTreeOpen", "Telescope find_files"},
+    add = {},
+    remove = {},
+    rename = {},
+    open_pre = {},
+    open = { "NvimTreeOpen", "Telescope find_files" },
   },
 })

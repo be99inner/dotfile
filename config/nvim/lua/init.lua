@@ -69,3 +69,5 @@ vim.opt.clipboard = "unnamedplus"
 -- Split
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Default Tab stop

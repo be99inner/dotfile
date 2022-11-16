@@ -1,6 +1,7 @@
 -- Syntax Highlight
 require("themer").setup({
-  colorscheme = "amora",
+  -- colorscheme = "amora",
+  colorscheme = "monokai_pro",
   dim_inactive = true,
   term_colors = true,
   transparent = false,
