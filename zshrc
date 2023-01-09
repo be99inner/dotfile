@@ -9,16 +9,15 @@ fi
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin
 # kubectl krew plugins
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-# .NET
-export DOTNET_ROOT="/usr/local/share/dotnet"
-export PATH="$PATH:$DOTNET_ROOT"
-# Add .NET Core SDK tools
-export PATH="$PATH:$HOME/.dotnet/tools"
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
+# # .NET
+# export DOTNET_ROOT="/usr/local/share/dotnet"
+# export PATH="$PATH:$DOTNET_ROOT"
+# # Add .NET Core SDK tools
+# export PATH="$PATH:$HOME/.dotnet/tools"
 # Add n
+export PATH="$N_PREFIX/bin:$PATH"
 export N_PREFIX=$HOME/.n
-export PATH=$N_PREFIX/bin:$PATH
-# Coreutils - Conflict with ls colors
 #export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # Path to your oh-my-zsh installation.
@@ -92,10 +91,10 @@ export ZSH_TMUX_ITERM2=false
 # Set python virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-# Set pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval $(pyenv init --path)
+## Set pyenv -- Set this on .zprofile
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval $(pyenv init --path)
 
 
 # Which plugins would you like to load?
@@ -190,9 +189,19 @@ alias vim='nvim'
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
-# tmp setting
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
-export ANDROID_SDK_ROOT="$HOME/android-sdk"
-export ANDROID_HOME="$HOME/android-sdk"
-alias ssh="TERM=xterm-256color ssh"
-alias htop="TERM=xterm-256color htop"
+if [[ $(uname) == "Darwin" ]] then
+  # setup part for MacOS
+  export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
+  export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  alias ssh="TERM=xterm-256color ssh"
+  alias htop="TERM=xterm-256color htop"
+
+  # Setup libpq for PosgreSQL cli
+  export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
+fi
+
+alias lg="lazygit"
+
+# neovim test
+alias nv="XDG_CONFIG_HOME='/Users/be99inner/workspace/home-tmp/config' XDG_DATA_HOME='/Users/be99inner/workspace/home-tmp/share' XDG_CACHE_HOME='/Users/be99inner/workspace/home-tmp/cache' nvim -u ~/workspace/github.com/be99inner/lz-nvim/init.lua"
