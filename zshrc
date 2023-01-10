@@ -91,12 +91,6 @@ export ZSH_TMUX_ITERM2=false
 # Set python virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-## Set pyenv -- Set this on .zprofile
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval $(pyenv init --path)
-
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
