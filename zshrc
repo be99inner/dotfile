@@ -162,9 +162,8 @@ alias tfv='terraform validate'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
 alias tfay='terraform apply --auto-approve'
-
-# macOS need to setup this option for python fork()
-alias ast='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
+alias vim='nvim'
+alias lg="lazygit"
 
 # Set Golang option
 export GO111MODULE=on
@@ -174,17 +173,18 @@ export HOMEBREW_NO_GITHUB_API=true
 
 # Require by powerline10k installation (brew install)
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Set editor
-alias vim='nvim'
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
+# OS specific configuration
 if [[ $(uname) == "Darwin" ]] then
-  # setup part for MacOS
+  # macOS need to setup this option for python fork()
+  export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
   export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
   export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
   export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -198,12 +198,9 @@ if [[ $(uname) == "Darwin" ]] then
   alias nv="XDG_CONFIG_HOME='/Users/be99inner/workspace/home-tmp/config' XDG_DATA_HOME='/Users/be99inner/workspace/home-tmp/share' XDG_CACHE_HOME='/Users/be99inner/workspace/home-tmp/cache' nvim -u ~/workspace/github.com/be99inner/lz-nvim/init.lua"
 
 elif [[ $(uname) == "Linux" ]] then
-  # setup for linux
   # Android SDK
   export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
   export ANDROID_HOME="$HOME/Android/Sdk"
   # Flutter
   export CHROME_EXECUTABLE="/bin/google-chrome-stable"
 fi
-
-alias lg="lazygit"
