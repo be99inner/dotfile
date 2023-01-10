@@ -199,9 +199,17 @@ if [[ $(uname) == "Darwin" ]] then
 
   # Setup libpq for PosgreSQL cli
   export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
+
+  # neovim test
+  alias nv="XDG_CONFIG_HOME='/Users/be99inner/workspace/home-tmp/config' XDG_DATA_HOME='/Users/be99inner/workspace/home-tmp/share' XDG_CACHE_HOME='/Users/be99inner/workspace/home-tmp/cache' nvim -u ~/workspace/github.com/be99inner/lz-nvim/init.lua"
+
+elif [[ $(uname) == "Linux" ]] then
+  # setup for linux
+  # Android SDK
+  export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+  export ANDROID_HOME="$HOME/Android/Sdk"
+  # Flutter
+  export CHROME_EXECUTABLE="/bin/google-chrome-stable"
 fi
 
 alias lg="lazygit"
-
-# neovim test
-alias nv="XDG_CONFIG_HOME='/Users/be99inner/workspace/home-tmp/config' XDG_DATA_HOME='/Users/be99inner/workspace/home-tmp/share' XDG_CACHE_HOME='/Users/be99inner/workspace/home-tmp/cache' nvim -u ~/workspace/github.com/be99inner/lz-nvim/init.lua"
