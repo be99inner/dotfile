@@ -1,6 +1,5 @@
-#!/bin/bash -xe
-DIR=$(pwd)
-VIMPLUG_URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+#!/bin/bash -euo pipefail
+# The script to install dotfile configuration
 
 install_zsh() {
     echo "Install zsh..."
@@ -8,28 +7,56 @@ install_zsh() {
     rm -rf $HOME/.oh-my-zsh
     echo "Install oh-my-zsh..."
     git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
-    echo "Link zsh configuration files..."
-    ln -sf "${PWD}/.zshrc" "${HOME}/.zshrc"
-    ln -sf "${PWD}/.p10k.zsh" "${HOME}/.p10k.zsh"
+    echo "Checking the old configuration file for zsh..."
+    if [ -f "$HOME/.zshrc" ] then
+        echo "Found the old zsh configuration!!!"
+        echo "Backup the old configuration..."
+        mv $HOME/.zshrc $HOME/.zshrc_back
+    elif
+        echo "Don't found the old configuration..."
+        echo "Backup configuration is skipped!!!"
+    fi
+    echo "Checking the old configuration file for p10k"
+    if [ -f "$HOME/.p10k.zsh" ] then
+        echo "Found the old p10k configuration!!!"
+        echo "Backup the old configuration..."
+        mv $HOME/.p10k.zsh $HOME/.p10k.zsh_back
+    elif
+        echo "Don't found the old configuration..."
+        echo "Backup configuration is skipped!!!"
+    fi
+    echo "Install zsh configuration files..."
+    ln -sf $PWD/.zshrc $HOME/.zshrc
+    echo "Install p10k configuration files..."
+    ln -sf $PWD/.p10k.zsh $HOME/.p10k.zsh
 }
 
 install_tmux() {
     echo "Cleanup tmux configuration..."
+    echo "Checking the old configuration file..."
+    if [ -f "$HOME/.tmux.conf" ] then
+        echo "Found the old configurtation!!!"
+        echo "Backup the old configuration..."
+        mv $HOME/.tmux.conf $HOME/.tmux.conf_back
+    fi
+    echo "Check package directory..."
+    echo "Found the old package directory!!!"
+    echo "Cleanup the old package directory..."
     rm -rf $HOME/.tmux
     echo "Install tmux tpm..."
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    echo "Link tmux configuration files..."
-    ln -sf "${PWD}/.tmux.conf" "${HOME}/.tmux.conf"
+    echo "Install tmux configuration files..."
+    ln -sf $PWD/.tmux.conf $HOME/.tmux.conf
 }
 
-install_vim() {
-    echo "Cleanup neovim configuration..."
-    rm -rf $HOME/.config/nvim
-    rm -rf $HOME/.local/share/nvim
-    mkdir -p $HOME/.config/nvim
-    echo "Install vim-plugs"
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs "${VIMPLUG_URL}"'
-    echo "Install neovim configuration files..."
-    ln -sf $PWD/.config/nvim/init.vim $HOME/.config/nvim/init.vim
-    ln -sf $PWD/.config/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
+install_nvim(){
+    echo "Install Neovim configuration..."
+    echo "Checking the old configuration folder..."
+    if [ -d "$HOME/.config/nvim" ] then
+        echo "Found the old configuration folder!!!"
+        echo "Backup the old configuration..."
+        mv $HOME/.config/nvim $HOME/.config/nvim_back
+    fi
+    echo "Install Neovim configuration..."
+    ln -sf $PWD/config/nvim $HOME/.config/nvim
 }
