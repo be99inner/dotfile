@@ -88,9 +88,6 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_UNICODE=true
 export ZSH_TMUX_ITERM2=false
 
-# Set python virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -197,6 +194,8 @@ if [[ $(uname) == "Darwin" ]] then
   # neovim test
   alias nv="XDG_CONFIG_HOME='/Users/be99inner/workspace/home-tmp/config' XDG_DATA_HOME='/Users/be99inner/workspace/home-tmp/share' XDG_CACHE_HOME='/Users/be99inner/workspace/home-tmp/cache' nvim -u ~/workspace/github.com/be99inner/lz-nvim/init.lua"
 
+  # Set python virtualenvwrapper
+  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 elif [[ $(uname) == "Linux" ]] then
   # Android SDK
   export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
