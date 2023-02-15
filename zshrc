@@ -196,6 +196,10 @@ if [[ $(uname) == "Darwin" ]] then
 
   # Set python virtualenvwrapper
   export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+  # Kubeconfig switcher
+  INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
+
 elif [[ $(uname) == "Linux" ]] then
   # Android SDK
   export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
