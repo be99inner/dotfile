@@ -109,8 +109,6 @@ plugins=(
   rust
   terraform
   tmux
-  virtualenv
-  virtualenvwrapper
   # custom
   autoupdate
   fast-syntax-highlighting
