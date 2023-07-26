@@ -3,7 +3,7 @@ local M = {}
 
 -- UI Settings
 M.ui = {
-  theme = "ashes"
+  theme = "gruvchad"
 }
 
 -- Plugins 
