@@ -2,6 +2,12 @@
 local plugins = {
   -- syntax highlighting
   {
+    "nathom/filetype.nvim",
+    config = function ()
+      require("custom.configs.filetype")
+    end
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -14,6 +20,7 @@ local plugins = {
 
         -- devops
         "hcl",
+        "terraform",
         "yaml",
       },
     },
@@ -65,13 +72,13 @@ local plugins = {
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
-        require "custom.configs.null-ls"
+        require("custom.configs.null-ls")
       end,
     },
 
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
     end,
   },
 }

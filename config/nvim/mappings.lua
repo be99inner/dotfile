@@ -6,7 +6,7 @@ M.general = {
     ["<C-l>"] = { ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", opts = { silent = true} },
     ["<C-k>"] = { ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", opts = { silent = true} },
     ["<C-j>"] = { ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", opts = { silent = true} },
-  }
+  },
 }
 
 return M
