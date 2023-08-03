@@ -1,4 +1,4 @@
----@type ChadrcConfig 
+---@type ChadrcConfig
 --- DirectConfig
 local opt = vim.opt
 opt.relativenumber = true
@@ -6,9 +6,9 @@ opt.relativenumber = true
 --- ChadCustomConfig
 local M = {}
 M.ui = {
-  theme = "gruvchad"
+  theme = "gruvchad",
 }
 M.plugins = "custom.plugins"
-M.mappings = require("custom.mappings")
+M.mappings = require "custom.mappings"
 
 return M

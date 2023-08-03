@@ -3,9 +3,9 @@ local plugins = {
   -- syntax highlighting
   {
     "nathom/filetype.nvim",
-    config = function ()
-      require("custom.configs.filetype")
-    end
+    config = function()
+      require "custom.configs.filetype"
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -30,7 +30,7 @@ local plugins = {
     "nkakouros-original/numbers.nvim",
     lazy = false,
     config = function()
-      require("numbers").setup()
+      require "custom.configs.numbers"
     end,
   },
   -- tmux integrations
@@ -43,6 +43,14 @@ local plugins = {
     },
     config = function()
       require "custom.configs.tmux"
+    end,
+  },
+  -- lastplace
+  {
+    "ethanholz/nvim-lastplace",
+    lazy = false,
+    config = function()
+      require "custom.configs.lastplace"
     end,
   },
 
@@ -72,13 +80,13 @@ local plugins = {
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
-        require("custom.configs.null-ls")
+        require "custom.configs.null-ls"
       end,
     },
 
     config = function()
-      require("plugins.configs.lspconfig")
-      require("custom.configs.lspconfig")
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
     end,
   },
 }
