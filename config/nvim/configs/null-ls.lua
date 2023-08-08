@@ -24,7 +24,7 @@ local sources = {
   formatting.prettier,
   formatting.stylua,
   formatting.gofumpt,
-  formatting.goimports,
+  formatting.goimports_reviser,
   lint.shellcheck,
 }
 
