@@ -28,6 +28,18 @@ local plugins = {
       require "custom.configs.tmux"
     end,
   },
+  -- git
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = {
+      "LazyGit",
+      "LazyGitCurrentFile",
+      "LazyGitConfig",
+    },
+  },
   -- lastplace
   {
     "ethanholz/nvim-lastplace",
@@ -56,7 +68,6 @@ local plugins = {
         require "custom.configs.null-ls"
       end,
     },
-
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"

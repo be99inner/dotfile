@@ -9,4 +9,10 @@ M.general = {
   },
 }
 
+M.git = {
+  n = {
+    ["<leader>gl"] = { ":LazyGit<cr>", "LazyGit", opts = { silent = false, nowait = false } },
+  },
+}
+
 return M
