@@ -1,0 +1,21 @@
+-- nvimtree
+local opts = {
+  filesystem_watchers = {
+    enable = true,
+  },
+  git = {
+    enable = true,
+    timeout = 2000,
+  },
+  renderer = {
+    highlight_git = true,
+    icons = {
+      show = {
+        git = true,
+        modified = true,
+      },
+    },
+  },
+}
+
+return opts

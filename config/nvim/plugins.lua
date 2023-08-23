@@ -9,34 +9,17 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        -- default
-        "vim",
-        "lua",
-
-        -- web dev
-        "json",
-
-        -- devops
-        "hcl",
-        "terraform",
-        "yaml",
-      },
-    },
+    opts = require "custom.configs.overrides.nvim-treesitter",
   },
-  -- auto toggle relative number
+  -- file explorer
   {
-    "nkakouros-original/numbers.nvim",
-    lazy = false,
-    config = function()
-      require "custom.configs.numbers"
-    end,
+    "nvim-tree/nvim-tree.lua",
+    opts = require "custom.configs.overrides.nvimtree",
   },
   -- tmux integrations
   {
     "alexghergh/nvim-tmux-navigation",
-    lazy = false,
+    lazy = true,
     dependencies = {
       { "tmux-plugins/vim-tmux-focus-events" },
       { "tmux-plugins/vim-tmux" },
@@ -57,25 +40,12 @@ local plugins = {
   -- wakatime plugins
   { "wakatime/vim-wakatime", lazy = false },
   -- editorconfig
-  { "gpanders/editorconfig.nvim" },
+  { "gpanders/editorconfig.nvim", lazy = false },
 
   -- lsp installer
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "html-lsp",
-        "prettier",
-        "stylua",
-        "gopls",
-        "gofumpt",
-        "goimports_revisor",
-        "shellcheck",
-        "terraform-ls",
-        "pyright",
-      },
-    },
+    opts = require "custom.configs.overrides.mason",
   },
   -- lspconfig
   {
