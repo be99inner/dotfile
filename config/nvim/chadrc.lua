@@ -1,5 +1,4 @@
 ---@type ChadrcConfig
---- ChadCustomConfig
 local M = {}
 M.ui = {
   theme = "gruvchad",
