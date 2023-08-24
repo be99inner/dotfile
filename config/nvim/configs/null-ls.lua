@@ -25,6 +25,7 @@ local sources = {
   formatting.stylua,
   formatting.gofumpt,
   formatting.goimports_reviser,
+  formatting.terraform_fmt,
   lint.shellcheck,
 }
 
