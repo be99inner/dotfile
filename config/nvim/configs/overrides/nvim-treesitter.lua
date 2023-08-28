@@ -1,16 +1,18 @@
 -- nvim-treesitter
 local opts = {
-  -- default
-  "vim",
-  "lua",
+  ensure_installed = {
+    -- default
+    "vim",
+    "lua",
 
-  -- web dev
-  "json",
+    -- web dev
+    "json",
 
-  -- devops
-  "hcl",
-  "terraform",
-  "yaml",
+    -- devops
+    "hcl",
+    "terraform",
+    "yaml",
+  },
 }
 
 return opts
