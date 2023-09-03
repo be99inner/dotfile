@@ -7,3 +7,7 @@
 
 # nvim config packer
 config/nvim/plugin/*
+
+# lazygit
+config/jesseduffield/lazygit/*
+!config/jesseduffield/lazygit/config.yml
