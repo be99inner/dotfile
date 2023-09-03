@@ -28,6 +28,9 @@ export N_PREFIX=$HOME/.n
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+# pyenv virtualenv
+# https://github.com/pyenv/pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
 
 # OS specific path configuration
 if [[ $(uname) == "Darwin" ]] then
