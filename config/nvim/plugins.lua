@@ -40,6 +40,11 @@ local plugins = {
       "LazyGitConfig",
     },
   },
+  -- terminal
+  {
+    "NvChad/nvterm",
+    opts = require "custom.configs.overrides.nvterm",
+  },
   -- lastplace
   {
     "ethanholz/nvim-lastplace",
@@ -48,7 +53,6 @@ local plugins = {
       require "custom.configs.lastplace"
     end,
   },
-
   -- wakatime plugins
   { "wakatime/vim-wakatime", lazy = false },
   -- editorconfig
