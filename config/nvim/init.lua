@@ -6,3 +6,4 @@ opt.relativenumber = true
 
 opt.scrolloff = 8
 opt.sidescrolloff = 8
+opt.eol = true
