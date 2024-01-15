@@ -7,11 +7,15 @@ local opts = {
 
     -- web dev
     "json",
+    "python",
 
     -- devops
     "hcl",
     "terraform",
     "yaml",
+
+    -- docs
+    "markdown",
   },
 }
 
