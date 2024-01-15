@@ -7,7 +7,7 @@ local opts = {
     "stylua",
     "gopls",
     "gofumpt",
-    "goimports_revisor",
+    "goimports-reviser",
     "shellcheck",
     "terraform-ls",
     "pyright",
