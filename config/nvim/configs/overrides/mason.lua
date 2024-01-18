@@ -11,6 +11,7 @@ local opts = {
     "shellcheck",
     "terraform-ls",
     "pyright",
+    "prosemd-lsp",
   },
 }
 
