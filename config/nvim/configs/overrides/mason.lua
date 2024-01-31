@@ -11,7 +11,8 @@ local opts = {
     "shellcheck",
     "terraform-ls",
     "pyright",
-    "prosemd-lsp",
+    "marksman",
+    "vue-language-server",
   },
 }
 

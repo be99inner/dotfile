@@ -7,7 +7,8 @@ local servers = {
   "terraformls",
   "pyright",
   "lua_ls",
-  "prosemd_lsp",
+  "marksman",
+  "vls",
 }
 
 for _, lsp in ipairs(servers) do
