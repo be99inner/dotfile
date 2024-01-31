@@ -3,6 +3,7 @@ local plugins = {
   -- syntax highlighting
   {
     "nathom/filetype.nvim",
+    lazy = false,
     config = function()
       require "custom.configs.filetype"
     end,
