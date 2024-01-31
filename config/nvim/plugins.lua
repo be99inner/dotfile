@@ -7,6 +7,18 @@ local plugins = {
       require "custom.configs.filetype"
     end,
   },
+  -- dotenv
+  {
+    "ellisonleao/dotenv.nvim",
+    config = function()
+      require("dotenv").setup {
+        enable_on_load = true, -- will load your .env file upon loading a buffer
+        verbose = false, -- show e
+      }
+    end,
+  },
+
+  -- treesiterr
   {
     "nvim-treesitter/nvim-treesitter",
     opts = require "custom.configs.overrides.nvim-treesitter",
