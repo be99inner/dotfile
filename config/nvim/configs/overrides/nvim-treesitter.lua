@@ -5,17 +5,30 @@ local opts = {
     "vim",
     "lua",
 
+    -- docker
+    "dockerfile",
+
     -- web dev
     "json",
     "python",
+    "go",
+    "gomod",
+    "gosum",
+    "graphql",
+    "vue",
+    "html",
+    "css",
+    "json",
 
     -- devops
     "hcl",
     "terraform",
     "yaml",
+    "groovy",
 
     -- docs
     "markdown",
+    "markdown_inline",
   },
 }
 
