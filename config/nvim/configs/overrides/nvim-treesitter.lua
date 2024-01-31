@@ -18,6 +18,7 @@ local opts = {
     "vue",
     "html",
     "css",
+    "javascript",
     "json",
 
     -- devops
