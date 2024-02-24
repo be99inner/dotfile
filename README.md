@@ -7,11 +7,14 @@ The new repository for store my dotfile.
 ## STATUS
 
 INPROGRESS: To migrate to link file (deprecated for bare repos)
+TODO: installation script for fresh installation
 
 ## Prerequisite
 
-- [vim-plug](https://github.com/junegunn/vim-plug) for vim
+- **DEPRECATED:** [vim-plug](https://github.com/junegunn/vim-plug) for vim
+- **NOTE:** [NvChad](https://nvchad.com/) for neovim
 - [tpm](https://github.com/tmux-plugins/tpm) for tmux
+
 
 ## Installation
 
@@ -19,7 +22,10 @@ INPROGRESS: To migrate to link file (deprecated for bare repos)
 - Clone this repository with command
 
 ```bash
-git clone https://github.com/be99inner/dotfile.git $HOME/.dotfile
+# clone repository
+git clone https://github.com/be99inner/dotfile.git ~/workspace/github.com/be99inner/dotfile
+
+# link your config to $HOME/<file>
 ```
 
 Then link configuration file to target.
@@ -33,7 +39,7 @@ Additional Configuration.
 
 ## References
 
-[Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
+- Another way to manage dot file with bare style. [Atlassian Docs](https://www.atlassian.com/git/tutorials/dotfiles)
 
 ## ZSH
 
