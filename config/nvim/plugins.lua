@@ -76,14 +76,23 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = require "custom.configs.overrides.mason",
   },
+  -- formatter
+  {
+    "stevearc/conform.nvim",
+    --  for users those who want auto-save conform + lazyloading!
+    event = "BufWritePre",
+    config = function()
+      require "custom.configs.conform"
+    end,
+  },
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require "custom.configs.null-ls"
-      end,
+      -- "jose-elias-alvarez/null-ls.nvim",
+      -- config = function()
+      --   require "custom.configs.null-ls"
+      -- end,
     },
     config = function()
       require "plugins.configs.lspconfig"
