@@ -5,6 +5,7 @@ local opts = {
   },
   git = {
     enable = true,
+    ignore = false,
     timeout = 2000,
   },
   renderer = {
