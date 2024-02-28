@@ -19,6 +19,7 @@ local opts = {
     "html",
     "css",
     "javascript",
+    "typescript",
     "json",
 
     -- devops
