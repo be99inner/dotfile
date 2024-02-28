@@ -20,8 +20,8 @@ export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 # export PATH="$PATH:$HOME/.dotnet/tools"
 
 #  n(Node.JS) path
-export PATH="$N_PREFIX/bin:$PATH"
 export N_PREFIX=$HOME/.n
+export PATH="$N_PREFIX/bin:$PATH"
 #export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # pyenv(Python) path
