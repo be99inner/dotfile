@@ -6,6 +6,30 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
+#
+# OS specific path configuration
+if [[ $(uname) == "Darwin" ]] then
+  export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
+  export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+
+  # Setup libpq for PosgreSQL cli
+  export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
+
+  # Set python virtualenvwrapper
+  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+  # Kubeconfig switcher
+  INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
+
+elif [[ $(uname) == "Linux" ]] then
+  # Android SDK
+  export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+  export ANDROID_HOME="$HOME/Android/Sdk"
+
+  # Flutter
+  export CHROME_EXECUTABLE="/bin/google-chrome-stable"
+fi
 
 # Golang path
 export GOPATH=$(go env GOPATH)
@@ -31,30 +55,6 @@ eval "$(pyenv init --path)"
 # pyenv virtualenv
 # https://github.com/pyenv/pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
-
-# OS specific path configuration
-if [[ $(uname) == "Darwin" ]] then
-  export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home'
-  export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-  # Setup libpq for PosgreSQL cli
-  export PATH="$PATH:/opt/homebrew/opt/libpq/bin"
-
-  # Set python virtualenvwrapper
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-
-  # Kubeconfig switcher
-  INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
-
-elif [[ $(uname) == "Linux" ]] then
-  # Android SDK
-  export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-  export ANDROID_HOME="$HOME/Android/Sdk"
-
-  # Flutter
-  export CHROME_EXECUTABLE="/bin/google-chrome-stable"
-fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -120,7 +120,7 @@ ZSH_CUSTOM_AUTOUPDATE_QUITE=true
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Tmux Configuration
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 export ZSH_TMUX_UNICODE=true
 export ZSH_TMUX_ITERM2=false
 
