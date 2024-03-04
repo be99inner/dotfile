@@ -23,6 +23,7 @@ local opts = {
     "json",
 
     -- devops
+    "bash",
     "hcl",
     "terraform",
     "yaml",
@@ -31,6 +32,9 @@ local opts = {
     -- docs
     "markdown",
     "markdown_inline",
+
+    --etc
+    "regex",
   },
 }
 
