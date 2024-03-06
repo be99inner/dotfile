@@ -72,6 +72,13 @@ local plugins = {
       "LazyGitConfig",
     },
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    -- It needs to override by setup methods
+    config = function()
+      require "custom.configs.overrides.gitsigns"
+    end,
+  },
   -- terminal
   {
     "NvChad/nvterm",

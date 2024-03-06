@@ -5,6 +5,14 @@ local opts = {
     "vim",
     "lua",
 
+    -- git
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitignore",
+    "gitcommit",
+    "gitattributes",
+
     -- docker
     "dockerfile",
 
