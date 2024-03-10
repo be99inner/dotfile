@@ -120,7 +120,7 @@ ZSH_CUSTOM_AUTOUPDATE_QUITE=true
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Tmux Configuration
-export ZSH_TMUX_AUTOSTART=false
+export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_UNICODE=true
 export ZSH_TMUX_ITERM2=false
 
