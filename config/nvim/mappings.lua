@@ -15,15 +15,22 @@ M.general = {
 M.git = {
   n = {
     ["<leader>gl"] = { ":LazyGit<cr>", "LazyGit", opts = n_opts },
+    ["<A-j>"] = { "<Esc>:m .+1<CR>==gi<Esc>", "Move Text Up", opts = v_opts },
+    ["<A-k>"] = { "<Esc>:m .-2<CR>==gi<Esc>", "Move Text Down", opts = v_opts },
   },
 }
 
 M.text_moving = {
   v = {
-    [">"] = { ">gv", opts = v_opts },
-    ["<"] = { "<gv", opts = v_opts },
+    ["<"] = { "<gv", "Shfit Text Left", opts = v_opts },
+    [">"] = { ">gv", "Shift Text Right", opts = v_opts },
+    ["<A-j>"] = { ":move '>+1<CR>gv-gv", "Move Text Up", opts = v_opts },
+    ["<A-k>"] = { ":move '<-2<CR>gv-gv", "Move Text Down", opts = v_opts },
   },
-  x = {},
+  x = {
+    ["<A-j>"] = { ":move '>+1<CR>gv-gv", "Move Text Up", opts = v_opts },
+    ["<A-k>"] = { ":move '<-2<CR>gv-gv", "Move Text Down", opts = v_opts },
+  },
 }
 
 M.terminal = {
