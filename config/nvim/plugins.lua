@@ -27,6 +27,14 @@ local plugins = {
       require("cinnamon").setup()
     end,
   },
+  -- cursorline
+  {
+    "delphinus/auto-cursorline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("auto-cursorline").setup {}
+    end,
+  },
   -- syntax highlighting
   {
     "nathom/filetype.nvim",
