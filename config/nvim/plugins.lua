@@ -19,6 +19,14 @@ local plugins = {
       require "custom.configs.noice"
     end,
   },
+  -- smooth scrolling
+  {
+    "declancm/cinnamon.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("cinnamon").setup()
+    end,
+  },
   -- syntax highlighting
   {
     "nathom/filetype.nvim",
