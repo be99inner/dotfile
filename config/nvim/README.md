@@ -12,8 +12,12 @@
 mv ~/.config/nvim ~/.config/nvim_bak
 
 # install NvChad
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 # add custom config to NvChad
 ln -sf $PWD/config/nvim ~/.config/nvim/lua/custom
 ```
+
+## CAUTION
+
+NvChad has breaking changes on v2.0 to v2.5 design
