@@ -9,6 +9,7 @@ local servers = {
   "lua_ls",
   "marksman",
   "vls",
+  "tsserver",
 }
 
 for _, lsp in ipairs(servers) do

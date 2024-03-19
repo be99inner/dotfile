@@ -30,6 +30,9 @@ local opts = {
     -- js
     "vue-language-server",
     "html-lsp",
+
+    -- ts
+    "typescript-language-server",
   },
 }
 
