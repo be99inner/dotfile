@@ -32,7 +32,7 @@ local plugins = {
     "delphinus/auto-cursorline.nvim",
     event = "VeryLazy",
     config = function()
-      require("auto-cursorline").setup {}
+      require "custom.configs.cinnamon"
     end,
   },
   -- syntax highlighting
