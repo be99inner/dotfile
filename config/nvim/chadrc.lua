@@ -6,6 +6,7 @@ M.ui = {
     Cursor = { bg = "one_bg", fg = "one_bg" },
     CursorLine = { bg = "one_bg" },
   },
+  theme = "doomchad",
 }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
