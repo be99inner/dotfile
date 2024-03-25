@@ -24,14 +24,6 @@ local plugins = {
     "declancm/cinnamon.nvim",
     event = "VeryLazy",
     config = function()
-      require("cinnamon").setup()
-    end,
-  },
-  -- cursorline
-  {
-    "delphinus/auto-cursorline.nvim",
-    event = "VeryLazy",
-    config = function()
       require "custom.configs.cinnamon"
     end,
   },
