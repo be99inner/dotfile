@@ -8,6 +8,9 @@ local options = {
 
     -- webdev
     javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
     css = { "prettier" },
     html = { "prettier" },
     yaml = { "prettier" },
