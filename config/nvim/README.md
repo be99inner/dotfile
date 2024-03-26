@@ -1,23 +1,8 @@
-# NvChad Custom Plugin Configuration
+# Neovim Configure
 
-## Prerequisite
+start template from NvChad/starter
 
-- Nvim (>= 0.9.0)
-- NvChad (Check the link for NvChad requirement: https://nvchad.com/docs/quickstart/install)
+## TODO
 
-## Installation
-
-```bash
-# backup old configuration
-mv ~/.config/nvim ~/.config/nvim_bak
-
-# install NvChad
-git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-
-# add custom config to NvChad
-ln -sf $PWD/config/nvim ~/.config/nvim/lua/custom
-```
-
-## CAUTION
-
-NvChad has breaking changes on v2.0 to v2.5 design
+[] Load Snippet for jsx/tsx
+[] Override Floating TERM size
