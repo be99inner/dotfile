@@ -46,6 +46,10 @@ export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 #  n(Node.JS) path
 export N_PREFIX=$HOME/.n
 export PATH="$N_PREFIX/bin:$PATH"
+
+# yarn
+export PATH="$(yarn global bin):$PATH"
+
 #export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # pyenv(Python) path
