@@ -6,6 +6,7 @@ local options = {
       tfstate = "json",
       sh = "sh",
       env = "dotenv",
+      html = "html",
     },
     complex = {
       ["/%.kube/config"] = "yaml",
