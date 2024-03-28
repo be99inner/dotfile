@@ -7,10 +7,10 @@ local options = {
     lua = { "stylua" },
 
     -- webdev
-    javascript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
+    javascript = { "prettier", "eslint_d" },
+    javascriptreact = { "prettier", "eslint_d" },
+    typescript = { "prettier", "eslint_d" },
+    typescriptreact = { "prettier", "eslint_d" },
     css = { "prettier" },
     html = { "prettier" },
     yaml = { "prettier" },

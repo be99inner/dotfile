@@ -14,6 +14,7 @@ local options = {
     "vue-language-server",
     "html-lsp",
     "typescript-language-server",
+    "eslint_d",
 
     -- sysadmin
     "shellcheck",
