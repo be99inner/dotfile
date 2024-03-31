@@ -30,6 +30,13 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     opts = require "configs.gitsigns",
   },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
   -- nvterm
   -- {
   --   "NvChad/nvterm",

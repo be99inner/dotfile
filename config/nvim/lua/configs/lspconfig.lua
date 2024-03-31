@@ -7,7 +7,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "gopls",
   "terraformls",
-  "pyright",
+  "basedpyright",
   "lua_ls",
   "marksman",
   "vls",

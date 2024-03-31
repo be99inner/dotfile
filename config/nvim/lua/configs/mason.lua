@@ -10,7 +10,7 @@ local options = {
     "gopls",
     "gofumpt",
     "goimports-reviser",
-    "pyright",
+    "basedpyright",
     "vue-language-server",
     "html-lsp",
     "typescript-language-server",
