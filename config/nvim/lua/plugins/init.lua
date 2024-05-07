@@ -37,6 +37,21 @@ local plugins = {
       require "configs.lspconfig"
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        config = function()
+          require "configs.luasnip"
+        end,
+      },
+    },
+  },
+
   -- nvterm
   -- {
   --   "NvChad/nvterm",
