@@ -16,6 +16,14 @@ local plugins = {
       require "configs.nvim_surround"
     end,
   },
+  -- comment
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "VeryLazy",
+    config = function()
+      require "configs.nvim_ts_context_commentstring"
+    end,
+  },
 }
 
 return plugins
