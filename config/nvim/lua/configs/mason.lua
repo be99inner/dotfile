@@ -21,6 +21,8 @@ local options = {
     "shfmt",
     "terraform-ls",
     "marksman",
+    -- "yaml-language-server",  --- disable the yaml-language-server (it's not completely configured)
+    "helm-ls",
   },
 }
 

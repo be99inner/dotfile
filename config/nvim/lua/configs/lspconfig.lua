@@ -12,6 +12,8 @@ local servers = {
   "marksman",
   "vls",
   "tsserver",
+  -- "yamlls", --- the completion is not completely configured
+  "helm_ls",
 }
 
 -- lsps with default config
