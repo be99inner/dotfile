@@ -22,7 +22,7 @@ local options = {
     git_ignored = false,
     git_clean = false,
     custom = {
-      "^.git/$",
+      "^.git$",
     },
   },
 }
