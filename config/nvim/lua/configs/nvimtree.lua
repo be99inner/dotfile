@@ -17,6 +17,14 @@ local options = {
       },
     },
   },
+  filters = {
+    dotfiles = false,
+    git_ignored = false,
+    git_clean = false,
+    custom = {
+      "^.git/$",
+    },
+  },
 }
 
 return options
