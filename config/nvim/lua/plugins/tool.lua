@@ -1,8 +1,4 @@
 local plugins = {
-  -- wakatime plugins
-  { "wakatime/vim-wakatime", lazy = false },
-  -- editorconfig
-  { "gpanders/editorconfig.nvim", lazy = false },
   -- tmux
   {
     "alexghergh/nvim-tmux-navigation",
@@ -11,7 +7,7 @@ local plugins = {
       { "tmux-plugins/vim-tmux" },
     },
     config = function()
-      require "configs.tmux"
+      require "configs.tool.tmux"
     end,
   },
 }

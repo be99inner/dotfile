@@ -4,7 +4,7 @@ local plugins = {
     "ethanholz/nvim-lastplace",
     lazy = false,
     config = function()
-      require "configs.lastplace"
+      require "configs.motion.lastplace"
     end,
   },
   -- surround
@@ -13,7 +13,7 @@ local plugins = {
     -- version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require "configs.nvim_surround"
+      require "configs.motion.nvim_surround"
     end,
   },
   -- comment
@@ -21,7 +21,7 @@ local plugins = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     event = "VeryLazy",
     config = function()
-      require "configs.nvim_ts_context_commentstring"
+      require "configs.motion.nvim_ts_context_commentstring"
     end,
   },
 }

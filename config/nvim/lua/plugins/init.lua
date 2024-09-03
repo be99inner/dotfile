@@ -1,15 +1,6 @@
 -- this file is container plugins that
 -- overlap with NvChad
 local plugins = {
-  -- formatter
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    -- config = function()
-    --   require "configs.conform"
-    -- end,
-    opts = require "configs.conform",
-  },
   -- nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
@@ -18,7 +9,7 @@ local plugins = {
   -- lsp-installer
   {
     "williamboman/mason.nvim",
-    opts = require "configs.mason",
+    opts = require "configs.lsp.mason",
   },
   -- treesitter
   {
@@ -34,7 +25,7 @@ local plugins = {
     "neovim/nvim-lspconfig",
     config = function()
       require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
+      require "configs.lsp.lspconfig"
     end,
   },
   {
@@ -51,7 +42,6 @@ local plugins = {
       },
     },
   },
-
   -- nvterm
   -- {
   --   "NvChad/nvterm",

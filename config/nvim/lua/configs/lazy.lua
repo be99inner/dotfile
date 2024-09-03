@@ -1,6 +1,6 @@
 local options = {
   defaults = { lazy = true },
-  install = { colorscheme = { "nvchad" } },
+  install = { colorscheme = { "onedark" } },
 
   ui = {
     icons = {
