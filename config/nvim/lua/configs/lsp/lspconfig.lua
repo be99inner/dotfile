@@ -1,29 +1,25 @@
 local configs = require "nvchad.configs.lspconfig"
 
-local servers = {
-  -- Lua
-  lua_ls = {},
-  -- Golang
-  gopls = {},
-  -- Terraform
-  terraformls = {},
-  -- Python
-  basedpyright = {},
+local on_attach = configs.on_attach
+local on_init = configs.on_init
+local capabilities = configs.capabilities
 
-  marksman = {},
-  -- React
-  vls = {},
-  -- TypeScript,JavaScript
-  tsserver = {},
-  -- Helm.sh Chart
-  helm_ls = {},
+local lspconfig = require "lspconfig"
+
+local servers = {
+  "lua_ls",
+  "gopls",
+  "terraformls",
+  "basedpyright",
+  "vls",
+  "ts_ls",
+  "helm_ls",
 }
 
--- lsps with default config
-for name, opts in ipairs(servers) do
-  opts.on_init = configs.on_init
-  opts.on_attach = configs.on_attach
-  opts.capabilities = configs.capabilities
-
-  require("lspconfig")[name].setup(opts)
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
 end
