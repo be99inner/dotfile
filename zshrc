@@ -31,34 +31,20 @@ elif [[ $(uname) == "Linux" ]] then
   export CHROME_EXECUTABLE="/bin/google-chrome-stable"
 fi
 
-# Golang path
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin
+# # Golang path
+# export GOPATH=$(go env GOPATH)
+# export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/bin:/usr/local/sbin
 
 # kubectl krew plugins path
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
-# # .NET
-# export DOTNET_ROOT="/usr/local/share/dotnet"
-# export PATH="$PATH:$DOTNET_ROOT"
-# # Add .NET Core SDK tools
-# export PATH="$PATH:$HOME/.dotnet/tools"
 
-#  n(Node.JS) path
-export N_PREFIX=$HOME/.n
-export PATH="$N_PREFIX/bin:$PATH"
+## asdf
+. "$HOME/.asdf/asdf.sh"
 
-# yarn
-export PATH="$(yarn global bin):$PATH"
-
-#export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-
-# pyenv(Python) path
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-# pyenv virtualenv
-# https://github.com/pyenv/pyenv-virtualenv
-eval "$(pyenv virtualenv-init -)"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -145,17 +131,14 @@ plugins=(
   fzf
   jump
   kubectl
-  pyenv
   rust
   terraform
   tmux
   # custom
   autoupdate
   fast-syntax-highlighting
-  zsh-tfenv
   zsh-autosuggestions
   zsh-completions
-  # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
