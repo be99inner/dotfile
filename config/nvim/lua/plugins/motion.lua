@@ -24,6 +24,18 @@ local plugins = {
       require "configs.motion.nvim_ts_context_commentstring"
     end,
   },
+  -- search and replace
+  {
+    "nvim-pack/nvim-spectre",
+    event = "VeryLazy",
+    -- cmd = "Spectre",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require "configs.motion.spectre"
+    end,
+  },
 }
 
 return plugins
