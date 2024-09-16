@@ -20,5 +20,8 @@ map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- fast action to save and copy
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "General Save file" })
-map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "General Copy whole file" })
+map("n", "<C-s>", "<cmd>w<cr>", { desc = "General Save file" })
+map("n", "<C-c>", "<cmd>%y+<cr>", { desc = "General Copy whole file" })
+
+-- open lazy.nvim
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open lazy.nvim (package manager)" })
