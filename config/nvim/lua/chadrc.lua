@@ -4,6 +4,7 @@
 ---@type ChadrcConfig
 local M = {}
 
+---@class M
 M.ui = {
   theme = "onedark",
 

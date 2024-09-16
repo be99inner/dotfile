@@ -10,3 +10,6 @@ opt.relativenumber = true
 opt.scrolloff = 4
 opt.sidescrolloff = 4
 opt.eol = true
+
+-- show cursorline
+opt.cursorlineopt = "both"
