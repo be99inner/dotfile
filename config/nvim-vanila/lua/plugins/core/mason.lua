@@ -10,29 +10,11 @@ local plugins = {
     config = function()
       require("mason").setup()
 
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-        ensure_installed = {
-          "cssls",
-          "eslint",
-          "html",
-          "jsonls",
-          "ts_ls",
-          "pyright",
-          "tailwindcss",
-        },
-      })
+      local mason_lspconfig_opts = require("configs.core.mason-lspconfig")
+      require("mason-lspconfig").setup(mason_lspconfig_opts)
 
-      require("mason-tool-installer").setup({
-        ensure_installed = {
-          "prettier",
-          "stylua", -- lua formatter
-          "isort", -- python formatter
-          "black", -- python formatter
-          "pylint",
-          "eslint_d",
-        },
-      })
+      local mason_tool_installer_opts = require("configs.core.mason-tool-installer")
+      require("mason-tool-installer").setup(mason_tool_installer_opts)
     end,
   },
 }

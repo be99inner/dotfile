@@ -1,4 +1,5 @@
 local plugins = {
+  -- lspconfig
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {

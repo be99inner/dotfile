@@ -2,7 +2,11 @@ local cmp = require("cmp")
 -- local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
-require("luasnip.loaders.from_vscode").lazy_load()
+-- loading snippet
+require("configs.extras.coding.luasnip")
+-- require("luasnip.loaders.from_vscode").lazy_load()
+
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- setup option for completion
 
 local cmp_kinds = {
   Text = " ",
@@ -38,6 +42,10 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   formatting = {
     format = function(_, vim_item)
       vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
@@ -62,7 +70,7 @@ cmp.setup({
   }),
 })
 
-vim.cmd([[
-      set completeopt=menuone,noinsert,noselect
-      highlight! default link CmpItemKind CmpItemMenuDefault
-    ]])
+-- vim.cmd([[
+--       set completeopt=menuone,noinsert,noselect
+--       highlight! default link CmpItemKind CmpItemMenuDefault
+--     ]])

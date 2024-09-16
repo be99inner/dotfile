@@ -15,6 +15,8 @@ local plugins = {
       { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toogle Neotree (file explorer)", mode = "n" },
     },
   },
+
+  -- autopair
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -25,6 +27,20 @@ local plugins = {
     -- end,
     opts = {
       disable_filetype = { "TelescopePrompt", "vim" },
+    },
+  },
+
+  -- telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep word" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
     },
   },
 }
