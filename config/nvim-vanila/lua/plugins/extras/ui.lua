@@ -80,6 +80,17 @@ local plugins = {
       require("colorizer").setup({ "*" })
     end,
   },
+
+  -- Git Status integrates with UI
+  {
+    "lewis6991/gitsigns.nvim",
+    cmd = { "Gitsigns" },
+    event = { "BufReadPre" },
+    -- opts = require("configs.extras.ui.gitsigns"),
+    config = function()
+      require("configs.extras.ui.gitsigns")
+    end,
+  },
 }
 
 return plugins
