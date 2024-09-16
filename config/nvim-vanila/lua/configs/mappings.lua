@@ -24,4 +24,11 @@ map("n", "<C-s>", "<cmd>w<cr>", { desc = "General Save file" })
 map("n", "<C-c>", "<cmd>%y+<cr>", { desc = "General Copy whole file" })
 
 -- open lazy.nvim
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open lazy.nvim (package manager)" })
+map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Open lazy.nvim (package manager)", silent = true })
+
+-- -- easy to exit hlsearch
+map("n", "<leader>/", "<cmd>nohl<cr>", { desc = "Exit highlight search", silent = true })
+
+-- -- Git keymapping
+-- map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Git status", silent = true })
+-- map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open Git client (LazyGit)", silent = true })
