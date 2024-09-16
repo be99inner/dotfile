@@ -10,6 +10,22 @@ local plugins = {
     end,
   },
 
+  -- Icons
+  {
+    "echasnovski/mini.icons",
+    opts = {},
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
+
   -- which-key (show mapping keys)
   {
     "folke/which-key.nvim",
@@ -18,11 +34,7 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
     event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = require("configs.extras.ui.which-key"),
     keys = {
       {
         "<leader>?",
@@ -64,13 +76,13 @@ local plugins = {
     },
   },
 
-  -- Indent line
+  -- Indentline
   { -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = "ibl",
-    opts = {},
+    opts = require("configs.extras.ui.indent-blankline"),
   },
 
   -- Colorizer
@@ -90,6 +102,17 @@ local plugins = {
     config = function()
       require("configs.extras.ui.gitsigns")
     end,
+  },
+
+  -- Enrich Highlight search
+  {
+    "kevinhwang91/nvim-hlslens",
+    -- cmd = "/",
+    -- event = "VeryLazy",
+    -- config = function()
+    --   require "configs.extras.ui.hlslens"
+    -- end,
+    opts = {},
   },
 }
 
