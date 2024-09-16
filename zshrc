@@ -38,13 +38,7 @@ fi
 # kubectl krew plugins path
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
-## asdf
-. "$HOME/.asdf/asdf.sh"
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -211,3 +205,11 @@ alias lg="lazygit"
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+## asdf
+. "$HOME/.asdf/asdf.sh"
+
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
