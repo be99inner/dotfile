@@ -3,6 +3,7 @@ local o = vim.o
 local g = vim.g
 
 ------------------------------------- global ---------------------------------
+g.editorconfig = true -- enable Editorconfig
 
 ------------------------------------- option ---------------------------------
 opt.termguicolors = true -- terminal gui colors
@@ -25,3 +26,7 @@ opt.fillchars = { eob = " " }
 o.ignorecase = true
 o.smartcase = true
 o.mouse = "a"
+
+-- line number
+o.number = true
+o.relativenumber = true
