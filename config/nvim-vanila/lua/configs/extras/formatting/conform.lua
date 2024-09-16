@@ -2,7 +2,7 @@ local opts = {
   lsp_fallback = true,
   formatters_by_ft = {
     lua = { "stylua" },
-    go = { "goimports", "gofmt" },
+    go = { "goimports-reviser", "gofmt" },
     rust = { "rustfmt", lsp_format = "fallback" },
     -- Use the "_" filetype to run formatters on filetypes that don't
     -- have other formatters configured.
@@ -16,6 +16,7 @@ local opts = {
   default_format_opts = {
     lsp_format = "fallback",
   },
+  log_level = vim.log.levels.ERROR,
 }
 
 return opts
