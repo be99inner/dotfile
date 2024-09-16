@@ -2,16 +2,16 @@ local plugins = {
   -- code completion
   {
     "hrsh7th/nvim-cmp",
-    cmd = { "LspInfo", "LspLog", "LspStart", "LspStop", "LspRestart", "CmpStatus" },
     event = "InsertEnter",
     dependencies = {
       -- cmp deps
-      { "hrsh7th/cmp-nvim-lsp", lazy = false },
+      { "hrsh7th/cmp-nvim-lsp" },
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       -- lsp dependencies
       { "neovim/nvim-lspconfig" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
       -- snippets
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
@@ -21,8 +21,8 @@ local plugins = {
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
       },
-      -- -- icons
-      -- "onsails/lspkind.nvim",
+      -- icons
+      "onsails/lspkind.nvim",
     },
 
     config = function()

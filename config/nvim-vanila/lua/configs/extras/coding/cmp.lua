@@ -1,42 +1,14 @@
 local cmp = require("cmp")
--- local lspkind = require("lspkind")
+local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
 -- loading snippet
 require("configs.extras.coding.luasnip")
--- require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- setup option for completion
 
-local cmp_kinds = {
-  Text = " ",
-  Method = " ",
-  Function = " ",
-  Constructor = " ",
-  Field = " ",
-  Variable = " ",
-  Class = " ",
-  Interface = " ",
-  Module = " ",
-  Property = " ",
-  Unit = " ",
-  Value = " ",
-  Enum = " ",
-  Keyword = " ",
-  Snippet = " ",
-  Color = " ",
-  File = " ",
-  Reference = " ",
-  Folder = " ",
-  EnumMember = " ",
-  Constant = " ",
-  Struct = " ",
-  Event = " ",
-  Operator = " ",
-  TypeParameter = " ",
-}
-
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -47,30 +19,68 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   formatting = {
-    format = function(_, vim_item)
-      vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
-      return vim_item
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      kind.menu = "    (" .. (strings[2] or "") .. ")"
+      return kind
     end,
   },
   mapping = cmp.mapping.preset.insert({
+    ["<CR>"] = cmp.mapping({
+      i = function(fallback)
+        if cmp.visible() and cmp.get_active_entry() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+        else
+          fallback()
+        end
+      end,
+      s = cmp.mapping.confirm({ select = true }),
+      c = cmp.mapping.confirm({ bPreselectModeehavior = cmp.ConfirmBehavior.Replace, select = true }),
+    }),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "buffer", keyword_length = 4 },
+    { name = "path", keyword_length = 4 },
+  }, {
+    { name = "luasnip" },
+    { name = "buffer", keyword_length = 4 },
+    { name = "path", keyword_length = 4 },
+  }, {
+    { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
+    { name = "luasnip" },
+    { name = "nvim_lua" },
+    { name = "buffer", keyword_length = 4 },
+    { name = "path", keyword_length = 4 },
   }),
 })
-
--- vim.cmd([[
---       set completeopt=menuone,noinsert,noselect
---       highlight! default link CmpItemKind CmpItemMenuDefault
---     ]])
