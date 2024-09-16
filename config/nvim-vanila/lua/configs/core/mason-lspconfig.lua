@@ -1,13 +1,19 @@
 local opts = {
   automatic_installation = true,
   ensure_installed = {
+    -- vim,lua
+    "lua_ls",
+    -- webdev
     "cssls",
     "eslint",
     "html",
     "jsonls",
     "ts_ls",
-    "pyright",
     "tailwindcss",
+    -- python
+    "pyright",
+    -- golang,
+    "gopls",
   },
 }
 

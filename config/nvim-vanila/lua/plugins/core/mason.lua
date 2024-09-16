@@ -8,7 +8,8 @@ local plugins = {
       "WhoIsSethDaniel/mason-tool-installer.nvim", -- installer
     },
     config = function()
-      require("mason").setup()
+      local mason_opts = require("configs.core.mason")
+      require("mason").setup(mason_opts)
 
       local mason_lspconfig_opts = require("configs.core.mason-lspconfig")
       require("mason-lspconfig").setup(mason_lspconfig_opts)
