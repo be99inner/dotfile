@@ -3,6 +3,7 @@ local opts = {
   ensure_installed = {
     -- vim,lua
     "lua_ls",
+
     -- webdev
     "cssls",
     "eslint",
@@ -10,10 +11,15 @@ local opts = {
     "jsonls",
     "ts_ls",
     "tailwindcss",
+
     -- python
     "pyright",
+
     -- golang,
     "gopls",
+
+    -- terraform
+    "terraformls",
   },
 }
 
