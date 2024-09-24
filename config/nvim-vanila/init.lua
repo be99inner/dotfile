@@ -27,3 +27,4 @@ require("lazy").setup(lazy_conf)
 
 require("configs.options")
 require("configs.mappings")
+require("configs.commands")
