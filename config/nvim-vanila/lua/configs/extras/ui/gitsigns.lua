@@ -1,5 +1,4 @@
-local gitsigns = require "gitsigns"
-gitsigns.setup {
+local opts = {
   signs = {
     add = { text = "│" },
     change = { text = "│" },
@@ -41,3 +40,5 @@ gitsigns.setup {
   --   enable = false,
   -- },
 }
+
+return opts

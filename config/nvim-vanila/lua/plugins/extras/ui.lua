@@ -108,10 +108,7 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     cmd = { "Gitsigns" },
     event = { "BufReadPre" },
-    -- opts = require("configs.extras.ui.gitsigns"),
-    config = function()
-      require("configs.extras.ui.gitsigns")
-    end,
+    opts = require("configs.extras.ui.gitsigns"),
   },
 
   -- Enrich Highlight search
