@@ -10,7 +10,7 @@ local plugins = {
       "LazyGitFilterCurrentFile",
     },
     requires = {
-      "nvim-lua/plenary.nvim",
+      { "nvim-lua/plenary.nvim" },
     },
     keys = {
       { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" },

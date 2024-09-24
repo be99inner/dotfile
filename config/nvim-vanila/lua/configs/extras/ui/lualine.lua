@@ -1,8 +1,6 @@
-local function lsp_list()
+local function LspList()
   local clients = vim.lsp.get_clients()
-  if next(clients) == nil then
-    return ""
-  end
+  if next(clients) == nil then return "" end
 
   local c = {}
   for _, client in pairs(clients) do
@@ -13,16 +11,14 @@ end
 
 local function LspIcon()
   local active_clients_count = #vim.lsp.get_clients()
-  local active_clients = lsp_list()
+  local active_clients = LspList()
 
   return active_clients_count > 0 and " " .. active_clients or ""
 end
 
 local function LspStatus()
   return require("lsp-progress").progress({
-    format = function(messages)
-      return #messages > 0 and table.concat(messages, " ") or ""
-    end,
+    format = function(messages) return #messages > 0 and table.concat(messages, " ") or "" end,
   })
 end
 
@@ -37,9 +33,8 @@ require("lualine").setup({
       "filename",
       "diagnostics",
       LspIcon,
-      LspStatus,
+      -- LspStatus,
     },
-    -- ...,
   },
 })
 

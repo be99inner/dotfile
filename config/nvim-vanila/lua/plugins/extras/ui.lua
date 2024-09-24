@@ -38,9 +38,7 @@ local plugins = {
     keys = {
       {
         "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
+        function() require("which-key").show({ global = false }) end,
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
@@ -54,14 +52,10 @@ local plugins = {
       -- lsp-progress
       {
         "linrongbin16/lsp-progress.nvim",
-        config = function()
-          require("lsp-progress").setup()
-        end,
+        config = function() require("lsp-progress").setup() end,
       },
     },
-    config = function()
-      require("configs.extras.ui.lualine")
-    end,
+    config = function() require("configs.extras.ui.lualine") end,
   },
 
   -- Tab
@@ -98,27 +92,21 @@ local plugins = {
   -- Colorizer
   {
     "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "*" })
-    end,
+    config = function() require("colorizer").setup({ "*" }) end,
   },
 
   -- Git Status integrates with UI
   {
     "lewis6991/gitsigns.nvim",
     cmd = { "Gitsigns" },
-    event = { "BufReadPre" },
+    event = { "VeryLazy" },
     opts = require("configs.extras.ui.gitsigns"),
   },
 
   -- Enrich Highlight search
   {
     "kevinhwang91/nvim-hlslens",
-    -- cmd = "/",
-    -- event = "VeryLazy",
-    -- config = function()
-    --   require "configs.extras.ui.hlslens"
-    -- end,
+    event = "VeryLazy",
     opts = {},
   },
 
@@ -126,9 +114,14 @@ local plugins = {
   {
     "goolord/alpha-nvim",
     dependencies = { "echasnovski/mini.icons" },
-    config = function()
-      require("configs.extras.ui.alpha")
-    end,
+    config = function() require("configs.extras.ui.alpha") end,
+  },
+
+  -- Notify
+  {
+    "echasnovski/mini.notify",
+    version = false,
+    opts = require("configs.extras.ui.mini-notify"),
   },
 }
 

@@ -1,11 +1,16 @@
 local opts = {
   ensure_installed = {
-    "prettier",
-    "stylua", -- lua formatter
-    "isort", -- python formatter
-    "black", -- python formatter
-    "pylint",
+    -- lua
+    "stylua",
     "eslint_d",
+
+    -- javascript
+    "prettier",
+
+    -- python
+    "isort",
+    "black",
+    "pylint",
   },
 }
 

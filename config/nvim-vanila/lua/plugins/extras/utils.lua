@@ -4,11 +4,6 @@ local plugins = {
     "alexghergh/nvim-tmux-navigation",
     event = "VeryLazy",
     cmd = { "NvimTmuxNavigateLeft", "NvimTmuxNavigateRight", "NvimTmuxNavigateUp", "NvimTmuxNavigateDown" },
-    -- config = function()
-    --   require("nvim-tmux-navigation").setup({
-    --     disable_when_zoomed = true, -- defaults to false
-    --   })
-    -- end,
     opts = {
       disabled_when_zoomed = true,
     },

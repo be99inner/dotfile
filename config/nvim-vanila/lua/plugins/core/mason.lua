@@ -3,9 +3,9 @@ local plugins = {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim", -- Bridge between Mason and lspconfig
-      "neovim/nvim-lspconfig", -- Quickstart configurations for LSP
-      "WhoIsSethDaniel/mason-tool-installer.nvim", -- installer
+      { "williamboman/mason-lspconfig.nvim" }, -- Bridge between Mason and lspconfig
+      { "neovim/nvim-lspconfig" }, -- Quickstart configurations for LSP
+      { "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- installer
     },
     config = function()
       local mason_opts = require("configs.core.mason")

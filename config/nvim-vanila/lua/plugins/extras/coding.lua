@@ -25,10 +25,7 @@ local plugins = {
       -- icons
       { "onsails/lspkind.nvim" },
     },
-
-    config = function()
-      require("configs.extras.coding.cmp")
-    end,
+    config = function() require("configs.extras.coding.cmp") end,
   },
 }
 

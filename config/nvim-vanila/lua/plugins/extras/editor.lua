@@ -20,11 +20,6 @@ local plugins = {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    -- config = function()
-    --   require("nvim-autopairs").setup({
-    --     disable_filetype = { "TelescopePrompt", "vim" },
-    --   })
-    -- end,
     opts = {
       disable_filetype = { "TelescopePrompt", "vim" },
     },
@@ -39,16 +34,13 @@ local plugins = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-lua/plenary.nvim",
     },
-    config = function()
-      require("configs.extras.editor.telescope")
-    end,
+    config = function() require("configs.extras.editor.telescope") end,
     keys = {
       -- files
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find in Files (Grep)" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-
       -- -- git
       { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
     },
@@ -58,15 +50,9 @@ local plugins = {
   {
     "MagicDuck/grug-far.nvim",
     cmd = "GrugFar",
-    config = function()
-      require("grug-far").setup({})
-    end,
+    config = function() require("grug-far").setup({}) end,
     keys = {
-      {
-        "<leader>sr",
-        "<cmd>GrugFar<cr>",
-        desc = "Search and Replace",
-      },
+      { "<leader>sr", "<cmd>GrugFar<cr>", desc = "Search and Replace" },
     },
   },
 
@@ -77,48 +63,16 @@ local plugins = {
     vscode = true,
     opts = {},
     keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "S",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
-        "r",
-        mode = "o",
-        function()
-          require("flash").remote()
-        end,
-        desc = "Remote Flash",
-      },
-      {
-        "R",
-        mode = { "o", "x" },
-        function()
-          require("flash").treesitter_search()
-        end,
-        desc = "Treesitter Search",
-      },
-      {
-        "<c-s>",
-        mode = { "c" },
-        function()
-          require("flash").toggle()
-        end,
-        desc = "Toggle Flash Search",
-      },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+
+  -- Editor configuration
+  { "folke/neoconf.nvim", cmd = "Neoconf", opts = {} },
 }
 
 return plugins
