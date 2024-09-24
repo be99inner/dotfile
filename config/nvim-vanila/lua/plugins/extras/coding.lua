@@ -4,17 +4,18 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      -- cmp deps
-      { "hrsh7th/cmp-nvim-lsp" },
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-path",
+      -- utils
+      { "hrsh7th/cmp-buffer" },
+      { "https://codeberg.org/FelipeLema/cmp-async-path.git" }, -- path sync instead of "hrsh7th/cmp-path",
+      -- lua api
+      { "hrsh7th/cmp-nvim-lua" },
       -- lsp dependencies
+      { "hrsh7th/cmp-nvim-lsp" },
       { "neovim/nvim-lspconfig" },
       { "hrsh7th/cmp-nvim-lsp-signature-help" },
       -- snippets
-      "rafamadriz/friendly-snippets",
-      "saadparwaiz1/cmp_luasnip",
+      { "rafamadriz/friendly-snippets" },
+      { "saadparwaiz1/cmp_luasnip" },
       {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
@@ -22,7 +23,7 @@ local plugins = {
         build = "make install_jsregexp",
       },
       -- icons
-      "onsails/lspkind.nvim",
+      { "onsails/lspkind.nvim" },
     },
 
     config = function()
