@@ -21,10 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
-local lazy_conf = require("configs.core.lazy")
-require("lazy").setup(lazy_conf)
-
+-- fix order to load built-in option before loading lazy.nvim
 require("configs.options")
 require("configs.mappings")
 require("configs.commands")
+
+-- Setup lazy.nvim
+local lazy_conf = require("configs.core.lazy")
+require("lazy").setup(lazy_conf)
