@@ -31,7 +31,7 @@ local plugins = {
     "folke/which-key.nvim",
     dependencies = {
       "echasnovski/mini.icons",
-      "nvim-tree/nvim-web-devicons",
+      { "nvim-tree/nvim-web-devicons", enabled = false },
     },
     event = "VeryLazy",
     opts = require("configs.extras.ui.which-key"),
