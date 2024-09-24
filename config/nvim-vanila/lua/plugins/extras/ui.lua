@@ -121,6 +121,15 @@ local plugins = {
     -- end,
     opts = {},
   },
+
+  -- Startup dashboard
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "echasnovski/mini.icons" },
+    config = function()
+      require("configs.extras.ui.alpha")
+    end,
+  },
 }
 
 return plugins
