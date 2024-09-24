@@ -15,8 +15,11 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = {
+      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+      col_offset = -3,
+      side_padding = 0,
+    },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -27,6 +30,9 @@ cmp.setup({
       kind.menu = "    (" .. (strings[2] or "") .. ")"
       return kind
     end,
+  },
+  view = {
+    entries = { name = "custom", selection_order = "near_cursor" },
   },
   mapping = cmp.mapping.preset.insert({
     ["<CR>"] = cmp.mapping({
@@ -70,17 +76,6 @@ cmp.setup({
     { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
     { name = "buffer", keyword_length = 4 },
-    { name = "path", keyword_length = 4 },
-  }, {
-    { name = "luasnip" },
-    { name = "buffer", keyword_length = 4 },
-    { name = "path", keyword_length = 4 },
-  }, {
-    { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
-    { name = "luasnip" },
-    { name = "nvim_lua" },
-    { name = "buffer", keyword_length = 4 },
-    { name = "path", keyword_length = 4 },
+    { name = "async_path", keyword_length = 4 },
   }),
 })
