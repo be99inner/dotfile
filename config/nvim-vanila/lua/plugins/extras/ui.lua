@@ -49,8 +49,18 @@ local plugins = {
   -- Statusbar
   {
     "nvim-lualine/lualine.nvim",
+    event = "UIEnter",
+    dependencies = {
+      -- lsp-progress
+      {
+        "linrongbin16/lsp-progress.nvim",
+        config = function()
+          require("lsp-progress").setup()
+        end,
+      },
+    },
     config = function()
-      require("lualine").setup()
+      require("configs.extras.ui.lualine")
     end,
   },
 
