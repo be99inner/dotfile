@@ -11,6 +11,10 @@ local opts = {
     "isort",
     "black",
     "pylint",
+
+    -- terraform
+    "tflint",
+    "tfsec",
   },
 }
 
