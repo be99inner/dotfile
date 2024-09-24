@@ -22,6 +22,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- fix order to load built-in option before loading lazy.nvim
+require("configs.filetypes")
 require("configs.options")
 require("configs.mappings")
 require("configs.commands")
