@@ -4,7 +4,9 @@ local opts = {
     lua = { "stylua" },
     go = { "goimports-reviser", "gofmt" },
     rust = { "rustfmt", lsp_format = "fallback" },
-    terraform = { "tflint", "tfsec", lsp_fallback = "fallback" },
+    terraform = { "tflint", lsp_fallback = "fallback" },
+    python = { "isort", "black", "pylint" },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
 
     -- Use the "_" filetype to run formatters on filetypes that don't
     -- have other formatters configured.
