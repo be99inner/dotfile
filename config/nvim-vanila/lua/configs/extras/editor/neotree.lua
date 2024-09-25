@@ -53,6 +53,17 @@ local opts = {
   },
   filesystem = {
     use_libuv_file_watcher = true,
+    filtered_items = {
+      visible = false,
+      hide_dotfiles = false,
+      hide_gitignore = true,
+      hide_by_name = {},
+      never_show = {
+        ".git",
+        ".DS_Store",
+        "thumbs.db",
+      },
+    },
   },
 }
 
