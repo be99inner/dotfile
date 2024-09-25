@@ -33,7 +33,7 @@ require("lualine").setup({
       "filename",
       "diagnostics",
       LspIcon,
-      -- LspStatus,
+      LspStatus,
     },
   },
 })
