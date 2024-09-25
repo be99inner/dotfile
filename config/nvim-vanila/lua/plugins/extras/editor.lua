@@ -71,6 +71,12 @@ local plugins = {
     },
   },
 
+  -- Comment
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function() require("configs.extras.editor.ts-context-commentstring") end,
+  },
+
   -- Editor configuration
   { "folke/neoconf.nvim", cmd = "Neoconf", opts = {} },
 }

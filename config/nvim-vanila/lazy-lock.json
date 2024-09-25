@@ -36,6 +36,7 @@
   "nvim-tmux-navigation": { "branch": "main", "commit": "4898c98702954439233fdaf764c39636681e2861" },
   "nvim-treesitter": { "branch": "master", "commit": "6511cd984ab4b21e28f83af488f38dc89c3b0586" },
   "nvim-ts-autotag": { "branch": "main", "commit": "e239a560f338be31337e7abc3ee42515daf23f5e" },
+  "nvim-ts-context-commentstring": { "branch": "main", "commit": "375c2d86cee6674afd75b4f727ce3a80065552f7" },
   "nvim-web-devicons": { "branch": "master", "commit": "9154484705968658e9aab2b894d1b2a64bf9f83d" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
