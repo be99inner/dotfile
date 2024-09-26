@@ -1,4 +1,4 @@
-require("telescope").setup {
+require("telescope").setup({
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
@@ -8,9 +8,9 @@ require("telescope").setup {
       -- the default case_mode is "smart_case"
     },
   },
-}
+})
 
 -- load plugins for telescope
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-require("telescope").load_extension "fzf"
+require("telescope").load_extension("fzf")
