@@ -78,7 +78,14 @@ local plugins = {
   },
 
   -- Editor configuration
-  { "folke/neoconf.nvim", cmd = "Neoconf", opts = {} },
+  {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf",
+    opts = {},
+    keys = {
+      { "<leader>nc", mode = { "n", "x", "o" }, "<cmd>Neoconf<cr>", desc = "Open Neoconf" },
+    },
+  },
 }
 
 return plugins

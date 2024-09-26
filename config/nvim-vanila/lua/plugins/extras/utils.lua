@@ -1,5 +1,5 @@
 local plugins = {
-  -- Tmux
+  -- Tmux integration
   {
     "alexghergh/nvim-tmux-navigation",
     event = "VeryLazy",
