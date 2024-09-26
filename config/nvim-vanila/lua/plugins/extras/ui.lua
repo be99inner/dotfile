@@ -1,31 +1,12 @@
 local plugins = {
   -- the colorscheme should be available when starting Neovim
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     -- load the colorscheme here
-  --     vim.cmd([[colorscheme tokyonight]])
-  --   end,
-  -- },
-
   {
-    "sainnhe/edge",
+    "loctvl842/monokai-pro.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.edge_enable_italic = true
-      vim.g.edge_enable_bold = true
-      vim.g.edge_style = "aura"
-      vim.g.edge_cursor = "auto"
-      vim.g.edge_dim_inactive_windows = 1
-      vim.g.edge_diagnostic_text_highlight = 1
-      vim.g.edge_diagnostic_line_highlight = 1
-      vim.g.edge_better_performance = 1
-      vim.cmd.colorscheme("edge")
+      require("configs.extras.ui.monokai-pro")
+      vim.cmd.colorscheme("monokai-pro-octagon")
     end,
   },
 
@@ -71,7 +52,7 @@ local plugins = {
       -- lsp-progress
       {
         "linrongbin16/lsp-progress.nvim",
-        config = function() require("lsp-progress").setup() end,
+        config = function() require("lsp-progress").setup({}) end,
       },
     },
     config = function() require("configs.extras.ui.lualine") end,
