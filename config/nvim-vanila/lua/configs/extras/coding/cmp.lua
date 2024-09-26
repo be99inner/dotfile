@@ -10,6 +10,10 @@ cmp.setup({
   completion = {
     completeopt = "menu,menuone,noselect,noinsert",
   },
+  ---@diagnostic disable-next-line: missing-fields
+  performance = {
+    max_view_entries = 22,
+  },
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
