@@ -5,10 +5,11 @@ local luasnip = require("luasnip")
 -- loading snippet
 require("configs.extras.coding.luasnip")
 
--- vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- setup option for completion
-
 cmp.setup({
   preselect = cmp.PreselectMode.None,
+  completion = {
+    completeopt = "menu,menuone,noselect,noinsert",
+  },
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
@@ -94,9 +95,8 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
-    { name = "buffer", keyword_length = 4 },
-    { name = "async_path", keyword_length = 4 },
+    { name = "buffer" },
+    { name = "async_path" },
   }),
 })
