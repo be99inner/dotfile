@@ -8,10 +8,10 @@ local opts = {
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "tokyonight", "edge", "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = false },
-
+  -- performance tuning
   performance = {
     rtp = {
       disabled_plugins = {

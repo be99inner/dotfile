@@ -1,12 +1,31 @@
 local plugins = {
   -- the colorscheme should be available when starting Neovim
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd([[colorscheme tokyonight]])
+  --   end,
+  -- },
+
   {
-    "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "sainnhe/edge",
+    lazy = false,
+    priority = 1000,
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.edge_enable_italic = true
+      vim.g.edge_enable_bold = true
+      vim.g.edge_style = "aura"
+      vim.g.edge_cursor = "auto"
+      vim.g.edge_dim_inactive_windows = 1
+      vim.g.edge_diagnostic_text_highlight = 1
+      vim.g.edge_diagnostic_line_highlight = 1
+      vim.g.edge_better_performance = 1
+      vim.cmd.colorscheme("edge")
     end,
   },
 
@@ -81,7 +100,8 @@ local plugins = {
   },
 
   -- Indentline
-  { -- Add indentation guides even on blank lines
+  {
+    -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
