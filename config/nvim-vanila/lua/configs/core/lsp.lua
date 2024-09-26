@@ -3,6 +3,9 @@ local nvim_lsp = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local map = vim.keymap.set
 
+-- setup lsp signature helper document
+local lsp_signature_opts = {}
+
 -- on attach key binding
 local on_attach = function(_, bufnr)
   local function opts(desc) return { buffer = bufnr, desc = "LSP " .. desc } end
@@ -27,6 +30,9 @@ local on_attach = function(_, bufnr)
 
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
   map("n", "gr", vim.lsp.buf.references, opts("Show references"))
+
+  -- loading lsp signature
+  require("lsp_signature").on_attach(lsp_signature_opts, bufnr)
 end
 
 mason_lspconfig.setup_handlers({
