@@ -4,6 +4,14 @@ local ensured_installed = {
   "vim",
   "vimdoc",
 
+  -- script
+  "bash",
+  "make",
+
+  -- config
+  "yaml",
+  "toml",
+
   -- treesitter
   "query",
 
@@ -11,10 +19,24 @@ local ensured_installed = {
   "markdown",
   "markdown_inline",
 
-  -- usual langs
-  "python",
-  "go",
+  -- docker
+  "dockerfile",
+
+  -- webdev
+  "html",
+  "css",
+  "json",
+  "javascript",
+
+  -- terraform
   "terraform",
+  "hcl",
+
+  -- python
+  "python",
+
+  -- golang
+  "go",
 }
 
 ---@diagnostic disable-next-line: missing-fields
