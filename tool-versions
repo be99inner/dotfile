@@ -1,4 +1,4 @@
 # asdf version control for global version
-nodejs latest
-terraform latest
+nodejs 22.9.0
+terraform 1.9.6
 golang 1.23.1
