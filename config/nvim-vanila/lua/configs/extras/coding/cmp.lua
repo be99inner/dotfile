@@ -18,11 +18,8 @@ cmp.setup({
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
   window = {
-    completion = {
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-      col_offset = -3,
-      side_padding = 0,
-    },
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   ---@diagnostic disable-next-line: missing-fields
   formatting = {
