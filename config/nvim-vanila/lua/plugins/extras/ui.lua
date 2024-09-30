@@ -1,14 +1,38 @@
 local plugins = {
   -- the colorscheme should be available when starting Neovim
   {
-    "loctvl842/monokai-pro.nvim",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("configs.extras.ui.monokai-pro")
-      vim.cmd.colorscheme("monokai-pro-octagon")
+      -- setup color
+      vim.cmd.colorscheme("dracula")
     end,
   },
+  -- {
+  --   "sainnhe/edge",
+  --   lazy = false,
+  --   priority = 1000,
+  --   init = function()
+  --     -- init configuration for edge
+  --     vim.g.edge_enable_italic = 1
+  --     vim.g.edge_better_performance = 1
+  --     vim.g.edge_color = "neon"
+  --   end,
+  --   config = function()
+  --     -- Setup vim colorscheme
+  --     vim.cmd.colorscheme("edge")
+  --   end,
+  -- },
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("configs.extras.ui.monokai-pro")
+  --     vim.cmd.colorscheme("monokai-pro-octagon")
+  --   end,
+  -- },
 
   -- Icons
   {
