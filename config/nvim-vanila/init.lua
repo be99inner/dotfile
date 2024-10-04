@@ -25,7 +25,7 @@ vim.g.maplocalleader = "\\"
 require("configs.filetypes")
 require("configs.options")
 require("configs.mappings")
-require("configs.commands")
+require("configs.autocmd")
 
 -- Setup lazy.nvim
 local lazy_conf = require("configs.core.lazy")
