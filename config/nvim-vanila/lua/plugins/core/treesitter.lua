@@ -1,4 +1,4 @@
-return {
+local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
@@ -9,3 +9,5 @@ return {
     config = function() require("configs.core.treesitter") end,
   },
 }
+
+return plugins

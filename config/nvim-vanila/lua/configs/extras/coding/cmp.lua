@@ -3,7 +3,8 @@ local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
 -- loading snippet
-require("configs.extras.coding.luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 cmp.setup({
   preselect = cmp.PreselectMode.None,
@@ -99,5 +100,6 @@ cmp.setup({
     { name = "luasnip" },
     { name = "buffer" },
     { name = "async_path" },
+    { name = "orgmode" },
   }),
 })
