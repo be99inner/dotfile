@@ -6,7 +6,10 @@ local plugins = {
     dependencies = {
       { "windwp/nvim-ts-autotag" },
     },
-    config = function() require("configs.core.treesitter") end,
+    config = function()
+      -- loading bundle configuration for treesitter
+      require("configs.core.treesitter")
+    end,
   },
 }
 
