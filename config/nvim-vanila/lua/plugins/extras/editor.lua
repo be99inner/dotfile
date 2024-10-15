@@ -86,6 +86,24 @@ local plugins = {
       { "<leader>nc", mode = { "n", "x", "o" }, "<cmd>Neoconf<cr>", desc = "Open Neoconf" },
     },
   },
+
+  -- surround
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  -- File manager in buffer
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
 }
 
 return plugins
