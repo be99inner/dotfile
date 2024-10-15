@@ -7,7 +7,7 @@ local plugins = {
     priority = 1000,
     config = function()
       -- setup color
-      vim.cmd.colorscheme("base16-ayu-dark")
+      vim.cmd.colorscheme("base16-katy")
     end,
   },
 
