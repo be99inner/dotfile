@@ -1,6 +1,5 @@
 local plugins = {
   -- note taking
-  --
   {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
@@ -19,6 +18,11 @@ local plugins = {
       --   ignore_install = { 'org' },
       -- })
     end,
+  },
+  -- Editor tracking
+  {
+    "wakatime/vim-wakatime",
+    event = "VeryLazy",
   },
 }
 
