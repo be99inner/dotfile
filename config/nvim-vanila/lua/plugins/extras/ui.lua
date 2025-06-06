@@ -16,6 +16,7 @@ local plugins = {
     "echasnovski/mini.icons",
     opts = {},
     lazy = true,
+    version = "*",
     specs = {
       { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
     },
@@ -24,6 +25,23 @@ local plugins = {
         require("mini.icons").mock_nvim_web_devicons()
         return package.loaded["nvim-web-devicons"]
       end
+    end,
+    config = function()
+      require("mini.icons").setup({
+        -- default = {
+        --   -- Override default glyph for "file" category (reuse highlight group)
+        --   file = { glyph = "󰈤" },
+        -- },
+        -- extension = {
+        --   -- Override highlight group (not necessary from 'mini.icons')
+        --   lua = { hl = "Special" },
+        --
+        --   -- Add icons for custom extension. This will also be used in
+        --   -- 'file' category for input like 'file.my.ext'.
+        --   ["my.ext"] = { glyph = "󰻲", hl = "MiniIconsRed" },
+        -- },
+      })
+      -- MiniIcons.mock_nvim_web_devicons()
     end,
   },
 
@@ -91,18 +109,27 @@ local plugins = {
     opts = require("configs.extras.ui.indent-blankline"),
   },
 
-  -- Colorizer
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function() require("colorizer").setup({ "*" }) end,
-  },
+  -- -- Colorizer
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   config = function()
+  --     require("colorizer").setup({
+  --       -- "*", -- Highlight all files, but customize some others.
+  --       "!vim", -- Exclude vim from highlighting.
+  --       css = { rgb_fn = true }, -- Enable parsing rgb(...) functions in css.
+  --       html = { mode = "background", names = false }, -- Disable parsing "names" like Blue or Gray
+  --     }, { mode = "background" })
+  --   end,
+  -- },
 
   -- Git Status integrates with UI
   {
     "lewis6991/gitsigns.nvim",
     cmd = { "Gitsigns" },
     event = { "VeryLazy" },
+    version = "v1.0.0",
     opts = require("configs.extras.ui.gitsigns"),
+    -- config = function() require("configs.extras.ui.gitsigns") end,
   },
 
   -- Enrich Highlight search
@@ -125,6 +152,19 @@ local plugins = {
     version = false,
     opts = require("configs.extras.ui.mini-notify"),
   },
+
+  -- Yaml schema
+  {
+    "someone-stole-my-name/yaml-companion.nvim",
+    dependencies = {
+        { "neovim/nvim-lspconfig" },
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-telescope/telescope.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("yaml_schema")
+    end,
+  }
 }
 
 return plugins
