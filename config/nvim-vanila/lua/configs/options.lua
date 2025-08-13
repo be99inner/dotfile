@@ -75,3 +75,5 @@ vim.opt.scrolloff = 10
 
 -- Encoding
 vim.opt.encoding = "UTF-8"
+
+vim.opt.swapfile = false
