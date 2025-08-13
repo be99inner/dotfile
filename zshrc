@@ -197,8 +197,6 @@ alias tfa='terraform apply'
 alias tfay='terraform apply --auto-approve'
 
 # Neovim
-alias vim='nvim'
-alias v='nvim'
 alias cfz='nvim ~/.zshrc'
 alias cft='nvim ~/.tmux.conf'
 alias cfv='nvim ~/.nvimrc'
