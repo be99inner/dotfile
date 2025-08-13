@@ -152,7 +152,6 @@ export GIT_PAGER=cat
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
-  
 else
   export EDITOR='nvim'
 fi
@@ -165,7 +164,6 @@ export GO111MODULE=on
 if [[ $(uname) == "Darwin" ]] then
   # macOS need to setup this option for python fork()
   export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-  
   # Setup brew
   export HOMEBREW_NO_GITHUB_API=true
 elif [[ $(uname) == "Linux" ]] then
