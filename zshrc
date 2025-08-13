@@ -129,6 +129,7 @@ plugins=(
   rust
   terraform
   tmux
+  asdf
   # custom
   autoupdate
   fast-syntax-highlighting
@@ -207,8 +208,8 @@ alias lg="lazygit"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-## asdf
-. "$HOME/.asdf/asdf.sh"
+# ## asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
