@@ -38,7 +38,8 @@ fi
 # kubectl krew plugins path
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
-
+# Add user binary path for user space
+export PATH="$PATH:$HOME/bin:$HOME/.bin:$HOME/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
