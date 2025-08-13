@@ -14,10 +14,10 @@ map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 -- fast to move around window
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+map("n", "<C-h>", "<C-w>h", { desc = "switch window left", silent = true })
+map("n", "<C-l>", "<C-w>l", { desc = "switch window right", silent = true })
+map("n", "<C-j>", "<C-w>j", { desc = "switch window down", silent = true })
+map("n", "<C-k>", "<C-w>k", { desc = "switch window up", silent = true })
 
 -- fast action to save and copy
 map("n", "<C-s>", "<cmd>w<cr>", { desc = "General Save file" })
