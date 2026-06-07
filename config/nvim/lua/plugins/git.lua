@@ -45,6 +45,24 @@ return {
     },
   },
 
+  -- Open the external lazygit UI without leaving Neovim.
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    keys = {
+      { "<leader>gl", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
   -- Full git status workflow inside Neovim.
   {
     "NeogitOrg/neogit",

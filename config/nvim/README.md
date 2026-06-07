@@ -25,3 +25,8 @@ From the dotfile repository:
 ```
 
 The installer backs up an existing `~/.config/nvim` before linking this directory.
+On a fresh machine, the first Neovim startup restores plugin revisions from [`lazy-lock.json`](/Users/be99inner/workspace/github.com/be99inner/dotfile/config/nvim/lazy-lock.json) instead of resolving newer commits.
+
+## Git UI
+
+This config includes `lazygit.nvim`. Use `<leader>gl` to open LazyGit from inside Neovim. The `lazygit` binary still needs to be installed and available on `PATH`.

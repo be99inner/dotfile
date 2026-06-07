@@ -15,6 +15,35 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local uv = vim.uv or vim.loop
+local lazy_root = vim.fn.stdpath("data") .. "/lazy"
+local lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json"
+
+local function path_exists(path)
+  return uv.fs_stat(path) ~= nil
+end
+
+local function is_first_plugin_install()
+  local entries = uv.fs_scandir(lazy_root)
+  if not entries then
+    return true
+  end
+
+  while true do
+    local name, kind = uv.fs_scandir_next(entries)
+    if not name then
+      break
+    end
+    if kind == "directory" and name ~= "lazy.nvim" then
+      return false
+    end
+  end
+
+  return true
+end
+
+local should_restore_lockfile = path_exists(lockfile) and is_first_plugin_install()
+
 -- Load core config before plugins so plugin specs can read global defaults.
 require("config.options")
 require("config.notifications")
@@ -28,7 +57,11 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  install = { colorscheme = { "habamax" } },
+  lockfile = lockfile,
+  install = {
+    missing = not should_restore_lockfile,
+    colorscheme = { "habamax" },
+  },
   checker = { enabled = true, notify = false },
   change_detection = { notify = false },
   performance = {
@@ -48,3 +81,9 @@ require("lazy").setup({
     },
   },
 })
+
+if should_restore_lockfile then
+  vim.schedule(function()
+    require("lazy").restore({ wait = true, show = false })
+  end)
+end
