@@ -85,6 +85,19 @@ local function project_root()
   return vim.fs.root(0, ".git") or vim.uv.cwd()
 end
 
+local function create_terminal_buffer()
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.bo[buf].bufhidden = "hide"
+  vim.bo[buf].buflisted = false
+  return buf
+end
+
+local function start_terminal(buf)
+  vim.api.nvim_set_current_buf(buf)
+  vim.fn.termopen(vim.o.shell, { cwd = project_root() })
+  vim.cmd("startinsert")
+end
+
 -- Reuse one floating terminal buffer so shell state survives toggles.
 local function toggle_terminal()
   if term.win and vim.api.nvim_win_is_valid(term.win) then
@@ -95,8 +108,7 @@ local function toggle_terminal()
   local width = math.floor(vim.o.columns * 0.9)
   local height = math.floor(vim.o.lines * 0.85)
   if not term.buf or not vim.api.nvim_buf_is_valid(term.buf) then
-    term.buf = vim.api.nvim_create_buf(false, true)
-    vim.bo[term.buf].bufhidden = "hide"
+    term.buf = create_terminal_buffer()
   end
 
   term.win = vim.api.nvim_open_win(term.buf, true, {
@@ -112,22 +124,26 @@ local function toggle_terminal()
   })
 
   if vim.bo[term.buf].buftype ~= "terminal" then
-    vim.fn.termopen(vim.o.shell, { cwd = project_root() })
+    start_terminal(term.buf)
+    return
   end
   vim.cmd("startinsert")
+end
+
+local function open_split_terminal(split_cmd)
+  vim.cmd(split_cmd)
+  local buf = create_terminal_buffer()
+  vim.api.nvim_win_set_buf(0, buf)
+  start_terminal(buf)
 end
 
 -- Terminal layouts and terminal-mode navigation.
 map("n", "<leader>tt", toggle_terminal, { desc = "Toggle terminal" })
 map("n", "<leader>th", function()
-  vim.cmd("botright 15split")
-  vim.fn.termopen(vim.o.shell, { cwd = project_root() })
-  vim.cmd("startinsert")
+  open_split_terminal("botright 15split")
 end, { desc = "Horizontal terminal" })
 map("n", "<leader>tv", function()
-  vim.cmd("botright vsplit")
-  vim.fn.termopen(vim.o.shell, { cwd = project_root() })
-  vim.cmd("startinsert")
+  open_split_terminal("botright vsplit")
 end, { desc = "Vertical terminal" })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Enter normal mode" })
 map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Go to left window" })
