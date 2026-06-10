@@ -188,4 +188,13 @@ return {
     },
     opts = {},
   },
+
+  -- Centralized session management without project-local Session.vim files.
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {
+      need = 1,
+    },
+  },
 }
